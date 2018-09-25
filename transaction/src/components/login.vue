@@ -65,9 +65,6 @@ export default {
     .pc{
         display: none;
     }
-    .pad{
-        display: block !important;
-    }
     /* 头部文字样式 */
     .headerSchool{
         font-size: 18px;
