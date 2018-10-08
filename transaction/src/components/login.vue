@@ -13,9 +13,6 @@
                         <el-form-item>
                             <el-input v-model="form.stuPwd" placeholder="请输入您的密码" id="stuPwd"></el-input>
                         </el-form-item>
-                        <!-- <el-form-item>
-                            <el-input v-model="form.verification" placeholder="请输入您的验证码" id="verification"></el-input>
-                        </el-form-item> -->
                         <el-form-item>
                             <el-button type="primary" @click="uploadInfo">登 录</el-button>
                         </el-form-item>
@@ -36,9 +33,7 @@ export default {
             form: {
                 stuId: "",
                 stuPwd: "",
-                // verification: ""
             },
-            checked: false, //是否记住密码
             bodyHeight: "" ,//页面高度
             bodyWidth: "", //页面宽度
         };
@@ -46,7 +41,13 @@ export default {
     methods: {
         //登录
         uploadInfo() {
-            // this.$router.push({ path: "/uploadInfo" });
+            let _this = this;
+            let api = "";
+            _this.axios.post(api,{
+
+            }).then(res=>{
+                _this.$router.push({ path: "/Exchange" });
+            });
         }
     },
     mounted() {

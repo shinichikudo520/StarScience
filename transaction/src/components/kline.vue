@@ -273,12 +273,12 @@ export default {
                 data.volumes.map(item=>{
                     data1.push(item[1]);
                 });
-                var data2 = [];
+                var data2 = [];//macd线条1的数组
                 data1.map(item=>{
                     item = item + 100000;
                     data2.push(item);
                 });
-                var data3 = [];//macd线条2的数组数组
+                var data3 = [];//macd线条2的数组
                 data1.map(
                     item=>{item = item - 100000;
                     data3.push(item);
@@ -420,7 +420,6 @@ export default {
                 values.push(rawData[i]);
                 volumes.push([i, rawData[i][4], rawData[i][0] > rawData[i][1] ? 1 : -1]);
             }
-
             return {
                 categoryData: categoryData,
                 values: values,

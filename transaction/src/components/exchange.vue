@@ -96,23 +96,17 @@
         <div id="right">
             <!-- 实时成交 -->
             <el-container id="realTime">
-                <el-table :data="tableData.bids" style="width: 100%;height:100%">
-                    <el-table-column width="90" label="时间">
-                        <template slot-scope="scope">
-                            {{scope.$index+1}}
-                        </template>
+                <el-table :data="realTimeData" style="width: 100%"  :cell-style="cellStyle">
+                    <el-table-column prop="time" label="时间"  width="120">
                     </el-table-column>
-                    <el-table-column prop="price" label="方向" width="95">
+                    <el-table-column prop="take" label="方向" width="95" >
+                    </el-table-column>
+                    <el-table-column prop="price" label="价格" width="95"  >
                     </el-table-column>
                     <el-table-column prop="quantity" label="数量" width="95">
                     </el-table-column>
-                    <el-table-column label="价格" width="95">
-                        <template slot-scope="scope">
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="数量" width="95">
-                        <template slot-scope="scope">
-                        </template>
+                    <el-table-column label="用户" width="95" >
+                        <!-- prop="tradeId" -->
                     </el-table-column>
                 </el-table>
             </el-container>
@@ -134,12 +128,13 @@ export default {
             sellNum: "", //卖出EMT数量
             sellRMB: 0.0, //卖出EMT等值RMB
             usableEMT: 0.0, //可用EMT
-            tableData: {
-                //20档行情数据信息
+            tableData: {//20档行情数据信息
                 asks: [], //卖出
                 bids: [], //买入
                 timestamp: "" //时间戳
             },
+            realTimeData:[],//实时成交数据信息
+            // redOrGreen:"",//实时成交中买入交易为红色，卖出交易为绿色
             seriesDepthMap: [//深度图数据
                 {
                     name: "成交",
@@ -155,7 +150,8 @@ export default {
                     itemStyle: { normal: { areaStyle: { type: "default" } } },
                     data: [1320, 1132, 601, 234, 120, 90, 20]
                 }
-            ]
+            ],
+            
         };
     },
     methods: {
@@ -177,13 +173,22 @@ export default {
                 return "";
             }
         },
-        //请求数据
-        ajax() {
+        //实时成交买入或者卖出单元格的样式
+        cellStyle({row, column, rowIndex, columnIndex}){
+            if(columnIndex === 1 && row.take=="买入"){ //指定坐标
+                return 'color:red'
+            }
+            else if(columnIndex === 1 && row.take=="卖出"){
+                return 'color:green'
+            }
+        },
+        //请求20档行情数据
+        ajaxTop() {
             let _this = this;
-            let api =
-                "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
+            // let api = "market/ticker?symbol=emtusdt";
+                let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
             _this.axios.get(api).then(res => {
-                console.log(res)
+                // console.log(res)
                 _this.tableData.asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
                 _this.tableData.asks.forEach(item => {
                         item.price = Number(item.price).toFixed(4);
@@ -195,7 +200,29 @@ export default {
                         item.quantity = Number(item.quantity).toFixed(2);
                 })              
             });
-            setTimeout(this.ajax, 100);
+            // setTimeout(this.ajaxTop, 100);
+        },
+        //请求实时成交记录
+        ajaxRealTime(){
+            let _this = this;
+            let api = "market/trades?symbol=emtusdt";
+            _this.axios.get(api).then(res=>{
+                _this.realTimeData = res.data.trades;
+                _this.realTimeData.forEach(item=>{
+                    item.time = _this.formatTime(new Date(item.time));
+                    item.take = (item.take=="buy"?"买入":"卖出");
+                });
+                // console.log(_this.realTimeData);
+            });
+        },
+        //处理时间格式
+        formatTime(date){
+            let mon = date.getMonth()+1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let minu = date.getMinutes();
+            let second = date.getSeconds();
+            return (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day) + " " +(hour < 10 ? "0" + hour : hour)+":"+(minu < 10 ? "0" + minu : minu)+":"+(second < 10 ? "0" + second : second)
         },
         //加载深度图
         loadDepthMap() {
@@ -264,7 +291,8 @@ export default {
         _this.sellRMB = _this.sellRMB.toFixed(4); //卖出EMT等值RMB保留4位数
         _this.usableUSDT = _this.usableUSDT.toFixed(3); //可用USDT保留3位数
         _this.usableEMT = _this.usableEMT.toFixed(3); //可用EMT保留3位数
-        _this.ajax(); //加载数据
+        _this.ajaxTop(); //加载20档行情数据
+        _this.ajaxRealTime(); //请求实时成交记录
         _this.loadDepthMap(); //加载深度图
     }
 };
@@ -387,10 +415,6 @@ body,
 #center .el-table .cell {
     line-height: 1.16em;
 }
-/* 实时成交单元格 */
-#realTime .el-table .cell {
-    line-height: 2.5em;
-}
 /* 20档表格样式 */
 .sellTop th>.cell{
     line-height: 2em !important;
@@ -408,5 +432,21 @@ body,
 }
 #center span{
     color: #7c88a0;
+}
+/* 实时成交单元格 */
+#realTime .el-table{
+    overflow: auto;
+    /* color: #7c88a0 !important; */
+}
+/* 隐藏水平滚动条 */
+#realTime .el-table--scrollable-x .el-table__body-wrapper{
+     overflow-x: hidden
+}
+/* 红绿色调 */
+.red{
+    color: red;
+}
+.green{
+    color: green;
 }
 </style>

@@ -8,10 +8,18 @@ import router from './router'
 import axios from 'axios'
 import $ from 'jquery'
 
+
+
 Vue.prototype.axios = axios;
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+
+//全局配置axios
+//axios.defaults.baseURL = ''; //调试环境
+//axios.defaults.baseURL = ''; //生产环境
+axios.defaults.baseURL = 'http://67.230.191.185:8000/'; //开发环境
+axios.defaults.withCredentials = true;
 
 /* eslint-disable no-new */
 new Vue({

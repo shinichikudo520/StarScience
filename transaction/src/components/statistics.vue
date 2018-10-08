@@ -13,11 +13,13 @@
             <!-- 详细交易记录 -->
             <div id="details">
                 <el-table :data="tableData3"  border style="width: 100%">
-                    <el-table-column prop="date" label="日期" width="180">
+                    <el-table-column prop="date" label="资产类型" width="180">
                     </el-table-column>
-                    <el-table-column prop="name" label="姓名" width="180">
+                    <el-table-column prop="name" label="可用" width="180">
                     </el-table-column>
-                    <el-table-column prop="address" label="地址">
+                    <el-table-column prop="address" label="冻结">
+                    </el-table-column>
+                    <el-table-column prop="address" label="总计">
                     </el-table-column>
                 </el-table>
             </div>
