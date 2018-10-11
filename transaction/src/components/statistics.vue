@@ -10,19 +10,9 @@
         </el-container>
         <!-- 下半部 -->
         <el-container id="bottom">
-            <!-- 详细交易记录 -->
-            <div id="details">
-                <el-table :data="tableData3"  border style="width: 100%">
-                    <el-table-column prop="date" label="资产类型" width="180">
-                    </el-table-column>
-                    <el-table-column prop="name" label="可用" width="180">
-                    </el-table-column>
-                    <el-table-column prop="address" label="冻结">
-                    </el-table-column>
-                    <el-table-column prop="address" label="总计">
-                    </el-table-column>
-                </el-table>
-            </div>
+            <!-- 深度图 -->
+            <el-container id="depthMap">
+            </el-container>
         </el-container>
     </div>
 </template>
@@ -88,44 +78,22 @@ export default {
                     ]
                 }
             ],
-            //详细交易数据
-            tableData3: [
+            seriesDepthMap: [//深度图数据
                 {
-                    date: "2016-05-03",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
+                    name: "成交",
+                    type: "line",
+                    smooth: true,
+                    itemStyle: { normal: { areaStyle: { type: "default" } } },
+                    data: [10, 12, 21, 54, 260, 830, 710]
                 },
                 {
-                    date: "2016-05-02",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
-                },
-                {
-                    date: "2016-05-04",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
-                },
-                {
-                    date: "2016-05-01",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
-                },
-                {
-                    date: "2016-05-08",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
-                },
-                {
-                    date: "2016-05-06",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
-                },
-                {
-                    date: "2016-05-07",
-                    name: "王小虎",
-                    address: "上海市普陀区金沙江路 1518 弄"
+                    name: "意向",
+                    type: "line",
+                    smooth: true,
+                    itemStyle: { normal: { areaStyle: { type: "default" } } },
+                    data: [1320, 1132, 601, 234, 120, 90, 20]
                 }
-            ]
+            ],
         };
     },
     methods: {
@@ -257,7 +225,67 @@ export default {
             if (optionHistogram && typeof optionHistogram === "object") {
                 myChart.setOption(optionHistogram, true);
             }
-        }
+        },
+        //加载深度图
+        loadDepthMap() {
+            let _this = this;
+            // 基于准备好的dom，初始化echarts实例
+            let myChart = echarts.init(document.getElementById("depthMap"));
+            let app = {};
+            let optionDepthMap = null;
+            //折线图配置
+            optionDepthMap = {
+                title: {
+                    text: "深度图",
+                    // subtext: "纯属虚构"
+                },
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: ["意向", "成交"]
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: {
+                            show: true,
+                            type: ["line", "bar", "stack", "tiled"]
+                        },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: "category",
+                        boundaryGap: false,
+                        data: [
+                            "周一",
+                            "周二",
+                            "周三",
+                            "周四",
+                            "周五",
+                            "周六",
+                            "周日"
+                        ]
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: "value"
+                    }
+                ],
+                series: _this.seriesDepthMap,
+                
+            };
+            if (optionDepthMap && typeof optionDepthMap === "object") {
+                myChart.setOption(optionDepthMap, true);
+            }
+        },
     },
     mounted() {
         let _this = this;
@@ -265,6 +293,7 @@ export default {
         _this.loadLine();
         //加载柱状图
         _this.loadHistogram();
+        _this.loadDepthMap(); //加载深度图
     }
 };
 </script>
@@ -297,11 +326,5 @@ body {
 /* 柱状图 */
 #histogram {
     height: 109%;
-}
-/* 详细交易记录 */
-#details {
-    width: 100%;
-    height: 95% !important;
-    overflow: auto;
 }
 </style>

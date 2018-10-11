@@ -4,7 +4,27 @@
     <div id="klinePage" style="height: 100%">
         <!-- 顶部 -->
         <div id="btnGrounp" style="height: 3%">
-            <h3>电音链  EMT/USDT <small><span class="red">0.1097</span>  参考价 ￥0.7521  涨跌幅 <span class="red">+2.91%</span>  24H量 7,672,661.86</small></h3>
+            <h3>电音链  EMT/USDT 
+                <small>
+                    <span class="red nowPrice greenFont" style="margin-left:20px" >{{Number(TradingInfo.last).toFixed(4)}}</span>  
+                    <span style="margin-left:20px" class="refPrice">参考价 ￥{{Number(TradingInfo.reference).toFixed(4)}}</span>  
+                    <span style="margin-left:20px">涨跌幅 <span class="red">{{TradingInfo.upOrDown+"%"}}</span></span>  
+                    <span style="margin-left:20px">24H量 {{Number(TradingInfo.Vol).toFixed(2)}}</span>
+                </small>
+            </h3>
+            <!-- <remote-js src="http://www.manbiwang.com/static/js/0.cc02a1f2ccf21ecec596.js"></remote-js> -->
+            <!-- <div  id="ticker-wrap">
+                <div>
+                    <dl class="ticker-wrap">
+                        <dt >电音链&nbsp;&nbsp;EMT/USDT</dt> 
+                        <dd  class="red nowPrice greenFont" style="margin-left:20px">{{Number(TradingInfo.last).toFixed(4)}}</dd> 
+                        <dd  class="refPrice" style="margin-left:20px"><span  class="title">参考价</span>￥{{Number(TradingInfo.reference).toFixed(4)}}</dd> 
+                        <dd  class="change-percent greenFont" style="margin-left:20px"><span  class="title red">涨跌幅</span>{{TradingInfo.upOrDown+"%"}}</dd> 
+                        <dd  class="volume" style="margin-left:20px"><span  class="title">24H量</span>{{Number(TradingInfo.Vol).toFixed(2)}}</dd> 
+                    </dl>
+                </div>
+            </div> -->
+            <!-- 各时间段按钮 -->
             <el-button-group>
                 <el-button>1min</el-button>
                 <el-button>5min</el-button>
@@ -24,7 +44,6 @@
     </div>
     
 </template>
-
 <script>
 //引入echarts
 let echarts = require("echarts");
@@ -32,10 +51,27 @@ export default {
     name: "klinePage",
     data() {
         return {
-            
+            TradingInfo:{//页面顶部综述信息的数据
+                last:0.0000,//当前价格
+                reference:0.0,//参考价
+                upOrDown:0.0,//涨跌幅
+                Vol: 0.0,//24h交易量
+            }
         };
     },
     methods: {      
+        //请求页面顶部综述信息的数据
+        requestTradingInfo(){
+            let _this = this;
+            let api = "market/ticker?symbol=emtusdt";
+            _this.axios.get(api).then(res=>{
+                // console.log(res);
+                _this.TradingInfo.last = res.data.ticker[0].last
+                _this.TradingInfo.Vol = res.data.ticker[0]["24hrVol"]
+                console.log(_this.TradingInfo);
+            });
+            // setTimeout(_this.requestTradingInfo, 500);
+        },
         //加载k线图
         loadkline() {
             let _this = this;
@@ -410,7 +446,7 @@ export default {
             //两表联动
             echarts.connect([myChartkline,myChartMacd]);
         },
-        //处理数据
+        //处理k线的数据
         splitData(rawData) {
             let categoryData = [];//时间
             let values = [];//每个时间点的交易数据，开盘价，收盘价，最低，最高，交易数量
@@ -426,7 +462,7 @@ export default {
                 volumes: volumes
             };
         },
-        //处理不同时间线的数据
+        //处理不同时间的均线的数据
         calculateMA(dayCount, data) {//(时间线，数据)
             let result = [];
             for (let i = 0, len = data.values.length; i < len; i++) {
@@ -440,15 +476,25 @@ export default {
                 }
                 result.push(+(sum / dayCount).toFixed(3));
             }
-            // console.log(result);
             return result;
-        }
+        },
     },
     mounted() {
         let _this = this;
-        //加载折线图
-        _this.loadkline();
-    }
+        _this.requestTradingInfo();//请求页面顶部综述信息的数据
+        // _this.loadkline();//加载折线图
+    },
+    components: {
+        //引入USDT与CYN汇率的外部js：先定义一个组件
+        'remote-js': {
+            render(createElement) {
+                return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
+            },
+            props: {
+                src: { type: String, required: true },
+            },
+        },
+    },
 };
 </script>
 
