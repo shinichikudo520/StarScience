@@ -3,12 +3,14 @@
         <div id="left">
             <!-- 操作部分 -->
             <el-container id="operate">
+                <!-- <remote-js src="http://www.manbiwang.com/static/vendor.dll.js"></remote-js> -->
                 <el-row>
                     <!-- 买入列 -->
                     <el-col :span="12">
                         <div class="grid-content" id="buy">
                             <h4 style="color:#ee6560;padding-left:0.5em;">买入EMT</h4>
-                            <el-input v-model="buy.price" placeholder="买入价" type="number"></el-input>
+                            <!-- @keydown.native="onLeftKeyDown" -->
+                            <el-input v-model="buy.price" placeholder="买入价" type="number" ></el-input>
                             <span id="USDT1">USDT</span>
                             <p class="equivalentRMB">≈￥{{buyRMB}}</p>
                             <el-input v-model="buy.quantity" placeholder="买入量" type="number"></el-input>
@@ -47,33 +49,36 @@
             <!-- 详细交易记录 -->
             <div id="details">
                 <template>
-                    <el-tabs v-model="activeName">
+                    <el-tabs v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane label="当前委托" name="first">
                             <!-- 当前委托 -->
-                            <el-table :data="tableData3"  border style="width: 100%" height="47%">
-                                <el-table-column prop="date" label="委托时间" width="80">
+                            <el-table :data="NowEntrust.slice((currentPageNowEntrust-1)*pageSizeNowEntrust,currentPageNowEntrust*pageSizeNowEntrust)"  border style="width: 100%" height="48%" :cell-style="cellStyleEntrust">
+                                <el-table-column prop="createtime" label="委托时间" width="80">
                                 </el-table-column>
-                                <el-table-column prop="name" label="交易对" width="80">
+                                <el-table-column prop="symbol" label="交易对" width="90">
                                 </el-table-column>
-                                <el-table-column prop="address" label="类型" width="80">
+                                <el-table-column prop="type" label="类型" width="60">
                                 </el-table-column>
-                                <el-table-column prop="address" label="委托价" width="80">
+                                <el-table-column prop="price" label="委托价" width="80">
                                 </el-table-column>
-                                <el-table-column prop="address" label="委托量" width="80">
+                                <el-table-column prop="orderquantity" label="委托量" width="90">
                                 </el-table-column>
-                                <el-table-column prop="address" label="成交量" width="80">
+                                <el-table-column prop="filledquantity" label="成交量" width="90">
                                 </el-table-column>
-                                <el-table-column prop="address" label="状态" width="80">
+                                <el-table-column prop="orderstatus" label="状态" width="80">
                                 </el-table-column>
-                                <el-table-column prop="address" label="操作" width="80">
+                                <el-table-column label="操作" width="70">
+                                    <template slot-scope="scope">
+                                        <span class="cancel" @click="cancel(scope.row.orderid)">撤单</span>
+                                    </template>
                                 </el-table-column>
                             </el-table>
                             <!-- 分页 -->
-                            <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
+                            <el-pagination :page-size="pageSizeNowEntrust"  layout="prev, pager, next" :total="totalNowEntrust" @current-change="handleCurrentChangeNow"></el-pagination>
                         </el-tab-pane>
                         <el-tab-pane label="历史委托" name="second">
                             <!-- 历史委托 -->
-                            <el-table :data="tableData3"  border style="width: 100%" height="47%">
+                            <el-table :data="HisEntrust"  border style="width: 100%" height="48%">
                                 <el-table-column prop="date" label="委托时间" width="80">
                                 </el-table-column>
                                 <el-table-column prop="name" label="交易对" width="74">
@@ -94,11 +99,11 @@
                                 </el-table-column>
                             </el-table>
                             <!-- 分页 -->
-                            <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
+                            <el-pagination :page-size="pageSizeNowEntrust"  layout="prev, pager, next" :total="totalNowEntrust"></el-pagination>
                         </el-tab-pane>
                         <el-tab-pane label="我的持仓" name="third">
                             <!-- 账户余额 -->
-                            <el-table :data="balance"  border style="width: 100%" height="47%">
+                            <el-table :data="balance"  border style="width: 100%" height="48%">
                                 <el-table-column prop="asset" label="资产类型" width="100">
                                 </el-table-column>
                                 <el-table-column prop="available" label="可用" width="180">
@@ -108,8 +113,6 @@
                                 <el-table-column prop="total" label="总计" width="180">
                                 </el-table-column>
                             </el-table>
-                            <!-- 分页 -->
-                            <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
                         </el-tab-pane>
                     </el-tabs>
                 </template>
@@ -138,7 +141,7 @@
                     </el-table-column>
                 </el-table>
                 <!-- 行情 -->
-                <p>0.1113 <span>≈ ￥0.7639</span></p>
+                <p>{{tableData.asks[19].price}} <span>≈ ￥0.7639</span></p>
                 <!-- 买入 -->
                 <el-table :data="tableData.bids" style="width: 100%;height:44%"  class="buyTop" :cell-style="red" :header-cell-style="red" @row-click="selectBuyPrice">
                     <el-table-column width="70">
@@ -206,44 +209,15 @@ export default {
             realTimeData:[],//实时成交数据信息
             activeName: 'first',//默认选中tab标签页的第一页
             //详细交易数据
-            tableData3: [//当前交易记录
-                // {
-                //     date: "2016-05-03",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-02",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-04",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-01",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-08",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-06",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // },
-                // {
-                //     date: "2016-05-07",
-                //     name: "王小虎",
-                //     address: "上海市普陀区金沙江路 1518 弄"
-                // }
-            ],
+            NowEntrust: [],//当前委托记录
+            pageSizeNowEntrust:0,//当前委托记录每一页条数
+            totalNowEntrust:0,//当前委托记录总数
+            currentPageNowEntrust:1,//当前委托记录当前页
+            HisEntrust:[],//历史委托
             balance:[],//账户余额
+            order:{//买卖操作成功后产生的orderid
+                orderid:"",
+            },
         };
     },
     computed:{
@@ -290,13 +264,29 @@ export default {
                 return 'color:green'
             }
         },
+        //委托买入或者卖出单元格的样式
+        cellStyleEntrust({row, column, rowIndex, columnIndex}){
+            // console.log(row);
+            if(columnIndex === 2 && row.type=="买入"){ //指定坐标
+                return 'color:red'
+            }
+            else if(columnIndex === 2 && row.type=="卖出"){
+                return 'color:green'
+            
+            }else if(columnIndex === 6 && row.orderstatus=="未成交"){ //指定坐标
+                return 'color:#f66d43'
+            }
+            else if(columnIndex === 6 && row.orderstatus=="部分成交"){
+                return 'color:#606266'
+            }
+        },
         //请求20档行情数据
         ajaxTop() {
             let _this = this;
             // let api = "market/ticker?symbol=emtusdt";
                 let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
             _this.axios.get(api).then(res => {
-                // console.log(res)
+                console.log(res)
                 _this.tableData.asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
                 _this.tableData.asks.forEach(item => {
                         item.price = Number(item.price).toFixed(4);
@@ -343,13 +333,27 @@ export default {
             }else{
                 temp = _this.sell;
             }
-            console.log(temp);
-            _this.axios.post(api,{
-                type:temp.type,
-                price:temp.price.toString(),
-                quantity:temp.quantity.toString()
-            }).then(res=>{
-                console.log(temp,res);
+            let fd = _this.transformFormData(temp);
+            console.log(fd);
+            _this.axios.post(api,fd,{
+                'Content-Type': 'multipart/form-data'
+            })
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status=="ok"){
+                    _this.$message({
+                        showClose: true,
+                        message: '操作成功！',
+                        type: 'success'
+                    });
+                    _this.order.orderid = response.data.orderid;//获取orderid
+                    let fdOrderid = _this.transformFormData(_this.order);//将参数转换为formData的数据格式
+                    _this.requestBalance();//刷新账户余额
+                    _this.requestNowEntrust();//刷新当前委托
+                    // _this.requestHisEntrust(_this.fdOrderid);//刷新历史委托
+                }else{
+                    _this.$message('操作失败！');
+                }
                 _this.buy.price = "";
                 _this.buy.quantity = "";
                 _this.sell.price = "";
@@ -360,14 +364,14 @@ export default {
         selectSellPrice(row, event, column){//行，事件对象，列
             let _this = this;
             _this.buy.price = row.price;
-            _this.sell.price = "";
+            _this.sell.price = row.price;
             _this.sell.quantity = "";
         },
         //点击行情选中买单的价格
         selectBuyPrice(row, event, column){//行，事件对象，列
             let _this = this;
             _this.sell.price = row.price
-            _this.buy.price = "";
+            _this.buy.price = row.price;
             _this.buy.quantity = "";
         },
         //选中可用额的1/4,1/2,all
@@ -382,6 +386,52 @@ export default {
                 _this.buy.price = "";
                 _this.buy.quantity = "";
             }
+        },
+        //点击tab标签页
+        handleClick(tab, event) {
+            // console.log(tab.index);//tab标签页的下标
+            let _this = this;
+            if(tab.index==0){
+                _this.requestNowEntrust();//请求当前委托
+            }
+            else if(tab.index==1){
+                // _this.requestHisEntrust();//请求历史委托
+            }
+            else if(tab.index==2){
+                _this.requestBalance();//请求账户余额
+            }
+        },
+        //请求当前委托
+        requestNowEntrust(){
+            let _this = this;
+            let api = "order/open-orders";
+            _this.axios.post(api).then(res=>{
+                // console.log(res);
+                _this.NowEntrust = res.data.orders.result;//获取当前委托数据
+                _this.NowEntrust.forEach(item=>{
+                    item.price = Number(item.price).toFixed(4);
+                    item.orderquantity = Number(item.orderquantity).toFixed(2);//委托量
+                    item.filledquantity = Number(item.filledquantity).toFixed(2);//成交量
+                    item.createtime = _this.formatTime(new Date(item.createtime)).split(" ")[1];
+                    item.type = item.type=="sell-limit"?"卖出":"买入";
+                    item.orderstatus = item.orderstatus=="unfilled"?"未成交":"部分成交";
+                });
+                _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
+                _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
+                // console.log(_this.NowEntrust);
+            });
+        },
+        //改变当前委托记录当前页
+        handleCurrentChangeNow(val){
+            // console.log(val);
+            let _this = this;
+            _this.currentPageNowEntrust = val;
+        },
+        //请求历史委托
+        requestHisEntrust(orderid){
+            let _this = this;
+            let api = "";
+            _this.axios.post().then();
         },
         //请求账户余额
         requestBalance(){
@@ -402,8 +452,39 @@ export default {
                     }
                 });
             });
-            // setTimeout(_this.requestBalance,500);
-        }
+        },
+        //转换为formData数据
+        transformFormData(data){
+            let fd = new FormData();
+            Object.keys(data).forEach(key => fd.append(key, data[key]));
+            return fd;
+        },
+        //撤单处理
+        cancel(orderid){
+            let _this = this;
+            let api = "order/cancel";
+            let temp = {
+                "orderid":orderid
+            };
+            // console.log(temp);
+            let fd = _this.transformFormData(temp);
+            // console.log(fd);
+            _this.axios.post(api,fd,{
+                'Content-Type': 'multipart/form-data'
+            }).then(res=>{
+                // console.log(res);
+                if(res.data.status=="ok"){
+                    _this.$message({
+                        showClose: true,
+                        message: '撤单成功！',
+                        type: 'success'
+                    });
+                    _this.requestNowEntrust();
+                }else{
+                    _this.$message('撤单失败！');
+                }
+            });
+        },
     },
     mounted() {
         let _this = this;
@@ -413,8 +494,19 @@ export default {
         _this.usableEMT = _this.usableEMT.toFixed(3); //可用EMT保留3位数
         _this.ajaxTop(); //加载20档行情数据
         _this.ajaxRealTime(); //请求实时成交记录
-        _this.requestBalance(); //请求账户余额
-    }
+        _this.requestNowEntrust(); //请求当前委托
+    },
+    // components: {
+    //     //引入USDT与CYN汇率的外部js：先定义一个组件
+    //     'remote-js': {
+    //         render(createElement) {
+    //             return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
+    //         },
+    //         props: {
+    //             src: { type: String, required: true },
+    //         },
+    //     },
+    // },
 };
 </script>
 <style>
@@ -589,5 +681,19 @@ body,
 /* 详细记录分页样式 */
 #details .el-pagination{
     text-align: right;
+}
+/* 撤单 */
+.cancel{
+    color: #5b90e4;
+}
+/* 详细记录下表格样式 */
+#details .el-table .cell,
+#details .el-table th div,
+#details .el-table--border td:first-child .cell,
+#details .el-table--border th:first-child .cell{
+    line-height: 2.5em;
+}
+#details .el-table{
+    overflow: hidden;
 }
 </style>

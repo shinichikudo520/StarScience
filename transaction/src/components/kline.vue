@@ -12,7 +12,7 @@
                     <span style="margin-left:20px">24H量 {{Number(TradingInfo.Vol).toFixed(2)}}</span>
                 </small>
             </h3>
-            <!-- <remote-js src="http://www.manbiwang.com/static/js/0.cc02a1f2ccf21ecec596.js"></remote-js> -->
+            <!-- <remote-js src="http://www.manbiwang.com/static/vendor.dll.js"></remote-js> -->
             <!-- <div  id="ticker-wrap">
                 <div>
                     <dl class="ticker-wrap">
@@ -482,19 +482,19 @@ export default {
     mounted() {
         let _this = this;
         _this.requestTradingInfo();//请求页面顶部综述信息的数据
-        // _this.loadkline();//加载折线图
+        // _this.loadkline();//加载k线图
     },
-    components: {
-        //引入USDT与CYN汇率的外部js：先定义一个组件
-        'remote-js': {
-            render(createElement) {
-                return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
-            },
-            props: {
-                src: { type: String, required: true },
-            },
-        },
-    },
+    // components: {
+    //     //引入USDT与CYN汇率的外部js：先定义一个组件
+    //     'remote-js': {
+    //         render(createElement) {
+    //             return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
+    //         },
+    //         props: {
+    //             src: { type: String, required: true },
+    //         },
+    //     },
+    // },
 };
 </script>
 
