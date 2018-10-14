@@ -42,13 +42,33 @@ export default {
         //登录
         uploadInfo() {
             let _this = this;
-            let api = "";
-            _this.axios.post(api,{
-
+            let api = "login";
+            let params = {
+                apiid:_this.form.stuId,
+                secret:_this.form.stuPwd,
+            };
+            let fd = _this.transformFormData(params);
+            _this.axios.post(api,fd,{
+                'Content-Type': 'multipart/form-data'
             }).then(res=>{
-                _this.$router.push({ path: "/Exchange" });
+                console.log(res);
+                if(res.data=="OK"){
+                    console.log(111);
+                    _this.$router.push({ path: "/admin" });
+                }else{
+                    this.$message({
+                        message: '用户名或者密码错误，请重新输入！',
+                        type: 'warning'
+                    });
+                }
             });
-        }
+        },
+        //转换为formData数据
+        transformFormData(data){
+            let fd = new FormData();
+            Object.keys(data).forEach(key => fd.append(key, data[key]));
+            return fd;
+        },
     },
     mounted() {
         var _this = this;
