@@ -53,7 +53,7 @@ export default {
             }).then(res=>{
                 console.log(res);
                 if(res.data=="OK"){
-                    console.log(111);
+                    // console.log(111);
                     _this.$router.push({ path: "/admin" });
                 }else{
                     this.$message({

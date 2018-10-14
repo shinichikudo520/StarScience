@@ -57,7 +57,7 @@ export default {
                 _this.TradingInfo.Vol = res.data.ticker[0]["24hrVol"]
                 console.log(_this.TradingInfo);
             });
-            // setTimeout(_this.requestTradingInfo, 500);
+            setTimeout(_this.requestTradingInfo, 500);
         },
         //加载k线图
         loadkline() {
@@ -465,20 +465,27 @@ export default {
             }
             return result;
         },
-        //存数据
+         //存数据
         setData(name,data){
             data = JSON.stringify(data);
             window.sessionStorage.setItem(name,data);
         },
         //取数据
         getData(name){
-            return JSON.parse(window.sessionStorage.getItem(name));
-        }
+            let temp =  JSON.parse(window.sessionStorage.getItem(name));
+            if(temp){
+                let jsonArr = [];
+                for(let i =0 ;i < temp.length;i++){
+                        jsonArr[i] = temp[i];
+                }
+                return jsonArr
+            }
+        },
     },
     mounted() {
         let _this = this;
         _this.requestTradingInfo();//请求页面顶部综述信息的数据
-        // _this.loadkline();//加载k线图
+        _this.loadkline();//加载k线图
     },
 };
 </script>

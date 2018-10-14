@@ -325,7 +325,7 @@ export default {
             if(_this.getData("bids")){
                 _this.tableData.bids = _this.getData("bids");//接口不稳定时从缓存中取数据
             }
-            // setTimeout(this.ajaxTop, 500);
+            setTimeout(this.ajaxTop, 500);
         },
         //请求实时成交记录
         ajaxRealTime(){
@@ -347,7 +347,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-            // setTimeout(_this.ajaxRealTime,500);
+            setTimeout(_this.ajaxRealTime,500);
         },
         //处理时间格式
         formatTime(date){
@@ -430,7 +430,7 @@ export default {
             }
             else if(tab.index==1){
                 if(_this.orderid!=""){
-                    // _this.requestHisEntrust(_this.orderid);//请求历史委托
+                    _this.requestHisEntrust(_this.orderid);//请求历史委托
                 }
                 else{
                     if(_this.getData("HisEntrust")){
@@ -466,7 +466,7 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            // setTimeout(_this.requestNowEntrust,500);
+            setTimeout(_this.requestNowEntrust,500);
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -486,12 +486,12 @@ export default {
                 'Content-Type': 'multipart/form-data'
             }).then(res=>{
                 console.log(res,"历史委托");
-                // let HisEntrust = res.data.order;//获取历史委托
-                // _this.setData("HisEntrust",HisEntrust);
-                // _this.HisEntrust = _this.getData("HisEntrust");
+                let HisEntrust = res.data.order;//获取历史委托
+                _this.setData("HisEntrust",HisEntrust);
+                _this.HisEntrust = _this.getData("HisEntrust");
             });
             if(_this.getData("HisEntrust")){
-                // _this.HisEntrust = _this.getData("HisEntrust");//接口不稳定时从缓存中取数据
+                _this.HisEntrust = _this.getData("HisEntrust");//接口不稳定时从缓存中取数据
             }
         },
         //请求账户余额
