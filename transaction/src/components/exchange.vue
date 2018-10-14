@@ -3,17 +3,14 @@
         <div id="left">
             <!-- 操作部分 -->
             <el-container id="operate">
-                <!-- <remote-js src="http://www.manbiwang.com/static/vendor.dll.js"></remote-js> -->
                 <el-row>
                     <!-- 买入列 -->
                     <el-col :span="12">
                         <div class="grid-content" id="buy">
                             <h4 style="color:#ee6560;padding-left:0.5em;">买入EMT</h4>
-                            <!-- @keydown.native="onLeftKeyDown" -->
-                            <el-input v-model="buy.price" placeholder="买入价" type="number" ></el-input>
+                            <el-input v-model="buy.price" placeholder="买入价" type="number" @keyup.native="keepFour('buy')" @keydown.enter.native="operateEMTF('buy')"></el-input>
                             <span id="USDT1">USDT</span>
-                            <p class="equivalentRMB">≈￥{{buyRMB}}</p>
-                            <el-input v-model="buy.quantity" placeholder="买入量" type="number"></el-input>
+                            <el-input v-model="buy.quantity" placeholder="买入量" type="number" @keydown.enter.native="operateEMTF('buy')"></el-input>
                             <span id="EMT1">EMT</span>
                             <el-button-group>
                                 <el-button @click="selectProportion('buy',1/4)">1/4</el-button>
@@ -22,17 +19,16 @@
                             </el-button-group>
                             <p style="color:#7c88a0;font-size:0.9em;padding-left:5px">可用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{usableUSDT}}&nbsp;USDT</p>
                             <p style="color:#7c88a0;font-size:0.9em;padding-left:5px">交易额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{buyEMTTrading}}&nbsp;USDT</p>
-                            <el-button class="submitBtn" @click="operateEMTF('buy')">买入 EMT</el-button>
+                            <el-button class="submitBtn" @click="operateEMTF('buy')" >买入 EMT</el-button>
                         </div>
                     </el-col>
                     <!-- 卖出列 -->
                     <el-col :span="12">
                         <div class="grid-content" id="sell">
                             <h4 style="color:#33ae72;padding-left:0.5em;">卖出EMT</h4>
-                            <el-input v-model="sell.price" placeholder="卖出价" type="number"></el-input>
+                            <el-input v-model="sell.price" placeholder="卖出价" type="number" @keyup.native="keepFour('sell')" @keydown.enter.native="operateEMTF('sell')"></el-input>
                             <span id="USDT2">USDT</span>
-                            <p class="equivalentRMB">≈￥{{sellRMB}}</p>
-                            <el-input v-model="sell.quantity" placeholder="卖出量" type="number"></el-input>
+                            <el-input v-model="sell.quantity" placeholder="卖出量" type="number" @keydown.enter.native="operateEMTF('sell')"></el-input>
                             <span id="EMT2">EMT</span>
                             <el-button-group>
                                 <el-button @click="selectProportion('sell',1/4)">1/4</el-button>
@@ -41,7 +37,7 @@
                             </el-button-group>
                             <p style="color:#7c88a0;font-size:0.9em;padding-left:5px">可用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{usableEMT}}&nbsp;EMT</p>
                             <p style="color:#7c88a0;font-size:0.9em;padding-left:5px">交易额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{sellEMTTrading}}&nbsp;USDT</p>
-                            <el-button class="submitBtn" @click="operateEMTF('sell')">卖出 EMT</el-button>
+                            <el-button class="submitBtn" @click="operateEMTF('sell')"  >卖出 EMT</el-button>
                         </div>
                     </el-col>
                 </el-row>
@@ -137,11 +133,20 @@
                     </el-table-column>
                     <el-table-column label="差量" width="85">
                         <template slot-scope="scope">
+                            <el-popover
+                            placement="right"
+                            width="400"
+                            trigger="hover">
+                            <p>这是第1档</p>
+                            <p>这是第2档</p>
+                            <p>这是第3档</p>
+                            <p>这是第4档</p>
+                            <el-button slot="reference">hover 激活</el-button>
+                            </el-popover>
                         </template>
                     </el-table-column>
                 </el-table>
                 <!-- 行情 -->
-                <p>{{tableData.asks[19].price}} <span>≈ ￥0.7639</span></p>
                 <!-- 买入 -->
                 <el-table :data="tableData.bids" style="width: 100%;height:44%"  class="buyTop" :cell-style="red" :header-cell-style="red" @row-click="selectBuyPrice">
                     <el-table-column width="70">
@@ -159,6 +164,16 @@
                     </el-table-column>
                     <el-table-column  width="85">
                         <template slot-scope="scope">
+                            <el-popover
+                            placement="right"
+                            width="400"
+                            trigger="hover">
+                            <p>这是第1档</p>
+                            <p>这是第2档</p>
+                            <p>这是第3档</p>
+                            <p>这是第4档</p>
+                            <el-button slot="reference">hover 激活</el-button>
+                            </el-popover>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -206,6 +221,7 @@ export default {
                 bids: [], //买入
                 timestamp: "" //时间戳
             },
+            lastPrice:0,//20行情之间的现价
             realTimeData:[],//实时成交数据信息
             activeName: 'first',//默认选中tab标签页的第一页
             //详细交易数据
@@ -215,14 +231,14 @@ export default {
             currentPageNowEntrust:1,//当前委托记录当前页
             HisEntrust:[],//历史委托
             balance:[],//账户余额
-            order:{//买卖操作成功后产生的orderid
-                orderid:"",
-            },
+            orderid:"",//买卖操作成功后产生的orderid
+            temp:"",//用来保存操作输入框数字保留四位数的中间值
         };
     },
     computed:{
         buyEMTTrading(){//买入EMT操作的交易额
             let _this = this;
+            // console.log(_this.buy);
             if(_this.buy.price&&_this.buy.quantity){
                 return _this.buy.price*_this.buy.quantity+0.0001
             }
@@ -231,7 +247,7 @@ export default {
         sellEMTTrading(){//卖出EMT操作的交易额
             let _this = this;
             if(_this.sell.price&&_this.sell.quantity){
-                return _this.sell.price*_this.sell.quantity-0.0001
+                return _this.sell.price*_this.sell.quantity+0.0001
             }
             return 0.0000
         }
@@ -286,32 +302,51 @@ export default {
             // let api = "market/ticker?symbol=emtusdt";
                 let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
             _this.axios.get(api).then(res => {
-                console.log(res)
-                _this.tableData.asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
-                _this.tableData.asks.forEach(item => {
+                // console.log(res)
+                let asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
+                asks.forEach(item => {
                         item.price = Number(item.price).toFixed(4);
                         item.quantity = Number(item.quantity).toFixed(2);
                 })              
-                _this.tableData.bids = res.data.orderbook.bids.slice(0,20); //买入数组
-                _this.tableData.bids.forEach(item => {
+                let bids = res.data.orderbook.bids.slice(0,20); //买入数组
+                bids.forEach(item => {
                         item.price = Number(item.price).toFixed(4);
                         item.quantity = Number(item.quantity).toFixed(2);
-                })              
+                })    
+                _this.setData("asks",asks);
+                _this.tableData.asks = _this.getData("asks");
+                _this.setData("bids",bids);
+                _this.tableData.bids = _this.getData("bids");
             });
+            if(_this.getData("asks")){
+                _this.tableData.asks = _this.getData("asks");//接口不稳定时从缓存中取数据
+                _this.lastPrice = _this.tableData.asks[19].price;//获取现价格，即卖一的价格
+            }
+            if(_this.getData("bids")){
+                _this.tableData.bids = _this.getData("bids");//接口不稳定时从缓存中取数据
+            }
             // setTimeout(this.ajaxTop, 500);
         },
         //请求实时成交记录
         ajaxRealTime(){
             let _this = this;
             let api = "market/trades?symbol=emtusdt";
+            let realTimeData = [];
             _this.axios.get(api).then(res=>{
-                _this.realTimeData = res.data.trades;
-                _this.realTimeData.forEach(item=>{
+                realTimeData = res.data.trades;
+                realTimeData.forEach(item=>{
                     item.time = _this.formatTime(new Date(item.time));
                     item.take = (item.take=="buy"?"买入":"卖出");
                 });
-                // console.log(_this.realTimeData);
+                // console.log(realTimeData);
+                _this.setData("realTimeData",realTimeData);
+                _this.realTimeData = _this.getData("realTimeData");                
             });
+            if(_this.getData("realTimeData")){
+                _this.realTimeData = _this.getData("realTimeData");//接口不稳定时从缓存中取数据             
+            }
+            
+            // console.log( _this.realTimeData);
             // setTimeout(_this.ajaxRealTime,500);
         },
         //处理时间格式
@@ -334,23 +369,22 @@ export default {
                 temp = _this.sell;
             }
             let fd = _this.transformFormData(temp);
-            console.log(fd);
+            // console.log(fd);
             _this.axios.post(api,fd,{
                 'Content-Type': 'multipart/form-data'
             })
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 if(response.data.status=="ok"){
                     _this.$message({
                         showClose: true,
                         message: '操作成功！',
                         type: 'success'
                     });
-                    _this.order.orderid = response.data.orderid;//获取orderid
-                    let fdOrderid = _this.transformFormData(_this.order);//将参数转换为formData的数据格式
+                    _this.orderid = response.data.orderid;//获取orderid
                     _this.requestBalance();//刷新账户余额
                     _this.requestNowEntrust();//刷新当前委托
-                    // _this.requestHisEntrust(_this.fdOrderid);//刷新历史委托
+                    _this.requestHisEntrust(_this.orderid);//刷新历史委托
                 }else{
                     _this.$message('操作失败！');
                 }
@@ -395,7 +429,14 @@ export default {
                 _this.requestNowEntrust();//请求当前委托
             }
             else if(tab.index==1){
-                // _this.requestHisEntrust();//请求历史委托
+                if(_this.orderid!=""){
+                    // _this.requestHisEntrust(_this.orderid);//请求历史委托
+                }
+                else{
+                    if(_this.getData("HisEntrust")){
+                        _this.HisEntrust = _this.getData("HisEntrust");
+                    }
+                }
             }
             else if(tab.index==2){
                 _this.requestBalance();//请求账户余额
@@ -407,8 +448,8 @@ export default {
             let api = "order/open-orders";
             _this.axios.post(api).then(res=>{
                 // console.log(res);
-                _this.NowEntrust = res.data.orders.result;//获取当前委托数据
-                _this.NowEntrust.forEach(item=>{
+                let NowEntrust = res.data.orders.result;//获取当前委托数据
+                NowEntrust.forEach(item=>{
                     item.price = Number(item.price).toFixed(4);
                     item.orderquantity = Number(item.orderquantity).toFixed(2);//委托量
                     item.filledquantity = Number(item.filledquantity).toFixed(2);//成交量
@@ -416,10 +457,16 @@ export default {
                     item.type = item.type=="sell-limit"?"卖出":"买入";
                     item.orderstatus = item.orderstatus=="unfilled"?"未成交":"部分成交";
                 });
-                _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
-                _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-                // console.log(_this.NowEntrust);
+                _this.setData("NowEntrust",NowEntrust);
+                _this.NowEntrust = _this.getData("NowEntrust");
             });
+            if(_this.getData("NowEntrust")){
+                _this.NowEntrust = _this.getData("NowEntrust");//接口不稳定时从缓存中取数据
+            }
+            // console.log(_this.NowEntrust);
+            _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
+            _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
+            // setTimeout(_this.requestNowEntrust,500);
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -430,28 +477,49 @@ export default {
         //请求历史委托
         requestHisEntrust(orderid){
             let _this = this;
-            let api = "";
-            _this.axios.post().then();
+            let api = "order/info";
+            let temp = {
+                "orderid":orderid
+            };
+            let fd = _this.transformFormData(temp);
+            _this.axios.post(api,fd,{
+                'Content-Type': 'multipart/form-data'
+            }).then(res=>{
+                console.log(res,"历史委托");
+                // let HisEntrust = res.data.order;//获取历史委托
+                // _this.setData("HisEntrust",HisEntrust);
+                // _this.HisEntrust = _this.getData("HisEntrust");
+            });
+            if(_this.getData("HisEntrust")){
+                // _this.HisEntrust = _this.getData("HisEntrust");//接口不稳定时从缓存中取数据
+            }
         },
         //请求账户余额
         requestBalance(){
             let _this = this;
             let api = "order/balance";
             _this.axios.post(api).then(res=>{
-                _this.balance = res.data.balance;
-                _this.balance = _this.balance.filter(item=>{
+                // console.log(res)
+                let balance = res.data.balance;
+                balance = balance.filter(item=>{
                     return item.total!=0
                 });
-                // console.log(_this.balance);
-                _this.balance.map(item=>{
-                    if(item.asset=="USDT"){
-                        _this.usableUSDT = item.available
-                    }
-                    if(item.asset=="EMT"){
-                        _this.usableEMT = item.available
-                    }
-                });
+                // console.log(balance);
+                _this.setData("balance",balance);
+                _this.balance = _this.getData("balance");
             });
+            if(_this.getData("balance")){
+                _this.balance = _this.getData("balance");//接口不稳定时从缓存中取数据
+            }
+            _this.balance.map(item=>{
+                        if(item.asset=="USDT"){
+                            _this.usableUSDT = item.available
+                        }
+                        if(item.asset=="EMT"){
+                            _this.usableEMT = item.available
+                        }
+            });
+            
         },
         //转换为formData数据
         transformFormData(data){
@@ -466,7 +534,7 @@ export default {
             let temp = {
                 "orderid":orderid
             };
-            // console.log(temp);
+            console.log(temp);
             let fd = _this.transformFormData(temp);
             // console.log(fd);
             _this.axios.post(api,fd,{
@@ -485,6 +553,52 @@ export default {
                 }
             });
         },
+        //存数据
+        setData(name,data){
+            data = JSON.stringify(data);
+            window.sessionStorage.setItem(name,data);
+        },
+        //取数据
+        getData(name){
+            let temp =  JSON.parse(window.sessionStorage.getItem(name));
+            if(temp){
+                let jsonArr = [];
+                for(let i =0 ;i < temp.length;i++){
+                        jsonArr[i] = temp[i];
+                }
+                return jsonArr
+            }
+        },
+        //保证买卖操作的价格输入框值保留4位数
+        keepFour(buyOrsell){
+            let _this = this;
+            // console.log(_this.buy.price);
+            if(buyOrsell=="buy"){
+                if(_this.buy.price.indexOf(".")!=-1){
+                    let arr = _this.buy.price.split(".");
+                    // console.log("字符串分割后的数组",arr)
+                    if(arr[1].length>4){
+                        arr[1] = arr[1].substr(0,4);
+                        // console.log(arr[1])
+                        let temp = arr.join(".");
+                        // console.log("返回的字符串",temp);
+                        _this.buy.price = temp;
+                    }
+                }               
+            }else{
+                if(_this.sell.price.indexOf(".")!=-1){
+                    let arr = _this.sell.price.split(".");
+                    // console.log("字符串分割后的数组",arr)
+                    if(arr[1].length>4){
+                        arr[1] = arr[1].substr(0,4);
+                        // console.log(arr[1])
+                        let temp = arr.join(".");
+                        // console.log("返回的字符串",temp);
+                        _this.sell.price = temp;
+                    }
+                }
+            }
+        }
     },
     mounted() {
         let _this = this;
@@ -495,18 +609,8 @@ export default {
         _this.ajaxTop(); //加载20档行情数据
         _this.ajaxRealTime(); //请求实时成交记录
         _this.requestNowEntrust(); //请求当前委托
+        _this.requestBalance(); //请求余额:获取可用资产 
     },
-    // components: {
-    //     //引入USDT与CYN汇率的外部js：先定义一个组件
-    //     'remote-js': {
-    //         render(createElement) {
-    //             return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
-    //         },
-    //         props: {
-    //             src: { type: String, required: true },
-    //         },
-    //     },
-    // },
 };
 </script>
 <style>
@@ -573,6 +677,10 @@ body,
 #operate {
     position: relative;
 }
+/* 操作部分输入框样式 */
+#operate .el-input{
+    margin-bottom:1.5em;
+}
 /* USDT、EMT输入框右提示文字样式 */
 #USDT1,
 #USDT2,
@@ -593,11 +701,11 @@ body,
 }
 /* EMT输入框右提示文字样式 */
 #EMT1 {
-    top: 155px;
+    top: 133px;
     right: 376px;
 }
 #EMT2 {
-    top: 155px;
+    top: 133px;
     right: 39px;
 }
 /* 买卖1/4、1/2、All按钮样式 */

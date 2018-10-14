@@ -7,23 +7,10 @@
             <h3>电音链  EMT/USDT 
                 <small>
                     <span class="red nowPrice greenFont" style="margin-left:20px" >{{Number(TradingInfo.last).toFixed(4)}}</span>  
-                    <span style="margin-left:20px" class="refPrice">参考价 ￥{{Number(TradingInfo.reference).toFixed(4)}}</span>  
                     <span style="margin-left:20px">涨跌幅 <span class="red">{{TradingInfo.upOrDown+"%"}}</span></span>  
                     <span style="margin-left:20px">24H量 {{Number(TradingInfo.Vol).toFixed(2)}}</span>
                 </small>
             </h3>
-            <!-- <remote-js src="http://www.manbiwang.com/static/vendor.dll.js"></remote-js> -->
-            <!-- <div  id="ticker-wrap">
-                <div>
-                    <dl class="ticker-wrap">
-                        <dt >电音链&nbsp;&nbsp;EMT/USDT</dt> 
-                        <dd  class="red nowPrice greenFont" style="margin-left:20px">{{Number(TradingInfo.last).toFixed(4)}}</dd> 
-                        <dd  class="refPrice" style="margin-left:20px"><span  class="title">参考价</span>￥{{Number(TradingInfo.reference).toFixed(4)}}</dd> 
-                        <dd  class="change-percent greenFont" style="margin-left:20px"><span  class="title red">涨跌幅</span>{{TradingInfo.upOrDown+"%"}}</dd> 
-                        <dd  class="volume" style="margin-left:20px"><span  class="title">24H量</span>{{Number(TradingInfo.Vol).toFixed(2)}}</dd> 
-                    </dl>
-                </div>
-            </div> -->
             <!-- 各时间段按钮 -->
             <el-button-group>
                 <el-button>1min</el-button>
@@ -478,23 +465,21 @@ export default {
             }
             return result;
         },
+        //存数据
+        setData(name,data){
+            data = JSON.stringify(data);
+            window.sessionStorage.setItem(name,data);
+        },
+        //取数据
+        getData(name){
+            return JSON.parse(window.sessionStorage.getItem(name));
+        }
     },
     mounted() {
         let _this = this;
         _this.requestTradingInfo();//请求页面顶部综述信息的数据
         // _this.loadkline();//加载k线图
     },
-    // components: {
-    //     //引入USDT与CYN汇率的外部js：先定义一个组件
-    //     'remote-js': {
-    //         render(createElement) {
-    //             return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
-    //         },
-    //         props: {
-    //             src: { type: String, required: true },
-    //         },
-    //     },
-    // },
 };
 </script>
 
