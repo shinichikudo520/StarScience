@@ -52,12 +52,13 @@ export default {
                 'Content-Type': 'multipart/form-data'
             }).then(res=>{
                 console.log(res);
-                if(res.data=="OK"){
+                if(res.data){
                     _this.$message({
                         showClose: true,
                         message: '登录成功！',
                         type: 'success'
                     });
+                    _this.$router.push({ path: "/admin" });
                 }else{
                     this.$message({
                         message: '用户名或者密码错误，请重新输入！',

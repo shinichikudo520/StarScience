@@ -506,7 +506,7 @@ export default {
         //请求账户余额
         requestBalance(){
             let _this = this;
-            let api = "/api/order/balance";
+            let api = "/api/balance";
             _this.axios.post(api).then(res=>{
                 // console.log(res)
                 let balance = res.data.balance;
@@ -612,7 +612,6 @@ export default {
         requestTradingInfo(){
             let _this = this;
             let api = "/api/market/ticker?symbol=emtusdt";
-            // let api = "http://emt.emt.wiki/api/market/ticker?symbol=emtusdt";
             _this.axios.get(api).then(res=>{
                 // console.log(res);
                 _this.last = res.data.ticker[0].last;
@@ -624,19 +623,17 @@ export default {
         automation(){
             let _this = this;
             let random = (Math.random()*1000).toFixed(0);
-            let randomSell = random*5;
-            let randomBuy = random*3;
             // console.log(randomSell,randomBuy)
             if(_this.sell1>_this.last+0.0001){
                _this.sell.price = (Number(_this.last)+0.0001).toString();
                _this.keepFour("sell");
-               _this.sell.quantity = randomSell;
+               _this.sell.quantity = random;
                 _this.operateEMTF("sell")
             }
             if(_this.buy1<_this.last-0.0001){
                 _this.buy.price = (Number(_this.last)-0.0001).toString();
                _this.keepFour("buy");
-               _this.buy.quantity = randomBuy;
+               _this.buy.quantity = random;
                 _this.operateEMTF("buy")
             }
             // setTimeout(_this.automation,6000);//打开注释
@@ -653,7 +650,7 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        // setTimeout(_this.automation,6000);//页面打开1min后自动操作//打开注释
+        setTimeout(_this.automation,6000);//页面打开1min后自动操作//打开注释
     },
 };
 </script>
