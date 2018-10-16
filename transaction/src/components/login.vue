@@ -53,8 +53,11 @@ export default {
             }).then(res=>{
                 console.log(res);
                 if(res.data=="OK"){
-                    // console.log(111);
-                    _this.$router.push({ path: "/admin" });
+                    _this.$message({
+                        showClose: true,
+                        message: '登录成功！',
+                        type: 'success'
+                    });
                 }else{
                     this.$message({
                         message: '用户名或者密码错误，请重新输入！',

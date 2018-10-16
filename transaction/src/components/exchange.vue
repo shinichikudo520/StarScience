@@ -141,12 +141,13 @@
                             <p>这是第2档</p>
                             <p>这是第3档</p>
                             <p>这是第4档</p>
-                            <el-button slot="reference">hover 激活</el-button>
+                            <span slot="reference">激活</span>
                             </el-popover>
                         </template>
                     </el-table-column>
                 </el-table>
                 <!-- 行情 -->
+                <p>{{last}}</p>
                 <!-- 买入 -->
                 <el-table :data="tableData.bids" style="width: 100%;height:44%"  class="buyTop" :cell-style="red" :header-cell-style="red" @row-click="selectBuyPrice">
                     <el-table-column width="70">
@@ -172,7 +173,7 @@
                             <p>这是第2档</p>
                             <p>这是第3档</p>
                             <p>这是第4档</p>
-                            <el-button slot="reference">hover 激活</el-button>
+                            <span slot="reference">激活</span>
                             </el-popover>
                         </template>
                     </el-table-column>
@@ -221,7 +222,6 @@ export default {
                 bids: [], //买入
                 timestamp: "" //时间戳
             },
-            lastPrice:0,//20行情之间的现价
             realTimeData:[],//实时成交数据信息
             activeName: 'first',//默认选中tab标签页的第一页
             //详细交易数据
@@ -233,6 +233,9 @@ export default {
             balance:[],//账户余额
             orderid:"",//买卖操作成功后产生的orderid
             temp:"",//用来保存操作输入框数字保留四位数的中间值
+            last:0,//目前最新价
+            buy1:0,//买一的价格
+            sell1:0,//卖一的价格
         };
     },
     computed:{
@@ -302,7 +305,7 @@ export default {
             // let api = "market/ticker?symbol=emtusdt";
                 let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
             _this.axios.get(api).then(res => {
-                // console.log(res)
+                console.log(res)
                 let asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
                 asks.forEach(item => {
                         item.price = Number(item.price).toFixed(4);
@@ -320,12 +323,14 @@ export default {
             });
             if(_this.getData("asks")){
                 _this.tableData.asks = _this.getData("asks");//接口不稳定时从缓存中取数据
-                _this.lastPrice = _this.tableData.asks[19].price;//获取现价格，即卖一的价格
             }
             if(_this.getData("bids")){
                 _this.tableData.bids = _this.getData("bids");//接口不稳定时从缓存中取数据
             }
-            setTimeout(this.ajaxTop, 500);
+            _this.sell1 = _this.tableData.asks[19].price;//获取卖一的价格
+            _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
+            // console.log(_this.sell1,_this.buy1);
+            setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
         ajaxRealTime(){
@@ -347,7 +352,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-            setTimeout(_this.ajaxRealTime,500);
+            setTimeout(_this.ajaxRealTime,500);//打开注释
         },
         //处理时间格式
         formatTime(date){
@@ -466,7 +471,7 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            setTimeout(_this.requestNowEntrust,500);
+            setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -598,6 +603,38 @@ export default {
                     }
                 }
             }
+        },
+        //请求最新价
+        requestTradingInfo(){
+            let _this = this;
+            let api = "market/ticker?symbol=emtusdt";
+            _this.axios.get(api).then(res=>{
+                // console.log(res);
+                _this.last = res.data.ticker[0].last;
+                
+            });
+            setTimeout(_this.requestTradingInfo, 500);//打开注释
+        },
+        //自动挂单
+        automation(){
+            let _this = this;
+            let random = (Math.random()*1000).toFixed(0);
+            let randomSell = random*5;
+            let randomBuy = random*3;
+            // console.log(randomSell,randomBuy)
+            if(_this.sell1>_this.last+0.0001){
+               _this.sell.price = (Number(_this.last)+0.0001).toString();
+               _this.keepFour("sell");
+               _this.sell.quantity = randomSell;
+                _this.operateEMTF("sell")
+            }
+            if(_this.buy1<_this.last-0.0001){
+                _this.buy.price = (Number(_this.last)-0.0001).toString();
+               _this.keepFour("buy");
+               _this.buy.quantity = randomBuy;
+                _this.operateEMTF("buy")
+            }
+            // setTimeout(_this.automation,6000);//打开注释
         }
     },
     mounted() {
@@ -610,6 +647,8 @@ export default {
         _this.ajaxRealTime(); //请求实时成交记录
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
+        _this.requestTradingInfo();//为了请求最新价
+        // setTimeout(_this.automation,6000);//页面打开1min后自动操作//打开注释
     },
 };
 </script>
