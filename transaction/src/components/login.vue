@@ -42,6 +42,7 @@ export default {
         //登录
         uploadInfo() {
             let _this = this;
+            // console.log(_this.loginOrNot)
             let api = "/api/login";
             let params = {
                 apiid:_this.form.stuId,
@@ -53,6 +54,7 @@ export default {
             }).then(res=>{
                 console.log(res);
                 if(res.data){
+                    _this.setData("loginOrNot","true");
                     _this.$message({
                         showClose: true,
                         message: '登录成功！',
@@ -60,6 +62,7 @@ export default {
                     });
                     _this.$router.push({ path: "/admin" });
                 }else{
+                    _this.setData("loginOrNot","false");
                     this.$message({
                         message: '用户名或者密码错误，请重新输入！',
                         type: 'warning'
@@ -73,12 +76,28 @@ export default {
             Object.keys(data).forEach(key => fd.append(key, data[key]));
             return fd;
         },
+        //存数据
+        setData(name,data){
+            data = JSON.stringify(data);
+            window.sessionStorage.setItem(name,data);
+        },
+        //取数据
+        getData(name){
+            let temp =  JSON.parse(window.sessionStorage.getItem(name));
+            if(temp){
+                let jsonArr = [];
+                for(let i =0 ;i < temp.length;i++){
+                        jsonArr[i] = temp[i];
+                }
+                return jsonArr
+            }
+        },
     },
     mounted() {
         var _this = this;
         _this.bodyHeight = document.documentElement.clientHeight || document.body.clientHeight;
         _this.bodyWidth = document.documentElement.clientWidth || document.body.clientWidth;        
-    }
+    },
 };
 </script>
 

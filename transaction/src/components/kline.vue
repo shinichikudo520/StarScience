@@ -487,6 +487,16 @@ export default {
         _this.requestTradingInfo();//请求页面顶部综述信息的数据
         _this.loadkline();//加载k线图
     },
+    //在创建组件进入组件页面前判断是否登录
+    beforeRouteEnter(to,from,next){
+        // 判断：是否登录成功，，没有则让用户先登录
+        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+        if(loginOrNot!="true"){
+            next({
+                path:"/"
+            })
+        }
+    }
 };
 </script>
 

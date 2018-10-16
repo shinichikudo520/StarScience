@@ -288,12 +288,22 @@ export default {
         },
     },
     mounted() {
-        let _this = this;
         //加载折线图
         _this.loadLine();
         //加载柱状图
         _this.loadHistogram();
         _this.loadDepthMap(); //加载深度图
+    },
+    //在创建组件进入组件页面前判断是否登录
+    beforeRouteEnter(to,from,next){
+        // 判断：是否登录成功，，没有则让用户先登录
+        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+        // console.log(loginOrNot);
+        if(loginOrNot!="true"){
+            next({
+                path:"/"
+            })
+        }
     }
 };
 </script>

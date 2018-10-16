@@ -383,7 +383,7 @@ export default {
                 'Content-Type': 'multipart/form-data'
             })
             .then(function (response) {
-                // console.log(response);
+                console.log(response);
                 if(response.data.status=="ok"){
                     _this.$message({
                         showClose: true,
@@ -456,7 +456,10 @@ export default {
             let _this = this;
             let api = "/api/order/open-orders";
             _this.axios.post(api).then(res=>{
-                // console.log(res);
+                console.log(res);
+                if(res.data.orders==null){
+                    return
+                }
                 let NowEntrust = res.data.orders.result;//获取当前委托数据
                 NowEntrust.forEach(item=>{
                     item.price = Number(item.price).toFixed(4);
@@ -508,7 +511,7 @@ export default {
             let _this = this;
             let api = "/api/balance";
             _this.axios.post(api).then(res=>{
-                // console.log(res)
+                console.log(res)
                 let balance = res.data.balance;
                 balance = balance.filter(item=>{
                     return item.total!=0
@@ -568,7 +571,7 @@ export default {
             window.sessionStorage.setItem(name,data);
         },
         //取数据
-        getData(name){
+        getData(name){         
             let temp =  JSON.parse(window.sessionStorage.getItem(name));
             if(temp){
                 let jsonArr = [];
@@ -576,7 +579,7 @@ export default {
                         jsonArr[i] = temp[i];
                 }
                 return jsonArr
-            }
+            }           
         },
         //保证买卖操作的价格输入框值保留4位数
         keepFour(buyOrsell){
@@ -625,22 +628,36 @@ export default {
             let random = (Math.random()*1000).toFixed(0);
             // console.log(randomSell,randomBuy)
             if(_this.sell1>_this.last+0.0001){
+                console.log("卖出");
                _this.sell.price = (Number(_this.last)+0.0001).toString();
                _this.keepFour("sell");
                _this.sell.quantity = random;
                 _this.operateEMTF("sell")
             }
             if(_this.buy1<_this.last-0.0001){
+                console.log("买入");
                 _this.buy.price = (Number(_this.last)-0.0001).toString();
                _this.keepFour("buy");
                _this.buy.quantity = random;
-                _this.operateEMTF("buy")
+                console.log(_this.buy.price,_this.buy.quantity)
+                _this.operateEMTF("buy");
             }
             // setTimeout(_this.automation,6000);//打开注释
         }
     },
     mounted() {
         let _this = this;
+        // 判断：是否登录成功，，没有则让用户先登录
+        let loginOrNot = _this.getData("loginOrNot");
+        console.log(loginOrNot);
+        if(loginOrNot!="true"){
+            this.$message({
+                showClose: true,
+                message: '亲，请先登录哦！',
+                type: 'warning'
+            });
+            _this.$router.push({ path: "/" });
+        }
         _this.buyRMB = _this.buyRMB.toFixed(4); //买入EMT等值RMB保留4位数
         _this.sellRMB = _this.sellRMB.toFixed(4); //卖出EMT等值RMB保留4位数
         _this.usableUSDT = _this.usableUSDT.toFixed(3); //可用USDT保留3位数
@@ -650,8 +667,18 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        setTimeout(_this.automation,6000);//页面打开1min后自动操作//打开注释
+        setTimeout(_this.automation,1000);//页面打开1min后自动操作//打开注释
     },
+    //在创建组件进入组件页面前判断是否登录
+    beforeRouteEnter(to,from,next){
+        // 判断：是否登录成功，，没有则让用户先登录
+        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+        if(loginOrNot!="true"){
+            next({
+                path:"/"
+            })
+        }
+    }
 };
 </script>
 <style>

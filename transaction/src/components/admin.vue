@@ -28,18 +28,15 @@ export default {
             _this.$router.push({ path: "/statistics" });
         },
     },
-    mounted(){
-        let _this = this;
-        // 判断：如果不是从登录页面过来，则让用户先登录
-        // var urL=document.referrer;//获取页面跳转之前的网址
-        // if(urL!="http://emt.emt.wiki/#/login"){
-        //     this.$message({
-        //         showClose: true,
-        //         message: '亲，请先登录哦！',
-        //         type: 'warning'
-        //     });
-        //     _this.$router.push({ path: "/login" });
-        // }
+    //在创建组件进入组件页面前判断是否登录
+    beforeRouteEnter(to,from,next){
+        // 判断：是否登录成功，，没有则让用户先登录
+        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+        if(loginOrNot!="true"){
+            next({
+                path:"/"
+            })
+        }
     }
 };
 </script>
