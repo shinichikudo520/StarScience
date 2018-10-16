@@ -50,7 +50,7 @@ export default {
         //请求页面顶部综述信息的数据
         requestTradingInfo(){
             let _this = this;
-            let api = "market/ticker?symbol=emtusdt";
+            let api = "/api/market/ticker?symbol=emtusdt";
             _this.axios.get(api).then(res=>{
                 // console.log(res);
                 _this.TradingInfo.last = res.data.ticker[0].last

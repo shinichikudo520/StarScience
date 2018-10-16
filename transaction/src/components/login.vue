@@ -42,7 +42,7 @@ export default {
         //登录
         uploadInfo() {
             let _this = this;
-            let api = "login";
+            let api = "/api/login";
             let params = {
                 apiid:_this.form.stuId,
                 secret:_this.form.stuPwd,

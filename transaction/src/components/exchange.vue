@@ -302,7 +302,7 @@ export default {
         //请求20档行情数据
         ajaxTop() {
             let _this = this;
-            // let api = "market/ticker?symbol=emtusdt";
+            // let api = "/api/market/ticker?symbol=emtusdt";
                 let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
             _this.axios.get(api).then(res => {
                 console.log(res)
@@ -327,15 +327,19 @@ export default {
             if(_this.getData("bids")){
                 _this.tableData.bids = _this.getData("bids");//接口不稳定时从缓存中取数据
             }
-            _this.sell1 = _this.tableData.asks[19].price;//获取卖一的价格
-            _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
+            if(_this.tableData.asks[19]!=undefined){
+                _this.sell1 = _this.tableData.asks[19].price;//获取卖一的价格
+            }
+            if(_this.tableData.bids[0]!=undefined){
+                _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
+            }
             // console.log(_this.sell1,_this.buy1);
-            setTimeout(this.ajaxTop, 500);//打开注释
+            // setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
         ajaxRealTime(){
             let _this = this;
-            let api = "market/trades?symbol=emtusdt";
+            let api = "/api/market/trades?symbol=emtusdt";
             let realTimeData = [];
             _this.axios.get(api).then(res=>{
                 realTimeData = res.data.trades;
@@ -352,7 +356,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-            setTimeout(_this.ajaxRealTime,500);//打开注释
+            // setTimeout(_this.ajaxRealTime,500);//打开注释
         },
         //处理时间格式
         formatTime(date){
@@ -366,7 +370,7 @@ export default {
         //买卖EMT操作
         operateEMTF(operate){
             let _this = this;
-            let api = "order/place";
+            let api = "/api/order/place";
             let temp = {};
             if(operate=="buy"){
                 temp = _this.buy;
@@ -450,7 +454,7 @@ export default {
         //请求当前委托
         requestNowEntrust(){
             let _this = this;
-            let api = "order/open-orders";
+            let api = "/api/order/open-orders";
             _this.axios.post(api).then(res=>{
                 // console.log(res);
                 let NowEntrust = res.data.orders.result;//获取当前委托数据
@@ -471,7 +475,7 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            setTimeout(_this.requestNowEntrust,500);//打开注释
+            // setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -482,7 +486,7 @@ export default {
         //请求历史委托
         requestHisEntrust(orderid){
             let _this = this;
-            let api = "order/info";
+            let api = "/api/order/info";
             let temp = {
                 "orderid":orderid
             };
@@ -502,7 +506,7 @@ export default {
         //请求账户余额
         requestBalance(){
             let _this = this;
-            let api = "order/balance";
+            let api = "/api/order/balance";
             _this.axios.post(api).then(res=>{
                 // console.log(res)
                 let balance = res.data.balance;
@@ -535,7 +539,7 @@ export default {
         //撤单处理
         cancel(orderid){
             let _this = this;
-            let api = "order/cancel";
+            let api = "/api/order/cancel";
             let temp = {
                 "orderid":orderid
             };
@@ -607,13 +611,14 @@ export default {
         //请求最新价
         requestTradingInfo(){
             let _this = this;
-            let api = "market/ticker?symbol=emtusdt";
+            let api = "/api/market/ticker?symbol=emtusdt";
+            // let api = "http://emt.emt.wiki/api/market/ticker?symbol=emtusdt";
             _this.axios.get(api).then(res=>{
                 // console.log(res);
                 _this.last = res.data.ticker[0].last;
                 
             });
-            setTimeout(_this.requestTradingInfo, 500);//打开注释
+            // setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
         //自动挂单
         automation(){
