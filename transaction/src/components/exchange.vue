@@ -1,5 +1,8 @@
 <template>
     <div id="exchangePage">
+        <div>
+        <el-button  round @click="quitLogin" class="quit">退出</el-button>
+        </div>
         <div id="left">
             <!-- 操作部分 -->
             <el-container id="operate">
@@ -334,7 +337,7 @@ export default {
                 _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
             }
             // console.log(_this.sell1,_this.buy1);
-            // setTimeout(this.ajaxTop, 500);//打开注释
+            // _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
         ajaxRealTime(){
@@ -356,7 +359,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-            // setTimeout(_this.ajaxRealTime,500);//打开注释
+        //    _this.timerCount[2] =  setTimeout(_this.ajaxRealTime,500);//打开注释
         },
         //处理时间格式
         formatTime(date){
@@ -478,7 +481,7 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            // setTimeout(_this.requestNowEntrust,500);//打开注释
+            // _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -620,7 +623,7 @@ export default {
                 _this.last = res.data.ticker[0].last;
                 
             });
-            // setTimeout(_this.requestTradingInfo, 500);//打开注释
+            // _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
         //自动挂单
         automation(){
@@ -642,22 +645,18 @@ export default {
                 console.log(_this.buy.price,_this.buy.quantity)
                 _this.operateEMTF("buy");
             }
-            // setTimeout(_this.automation,6000);//打开注释
+            // _this.timerCount[5] = setTimeout(_this.automation,6000);//打开注释
+        },
+        //退出登录
+        quitLogin(){
+            let _this = this;
+            window.sessionStorage.removeItem("loginOrNot");
+            console.log(window.sessionStorage.getItem("loginOrNot"));
+            _this.$router.push({ path: "/" });
         }
     },
     mounted() {
         let _this = this;
-        // 判断：是否登录成功，，没有则让用户先登录
-        let loginOrNot = _this.getData("loginOrNot");
-        console.log(loginOrNot);
-        if(loginOrNot!="true"){
-            this.$message({
-                showClose: true,
-                message: '亲，请先登录哦！',
-                type: 'warning'
-            });
-            _this.$router.push({ path: "/" });
-        }
         _this.buyRMB = _this.buyRMB.toFixed(4); //买入EMT等值RMB保留4位数
         _this.sellRMB = _this.sellRMB.toFixed(4); //卖出EMT等值RMB保留4位数
         _this.usableUSDT = _this.usableUSDT.toFixed(3); //可用USDT保留3位数
@@ -667,16 +666,21 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        setTimeout(_this.automation,1000);//页面打开1min后自动操作//打开注释
+        // _this.timerCount[6] = setTimeout(_this.automation,1000);//页面打开1min后自动操作//打开注释
     },
     //在创建组件进入组件页面前判断是否登录
     beforeRouteEnter(to,from,next){
         // 判断：是否登录成功，，没有则让用户先登录
         let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        if(loginOrNot!="true"){
+        console.log("admin",loginOrNot,typeof(loginOrNot))
+        if(loginOrNot!=='"yes"'){
+            console.log("未登录状态",loginOrNot)
             next({
                 path:"/"
-            })
+            })   
+        }else{
+            console.log("登录状态",loginOrNot)
+            next();  
         }
     }
 };
@@ -697,7 +701,7 @@ body,
 #left,
 #center,
 #right {
-    height: 100%;
+    height:100%;
     float: left;
 }
 #left{
@@ -871,5 +875,17 @@ body,
 }
 #details .el-table{
     overflow: hidden;
+}
+/* 退出登录按钮 */
+.quit{
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    right: 0;
+    opacity: 0;
+}
+.quit:hover{
+    /* visibility: visible	; */
+    opacity: 1;
 }
 </style>

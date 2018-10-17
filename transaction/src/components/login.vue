@@ -52,9 +52,9 @@ export default {
             _this.axios.post(api,fd,{
                 'Content-Type': 'multipart/form-data'
             }).then(res=>{
-                console.log(res);
+                // console.log(res);
                 if(res.data){
-                    _this.setData("loginOrNot","true");
+                    _this.setData("loginOrNot","yes");
                     _this.$message({
                         showClose: true,
                         message: '登录成功！',
@@ -62,7 +62,7 @@ export default {
                     });
                     _this.$router.push({ path: "/admin" });
                 }else{
-                    _this.setData("loginOrNot","false");
+                    _this.setData("loginOrNot","no");
                     this.$message({
                         message: '用户名或者密码错误，请重新输入！',
                         type: 'warning'

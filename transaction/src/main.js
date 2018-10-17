@@ -23,10 +23,23 @@ axios.defaults.withCredentials = true;
 
 
 
+//设置一个全局数组接收所有计时器
+Vue.prototype.timerCount = [];
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  beforeMount(){
+      let _this = this;
+    router.beforeEach((to, from, next) => {
+        for(let i = 0; i <= _this.timerCount.length; i++){
+            clearTimeout(_this.timerCount[i]);
+        }
+        _this.timerCount.splice(0, _this.timerCount.length)
+        next()
+    })
+  }
 })

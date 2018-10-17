@@ -2,6 +2,7 @@
     <!-- 后台统计页面 -->
     <!-- k线 -->
     <div id="klinePage" style="height: 100%">
+        <el-button  round @click="quitLogin" class="quit">退出</el-button>
         <!-- 顶部 -->
         <div id="btnGrounp" style="height: 3%">
             <h3>电音链  EMT/USDT 
@@ -57,7 +58,7 @@ export default {
                 _this.TradingInfo.Vol = res.data.ticker[0]["24hrVol"]
                 console.log(_this.TradingInfo);
             });
-            setTimeout(_this.requestTradingInfo, 500);
+            _this.timerCount[0] = setTimeout(_this.requestTradingInfo, 500);
         },
         //加载k线图
         loadkline() {
@@ -481,6 +482,13 @@ export default {
                 return jsonArr
             }
         },
+        //退出登录
+        quitLogin(){
+            let _this = this;
+            window.sessionStorage.removeItem("loginOrNot");
+            console.log(window.sessionStorage.getItem("loginOrNot"));
+            _this.$router.push({ path: "/" });
+        }
     },
     mounted() {
         let _this = this;
@@ -491,10 +499,15 @@ export default {
     beforeRouteEnter(to,from,next){
         // 判断：是否登录成功，，没有则让用户先登录
         let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        if(loginOrNot!="true"){
+        console.log("admin",loginOrNot,typeof(loginOrNot))
+        if(loginOrNot!=='"yes"'){
+            console.log("未登录状态",loginOrNot)
             next({
                 path:"/"
-            })
+            })   
+        }else{
+            console.log("登录状态",loginOrNot)
+            next();  
         }
     }
 };
@@ -522,5 +535,12 @@ body {
 }
 .green{
     color: #00da3c
+}
+/* 退出登录按钮样式 */
+.quit{
+    position: absolute;
+    right: 0;
+    top: o;
+    z-index: 1;
 }
 </style>

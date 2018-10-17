@@ -1,6 +1,7 @@
 <template>
     <!-- 后台统计页面 -->
     <div id="statisticsPage" style="height: 100%">
+        <el-button  round @click="quitLogin" class="quit">退出</el-button>
         <!-- 上半部 -->
         <el-container id="top">
             <!-- 折线图 -->
@@ -286,8 +287,16 @@ export default {
                 myChart.setOption(optionDepthMap, true);
             }
         },
+        //退出登录
+        quitLogin(){
+            let _this = this;
+            window.sessionStorage.removeItem("loginOrNot");
+            console.log(window.sessionStorage.getItem("loginOrNot"));
+            _this.$router.push({ path: "/" });
+        }
     },
     mounted() {
+        let _this = this;
         //加载折线图
         _this.loadLine();
         //加载柱状图
@@ -298,11 +307,15 @@ export default {
     beforeRouteEnter(to,from,next){
         // 判断：是否登录成功，，没有则让用户先登录
         let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        // console.log(loginOrNot);
-        if(loginOrNot!="true"){
+        console.log("admin",loginOrNot,typeof(loginOrNot))
+        if(loginOrNot!=='"yes"'){
+            console.log("未登录状态",loginOrNot)
             next({
                 path:"/"
-            })
+            })   
+        }else{
+            console.log("登录状态",loginOrNot)
+            next();  
         }
     }
 };
@@ -336,5 +349,8 @@ body {
 /* 柱状图 */
 #histogram {
     height: 109%;
+}
+.quit{
+    float: right;
 }
 </style>
