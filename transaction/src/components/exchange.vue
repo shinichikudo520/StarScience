@@ -52,21 +52,21 @@
                         <el-tab-pane label="当前委托" name="first">
                             <!-- 当前委托 -->
                             <el-table :data="NowEntrust.slice((currentPageNowEntrust-1)*pageSizeNowEntrust,currentPageNowEntrust*pageSizeNowEntrust)"  border style="width: 100%" height="48%" :cell-style="cellStyleEntrust">
-                                <el-table-column prop="createtime" label="委托时间" width="80">
+                                <el-table-column prop="createtime" label="委托时间" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="symbol" label="交易对" width="90">
+                                <el-table-column prop="symbol" label="交易对" width="90" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="type" label="类型" width="60">
+                                <el-table-column prop="type" label="类型" width="60" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="price" label="委托价" width="80">
+                                <el-table-column prop="price" label="委托价" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="orderquantity" label="委托量" width="90">
+                                <el-table-column prop="orderquantity" label="委托量" width="90" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="filledquantity" label="成交量" width="90">
+                                <el-table-column prop="filledquantity" label="成交量" width="90" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="orderstatus" label="状态" width="80">
+                                <el-table-column prop="orderstatus" label="状态" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column label="操作" width="70">
+                                <el-table-column label="操作" width="70" show-overflow-tooltip>
                                     <template slot-scope="scope">
                                         <span class="cancel" @click="cancel(scope.row.orderid)">撤单</span>
                                     </template>
@@ -76,40 +76,41 @@
                             <el-pagination :page-size="pageSizeNowEntrust"  layout="prev, pager, next" :total="totalNowEntrust" @current-change="handleCurrentChangeNow"></el-pagination>
                         </el-tab-pane>
                         <el-tab-pane label="历史委托" name="second">
+                            <el-button  round @click="downLoad" class="downLoad">下载</el-button>
                             <!-- 历史委托 -->
-                            <el-table :data="HisEntrust"  border style="width: 100%" height="48%">
-                                <el-table-column prop="date" label="委托时间" width="80">
+                            <el-table :data="HisEntrust.slice((currentPageHistory-1)*pageSizeHistory,currentPageHistory*pageSizeHistory)"  border style="width: 100%" height="48%" id="downLoad" :cell-style="cellStyleHistory">
+                                <el-table-column prop="createtime" label="委托时间" width="73" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="name" label="交易对" width="74">
+                                <el-table-column prop="symbol" label="交易对" width="82" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="类型" width="70">
+                                <el-table-column prop="type" label="类型" width="49" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="委托价" width="74">
+                                <el-table-column prop="price" label="委托价" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="委托量" width="74">
+                                <el-table-column prop="orderquantity" label="委托量" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="成交量" width="74">
+                                <el-table-column prop="filledquantity" label="成交量" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="成交均价" width="80">
+                                <el-table-column prop="address" label="成交均价" width="80" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="手续费" width="74">
+                                <el-table-column prop="address" label="手续费" width="65" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="address" label="状态" width="70">
+                                <el-table-column prop="orderstatus" label="状态" width="75" show-overflow-tooltip>
                                 </el-table-column>
                             </el-table>
                             <!-- 分页 -->
-                            <el-pagination :page-size="pageSizeNowEntrust"  layout="prev, pager, next" :total="totalNowEntrust"></el-pagination>
+                            <el-pagination :page-size="pageSizeHistory"  layout="prev, pager, next" :total="totalNowHistory" @current-change="handleCurrentChangeHis"></el-pagination>
                         </el-tab-pane>
                         <el-tab-pane label="我的持仓" name="third">
                             <!-- 账户余额 -->
                             <el-table :data="balance"  border style="width: 100%" height="48%">
-                                <el-table-column prop="asset" label="资产类型" width="100">
+                                <el-table-column prop="asset" label="资产类型" width="100" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="available" label="可用" width="180">
+                                <el-table-column prop="available" label="可用" width="180" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="reserved" label="冻结" width="180">
+                                <el-table-column prop="reserved" label="冻结" width="180" show-overflow-tooltip>
                                 </el-table-column>
-                                <el-table-column prop="total" label="总计" width="180">
+                                <el-table-column prop="total" label="总计" width="180" show-overflow-tooltip>
                                 </el-table-column>
                             </el-table>
                         </el-tab-pane>
@@ -121,20 +122,20 @@
             <!-- 20档行情 -->
                 <!-- 卖出 -->
                 <el-table :data="tableData.asks" style="width: 100%;height:48%"  class="sellTop" :cell-style="green" :header-cell-style="green" @row-click="selectSellPrice">
-                    <el-table-column width="70">
+                    <el-table-column width="70" show-overflow-tooltip>
                         <template slot-scope="scope">
                             {{'卖 '+(scope.$index+(20-2*scope.$index))+''}}
                         </template>
                     </el-table-column>
-                    <el-table-column prop="price" label="价格" width="85">
+                    <el-table-column prop="price" label="价格" width="85" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column prop="quantity" label="数量" width="85">
+                    <el-table-column prop="quantity" label="数量" width="85" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column label="挂单量" width="85">
+                    <el-table-column label="挂单量" width="85" show-overflow-tooltip>
                         <template slot-scope="scope">
                         </template>
                     </el-table-column>
-                    <el-table-column label="差量" width="85">
+                    <el-table-column label="差量" width="85" show-overflow-tooltip>
                         <template slot-scope="scope">
                             <el-popover
                             placement="right"
@@ -153,20 +154,20 @@
                 <p>{{last}}</p>
                 <!-- 买入 -->
                 <el-table :data="tableData.bids" style="width: 100%;height:44%"  class="buyTop" :cell-style="red" :header-cell-style="red" @row-click="selectBuyPrice">
-                    <el-table-column width="70">
+                    <el-table-column width="70" show-overflow-tooltip>
                         <template slot-scope="scope">
                             {{'买 '+(scope.$index+1)+''}}
                         </template>
                     </el-table-column>
-                    <el-table-column prop="price"  width="85">
+                    <el-table-column prop="price"  width="85" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column prop="quantity"  width="85">
+                    <el-table-column prop="quantity"  width="85" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column  width="85">
+                    <el-table-column  width="85" show-overflow-tooltip>
                         <template slot-scope="scope">
                         </template>
                     </el-table-column>
-                    <el-table-column  width="85">
+                    <el-table-column  width="85" show-overflow-tooltip>
                         <template slot-scope="scope">
                             <el-popover
                             placement="right"
@@ -186,13 +187,13 @@
             <!-- 实时成交 -->
             <el-container id="realTime">
                 <el-table :data="realTimeData" style="width: 100%"  :cell-style="cellStyle">
-                    <el-table-column prop="time" label="时间"  width="120">
+                    <el-table-column prop="time" label="时间"  width="120" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column prop="take" label="方向" width="95" >
+                    <el-table-column prop="take" label="方向" width="95" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column prop="price" label="价格" width="95"  >
+                    <el-table-column prop="price" label="价格" width="95" show-overflow-tooltip >
                     </el-table-column>
-                    <el-table-column prop="quantity" label="数量" width="95">
+                    <el-table-column prop="quantity" label="数量" width="95" show-overflow-tooltip>
                     </el-table-column>
                 </el-table>
             </el-container>
@@ -201,6 +202,8 @@
 </template>
 
 <script>
+import FileSaver from 'file-saver'
+import XLSX from 'xlsx'
 let echarts = require("echarts");
 export default {
     name: "exchange",
@@ -229,10 +232,13 @@ export default {
             activeName: 'first',//默认选中tab标签页的第一页
             //详细交易数据
             NowEntrust: [],//当前委托记录
-            pageSizeNowEntrust:0,//当前委托记录每一页条数
+            pageSizeNowEntrust:7,//当前委托记录每一页条数
             totalNowEntrust:0,//当前委托记录总数
             currentPageNowEntrust:1,//当前委托记录当前页
             HisEntrust:[],//历史委托
+            currentPageHistory:1,//历史委托记录当前页
+            totalNowHistory:0,//历史委托记录总数
+            pageSizeHistory:7,//历史委托记录每一页条数
             balance:[],//账户余额
             orderid:"",//买卖操作成功后产生的orderid
             temp:"",//用来保存操作输入框数字保留四位数的中间值
@@ -302,6 +308,15 @@ export default {
                 return 'color:#606266'
             }
         },
+        cellStyleHistory({row, column, rowIndex, columnIndex}){
+            if(columnIndex === 2 && row.type=="买入"){ //指定坐标
+                return 'color:red'
+            }
+            else if(columnIndex === 2 && row.type=="卖出"){
+                return 'color:green'
+            
+            }
+        },
         //请求20档行情数据
         ajaxTop() {
             let _this = this;
@@ -337,7 +352,7 @@ export default {
                 _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
             }
             // console.log(_this.sell1,_this.buy1);
-            _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
+            // _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
         ajaxRealTime(){
@@ -359,7 +374,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-           _this.timerCount[2] =  setTimeout(_this.ajaxRealTime,500);//打开注释
+            // _this.timerCount[2] =  setTimeout(_this.ajaxRealTime,500);//打开注释
         },
         //处理时间格式
         formatTime(date){
@@ -374,6 +389,7 @@ export default {
         operateEMTF(operate){
             let _this = this;
             let api = "/api/order/place";
+            // let api = "order/place";
             let temp = {};
             if(operate=="buy"){
                 temp = _this.buy;
@@ -394,6 +410,7 @@ export default {
                         type: 'success'
                     });
                     _this.orderid = response.data.orderid;//获取orderid
+                    console.log(_this.orderid);
                     _this.requestBalance();//刷新账户余额
                     _this.requestNowEntrust();//刷新当前委托
                     _this.requestHisEntrust(_this.orderid);//刷新历史委托
@@ -442,12 +459,16 @@ export default {
             }
             else if(tab.index==1){
                 if(_this.orderid!=""){
+                    console.log(1)
                     _this.requestHisEntrust(_this.orderid);//请求历史委托
                 }
                 else{
+                    console.log(_this.getData("HisEntrust"))
                     if(_this.getData("HisEntrust")){
                         _this.HisEntrust = _this.getData("HisEntrust");
                     }
+                    _this.pageSizeHistory = 7;//设置历史委托记录每一页条数
+                    _this.totalNowHistory = _this.HisEntrust.length;//获取当前委托数据的总条数
                 }
             }
             else if(tab.index==2){
@@ -458,6 +479,7 @@ export default {
         requestNowEntrust(){
             let _this = this;
             let api = "/api/order/open-orders";
+            // let api = "order/open-orders";
             _this.axios.post(api).then(res=>{
                 console.log(res);
                 if(res.data.orders==null){
@@ -481,18 +503,32 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
+            // _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
             // console.log(val);
             let _this = this;
             _this.currentPageNowEntrust = val;
+            if(_this.currentPageNowEntrust==1){
+                _this.requestNowEntrust();
+            }
+        },
+        //改变当前委托记录当前页
+        handleCurrentChangeHis(val){
+            // console.log(val);
+            let _this = this;
+            _this.currentPageHistory = val;
+            if(_this.currentPageHistory==1&&_this.orderid!=""){
+                _this.requestHisEntrust(_this.orderid);
+            }
         },
         //请求历史委托
         requestHisEntrust(orderid){
             let _this = this;
             let api = "/api/order/info";
+            console.log("请求历史记录",orderid)
+            // let api = "order/info";
             let temp = {
                 "orderid":orderid
             };
@@ -501,20 +537,37 @@ export default {
                 'Content-Type': 'multipart/form-data'
             }).then(res=>{
                 console.log(res,"历史委托");
-                let HisEntrust = res.data.order;//获取历史委托
+
+                let HisEntrust = [];
+                HisEntrust.push(res.data.order);
+                // let HisEntrust = res.data.order;//获取历史委托
+
+                HisEntrust.forEach(item=>{
+                    item.price = Number(item.price).toFixed(4);
+                    item.orderquantity = Number(item.orderquantity).toFixed(2);//委托量
+                    item.filledquantity = Number(item.filledquantity).toFixed(2);//成交量
+                    item.createtime = _this.formatTime(new Date(item.createtime)).split(" ")[1];
+                    item.type = item.type=="sell-limit"?"卖出":"买入";
+                    item.orderstatus = item.orderstatus=="filled"?"全部成交":(item.orderstatus=="canceled"?"已撤单":"部分撤单");
+                });
+                console.log(HisEntrust,"历史委托数组");
                 _this.setData("HisEntrust",HisEntrust);
                 _this.HisEntrust = _this.getData("HisEntrust");
             });
             if(_this.getData("HisEntrust")){
                 _this.HisEntrust = _this.getData("HisEntrust");//接口不稳定时从缓存中取数据
             }
+            _this.pageSizeHistory = 7;//设置历史委托记录每一页条数
+            _this.totalNowHistory = _this.HisEntrust.length;//获取当前委托数据的总条数
+            console.log(_this.totalNowHistory,"历史记录总条数");
         },
         //请求账户余额
         requestBalance(){
             let _this = this;
             let api = "/api/balance";
+            // let api = "balance";
             _this.axios.post(api).then(res=>{
-                console.log(res)
+                // console.log(res)
                 let balance = res.data.balance;
                 balance = balance.filter(item=>{
                     return item.total!=0
@@ -546,16 +599,17 @@ export default {
         cancel(orderid){
             let _this = this;
             let api = "/api/order/cancel";
+            // let api = "order/cancel";
             let temp = {
                 "orderid":orderid
             };
-            console.log(temp);
+            // console.log(temp);
             let fd = _this.transformFormData(temp);
             // console.log(fd);
             _this.axios.post(api,fd,{
                 'Content-Type': 'multipart/form-data'
             }).then(res=>{
-                // console.log(res);
+                console.log(res);
                 if(res.data.status=="ok"){
                     _this.$message({
                         showClose: true,
@@ -563,6 +617,9 @@ export default {
                         type: 'success'
                     });
                     _this.requestNowEntrust();
+                     _this.orderid = orderid;
+                     console.log(111);
+                     _this.requestHisEntrust(_this.orderid);
                 }else{
                     _this.$message('撤单失败！');
                 }
@@ -574,8 +631,14 @@ export default {
             window.sessionStorage.setItem(name,data);
         },
         //取数据
-        getData(name){         
-            let temp =  JSON.parse(window.sessionStorage.getItem(name));
+        getData(name){  
+            // console.log(window.sessionStorage.getItem(name))   
+            let data =  window.sessionStorage.getItem(name);
+            // console.log(data,name,typeof(data));            
+            if(data=="undefined"||data=="null"){
+                return
+            }
+            let temp =  JSON.parse(data);
             if(temp){
                 let jsonArr = [];
                 for(let i =0 ;i < temp.length;i++){
@@ -618,12 +681,13 @@ export default {
         requestTradingInfo(){
             let _this = this;
             let api = "/api/market/ticker?symbol=emtusdt";
+            // let api = "market/ticker?symbol=emtusdt";
             _this.axios.get(api).then(res=>{
                 // console.log(res);
                 _this.last = res.data.ticker[0].last;
                 
             });
-            _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
+            // _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
         //自动挂单
         automation(){
@@ -645,7 +709,7 @@ export default {
                 console.log(_this.buy.price,_this.buy.quantity)
                 _this.operateEMTF("buy");
             }
-            _this.timerCount[5] = setTimeout(_this.automation,60000);//打开注释
+            // _this.timerCount[5] = setTimeout(_this.automation,60000);//打开注释
         },
         //退出登录
         quitLogin(){
@@ -653,6 +717,15 @@ export default {
             window.sessionStorage.removeItem("loginOrNot");
             console.log(window.sessionStorage.getItem("loginOrNot"));
             _this.$router.push({ path: "/" });
+        },
+        //下载历史委托记录
+        downLoad(){
+            var wb = XLSX.utils.table_to_book(document.querySelector('#downLoad'))
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'array' })
+            try {
+                FileSaver.saveAs(new Blob([wbout], { type: 'application/octet-stream' }), 'history.xlsx')
+            } catch (e) { if (typeof console !== 'undefined') console.log(e, wbout) }
+            return wbout
         }
     },
     mounted() {
@@ -666,7 +739,7 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        _this.timerCount[6] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
+        // _this.timerCount[6] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
     },
     //在创建组件进入组件页面前判断是否登录
     beforeRouteEnter(to,from,next){
@@ -884,6 +957,20 @@ body,
 #details .el-table{
     overflow: hidden;
 }
+/* 详细记录下历史委托记录的下载按钮样式 */
+.downLoad{
+    color: #409EFF;
+    z-index: 1;
+    position: absolute;
+    right: 3px;
+    top: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+/* 历史委托记录表格样式 */
+#downLoad{
+    font-size: 0.8em
+}
 /* 退出登录按钮 */
 .quit{
     position: absolute;
@@ -892,8 +979,7 @@ body,
     right: 0;
     opacity: 0;
 }
-.quit:hover{
-    /* visibility: visible	; */
+.quit:hover,.downLoad:hover{
     opacity: 1;
 }
 </style>

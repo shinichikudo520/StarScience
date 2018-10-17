@@ -44,6 +44,7 @@ export default {
             let _this = this;
             // console.log(_this.loginOrNot)
             let api = "/api/login";
+            // let api = "login";
             let params = {
                 apiid:_this.form.stuId,
                 secret:_this.form.stuPwd,

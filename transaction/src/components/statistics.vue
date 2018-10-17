@@ -350,7 +350,15 @@ body {
 #histogram {
     height: 109%;
 }
+/* 退出登录按钮样式 */
 .quit{
-    float: right;
+    position: absolute;
+    right: 0;
+    top: o;
+    z-index: 1;
+    opacity: 0;
+}
+.quit:hover{
+    opacity: 1;
 }
 </style>

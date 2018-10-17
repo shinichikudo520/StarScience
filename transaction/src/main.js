@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 
 //全局配置axios
 //axios.defaults.baseURL = ''; //调试环境
-//axios.defaults.baseURL = ''; //生产环境
+// axios.defaults.baseURL = '/api/'; //生产环境
 axios.defaults.baseURL = 'http://67.230.191.185:80/'; //开发环境
 axios.defaults.withCredentials = true;
 
@@ -32,14 +32,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
-//   beforeMount(){
-//       let _this = this;
-//     router.beforeEach((to, from, next) => {
-//         for(let i = 0; i <= _this.timerCount.length; i++){
-//             clearTimeout(_this.timerCount[i]);//清空容器的所有计时器
-//         }
-//         _this.timerCount.splice(0, _this.timerCount.length)//清空容器
-//         next()
-//     })
-//   }
 })

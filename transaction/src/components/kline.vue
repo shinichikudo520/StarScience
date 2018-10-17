@@ -52,6 +52,7 @@ export default {
         requestTradingInfo(){
             let _this = this;
             let api = "/api/market/ticker?symbol=emtusdt";
+            // let api = "market/ticker?symbol=emtusdt";
             _this.axios.get(api).then(res=>{
                 // console.log(res);
                 _this.TradingInfo.last = res.data.ticker[0].last
@@ -550,5 +551,9 @@ body {
     right: 0;
     top: o;
     z-index: 1;
+    opacity: 0;
+}
+.quit:hover{
+    opacity: 1;
 }
 </style>

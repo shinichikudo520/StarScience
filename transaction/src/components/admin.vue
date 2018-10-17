@@ -4,8 +4,8 @@
             <el-button @click="exchange" round>交易页面</el-button>
             <el-button @click="kline" round>k线图</el-button>
             <el-button @click="statistics" round>数据分析</el-button>
-            <el-button  round @click="quitLogin" class="quit">退出</el-button>
         </el-button-group>
+        <el-button  round @click="quitLogin" class="quit">退出</el-button>
     </div>
 </template>
 
@@ -57,7 +57,15 @@ export default {
 </script>
 
 <style>
+/* 退出登录按钮样式 */
 .quit{
-    color: #606266;
+    position: absolute;
+    right: 0;
+    top: o;
+    z-index: 1;
+    opacity: 0;
+}
+.quit:hover{
+    opacity: 1;
 }
 </style>
