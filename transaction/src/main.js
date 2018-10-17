@@ -32,14 +32,14 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
-  beforeMount(){
-      let _this = this;
-    router.beforeEach((to, from, next) => {
-        for(let i = 0; i <= _this.timerCount.length; i++){
-            clearTimeout(_this.timerCount[i]);
-        }
-        _this.timerCount.splice(0, _this.timerCount.length)
-        next()
-    })
-  }
+//   beforeMount(){
+//       let _this = this;
+//     router.beforeEach((to, from, next) => {
+//         for(let i = 0; i <= _this.timerCount.length; i++){
+//             clearTimeout(_this.timerCount[i]);//清空容器的所有计时器
+//         }
+//         _this.timerCount.splice(0, _this.timerCount.length)//清空容器
+//         next()
+//     })
+//   }
 })

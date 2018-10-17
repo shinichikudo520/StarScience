@@ -337,7 +337,7 @@ export default {
                 _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
             }
             // console.log(_this.sell1,_this.buy1);
-            // _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
+            _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
         ajaxRealTime(){
@@ -359,7 +359,7 @@ export default {
             }
             
             // console.log( _this.realTimeData);
-        //    _this.timerCount[2] =  setTimeout(_this.ajaxRealTime,500);//打开注释
+           _this.timerCount[2] =  setTimeout(_this.ajaxRealTime,500);//打开注释
         },
         //处理时间格式
         formatTime(date){
@@ -481,7 +481,7 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            // _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
+            _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -623,7 +623,7 @@ export default {
                 _this.last = res.data.ticker[0].last;
                 
             });
-            // _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
+            _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
         //自动挂单
         automation(){
@@ -645,7 +645,7 @@ export default {
                 console.log(_this.buy.price,_this.buy.quantity)
                 _this.operateEMTF("buy");
             }
-            // _this.timerCount[5] = setTimeout(_this.automation,6000);//打开注释
+            _this.timerCount[5] = setTimeout(_this.automation,60000);//打开注释
         },
         //退出登录
         quitLogin(){
@@ -666,7 +666,7 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        // _this.timerCount[6] = setTimeout(_this.automation,1000);//页面打开1min后自动操作//打开注释
+        _this.timerCount[6] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
     },
     //在创建组件进入组件页面前判断是否登录
     beforeRouteEnter(to,from,next){
@@ -682,6 +682,14 @@ export default {
             console.log("登录状态",loginOrNot)
             next();  
         }
+    },
+    //组件被破坏之前，最好也把计时器清除
+    beforeDestroy(){
+        let _this = this;
+        for(let i = 0; i <= _this.timerCount.length; i++){
+            clearTimeout(_this.timerCount[i]);//清空容器的所有计时器
+        }
+        _this.timerCount.splice(0, _this.timerCount.length)//清空容器
     }
 };
 </script>

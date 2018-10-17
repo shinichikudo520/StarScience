@@ -509,6 +509,14 @@ export default {
             console.log("登录状态",loginOrNot)
             next();  
         }
+    },
+    //组件被破坏之前，最好也把计时器清除
+    beforeDestroy(){
+        let _this = this;
+        for(let i = 0; i <= _this.timerCount.length; i++){
+            clearTimeout(_this.timerCount[i]);//清空容器的所有计时器
+        }
+        _this.timerCount.splice(0, _this.timerCount.length)//清空容器
     }
 };
 </script>
