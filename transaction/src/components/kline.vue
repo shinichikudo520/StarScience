@@ -53,7 +53,9 @@ export default {
             let _this = this;
             let api = "/api/market/ticker?symbol=emtusdt";
             // let api = "market/ticker?symbol=emtusdt";
-            _this.axios.get(api).then(res=>{
+            _this.axios.get(api,{
+                cache:false,//清除缓存
+            }).then(res=>{
                 // console.log(res);
                 _this.TradingInfo.last = res.data.ticker[0].last
                 _this.TradingInfo.Vol = res.data.ticker[0]["24hrVol"]

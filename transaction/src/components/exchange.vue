@@ -322,7 +322,9 @@ export default {
             let _this = this;
             // let api = "/api/market/ticker?symbol=emtusdt";
                 let api = "http://api.coinbene.com/v1/market/orderbook?symbol=EMTUSDT&depth=200";
-            _this.axios.get(api).then(res => {
+            _this.axios.get(api,{
+                cache:false,//清除缓存
+            }).then(res => {
                 console.log(res)
                 let asks = res.data.orderbook.asks.slice(0,20).reverse(); //卖出数组颠倒 
                 asks.forEach(item => {
@@ -359,7 +361,9 @@ export default {
             let _this = this;
             let api = "/api/market/trades?symbol=emtusdt";
             let realTimeData = [];
-            _this.axios.get(api).then(res=>{
+            _this.axios.get(api,{
+                cache:false,//清除缓存
+            }).then(res=>{
                 realTimeData = res.data.trades;
                 realTimeData.forEach(item=>{
                     item.time = _this.formatTime(new Date(item.time));
@@ -399,7 +403,10 @@ export default {
             let fd = _this.transformFormData(temp);
             // console.log(fd);
             _this.axios.post(api,fd,{
-                'Content-Type': 'multipart/form-data'
+                headers: {
+                    'Content-Type': 'multipart/form-data',//指定参数为formData格式
+                 },
+                 cache:false,//清除缓存
             })
             .then(function (response) {
                 console.log(response);
@@ -480,7 +487,9 @@ export default {
             let _this = this;
             let api = "/api/order/open-orders";
             // let api = "order/open-orders";
-            _this.axios.post(api).then(res=>{
+            _this.axios.post(api,{
+                cache:false,//清除缓存
+            }).then(res=>{
                 console.log(res);
                 if(res.data.orders==null){
                     return
@@ -534,7 +543,10 @@ export default {
             };
             let fd = _this.transformFormData(temp);
             _this.axios.post(api,fd,{
-                'Content-Type': 'multipart/form-data'
+                 headers: {
+                    'Content-Type': 'multipart/form-data',//指定参数为formData格式
+                 },
+                 cache:false,//清除缓存
             }).then(res=>{
                 console.log(res,"历史委托");
 
@@ -566,7 +578,9 @@ export default {
             let _this = this;
             let api = "/api/balance";
             // let api = "balance";
-            _this.axios.post(api).then(res=>{
+            _this.axios.post(api,{
+                cache:false,//清除缓存
+            }).then(res=>{
                 // console.log(res)
                 let balance = res.data.balance;
                 balance = balance.filter(item=>{
@@ -607,7 +621,10 @@ export default {
             let fd = _this.transformFormData(temp);
             // console.log(fd);
             _this.axios.post(api,fd,{
-                'Content-Type': 'multipart/form-data'
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                 },
+                 cache:false,//清除缓存
             }).then(res=>{
                 console.log(res);
                 if(res.data.status=="ok"){
@@ -682,7 +699,9 @@ export default {
             let _this = this;
             let api = "/api/market/ticker?symbol=emtusdt";
             // let api = "market/ticker?symbol=emtusdt";
-            _this.axios.get(api).then(res=>{
+            _this.axios.get(api,{
+                cache:false,//清除缓存
+            }).then(res=>{
                 // console.log(res);
                 _this.last = res.data.ticker[0].last;
                 

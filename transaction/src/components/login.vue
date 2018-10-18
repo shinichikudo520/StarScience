@@ -51,7 +51,10 @@ export default {
             };
             let fd = _this.transformFormData(params);
             _this.axios.post(api,fd,{
-                'Content-Type': 'multipart/form-data'
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                 },
+                cache:false,
             }).then(res=>{
                 // console.log(res);
                 if(res.data){
