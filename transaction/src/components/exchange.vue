@@ -395,10 +395,38 @@ export default {
             let api = "/api/order/place";
             // let api = "order/place";
             let temp = {};
-            if(operate=="buy"){
+            if(operate=="buy"){//买操作
                 temp = _this.buy;
-            }else{
+                if(_this.buyEMTTrading>_this.usableUSDT){//买入EMT所需的USDT超过可用USDT数量
+                    _this.$message({
+                        showClose: true,
+                        message: '买入数量超过EMT可买数量'
+                    });
+                    return
+                }
+            }else{//卖操作
                 temp = _this.sell;
+                if(_this.sell.quantity>_this.usableEMT){//卖出EMT数量大于可用EMT数量
+                    _this.$message({
+                        showClose: true,
+                        message: '卖出数量超过EMT可用数量'
+                    });
+                    return
+                }
+            }
+            if(temp.price==""){
+                _this.$message({
+                    showClose: true,
+                    message: '请输入价格'
+                });
+                return
+            }
+            if(temp.quantity==""){
+                _this.$message({
+                    showClose: true,
+                    message: '请输入数量'
+                });
+                return
             }
             let fd = _this.transformFormData(temp);
             // console.log(fd);
@@ -512,7 +540,6 @@ export default {
             // console.log(_this.NowEntrust);
             _this.pageSizeNowEntrust = 7;//设置当前委托记录每一页条数
             _this.totalNowEntrust = _this.NowEntrust.length;//获取当前委托数据的总条数
-            // _this.timerCount[3] = setTimeout(_this.requestNowEntrust,500);//打开注释
         },
         //改变当前委托记录当前页
         handleCurrentChangeNow(val){
@@ -706,7 +733,7 @@ export default {
                 _this.last = res.data.ticker[0].last;
                 
             });
-            // _this.timerCount[4] = setTimeout(_this.requestTradingInfo, 500);//打开注释
+            // _this.timerCount[3] = setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
         //自动挂单
         automation(){
@@ -728,7 +755,7 @@ export default {
                 console.log(_this.buy.price,_this.buy.quantity)
                 _this.operateEMTF("buy");
             }
-            // _this.timerCount[5] = setTimeout(_this.automation,60000);//打开注释
+            // _this.timerCount[4] = setTimeout(_this.automation,60000);//打开注释
         },
         //退出登录
         quitLogin(){
@@ -758,7 +785,7 @@ export default {
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
         _this.requestTradingInfo();//为了请求最新价
-        // _this.timerCount[6] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
+        // _this.timerCount[5] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
     },
     //在创建组件进入组件页面前判断是否登录
     beforeRouteEnter(to,from,next){

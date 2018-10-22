@@ -14,7 +14,7 @@
                             <el-input v-model="form.stuPwd" placeholder="请输入您的密码" id="stuPwd"></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" @click="uploadInfo">登 录</el-button>
+                            <el-button type="primary" @click="uploadInfo" @keyup.enter.native="uploadInfo">登 录</el-button>
                         </el-form-item>
                     </el-form>
                 </el-container>
