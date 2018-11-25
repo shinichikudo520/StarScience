@@ -5,6 +5,7 @@ import register from '@/components/register'
 import rightToRecognize from '@/components/rightToRecognize'
 import card from '@/components/card'
 import artist from '@/components/artist'
+import music from '@/components/music'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
         path: '/artist',
         name: 'artist',
         component: artist
+    },
+    {//music
+        path: '/music',
+        name: 'music',
+        component: music
     },
   ]
 })
