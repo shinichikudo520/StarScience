@@ -90,7 +90,6 @@ export default {
 .register>>>.mint-header{
     height: 50px;
     margin-bottom: 20px;
-    
 }
 /* 头部文字样式 */
 .register>>>.mint-header-title{
