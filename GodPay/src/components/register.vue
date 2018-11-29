@@ -10,8 +10,9 @@
         </div>
         <!-- 中间 -->
         <div class="middle">
-            <mt-field placeholder="账号/手机号"  v-model="user.userId"></mt-field>
-            <mt-field  placeholder="验证码" type="number" v-model="user.verificationCode"></mt-field>
+            <mt-field placeholder="请输入手机号"  v-model="user.userId"></mt-field>
+            <mt-field placeholder="请输入支付密码" type="password" v-model="user.pwd"></mt-field>
+            <mt-field  placeholder="请输入手机验证码" type="number" v-model="user.verificationCode"></mt-field>
             <!-- 60s验证 -->
             <div class="countdown" v-if="isVerify">
                 <span>|</span>&nbsp;<span>{{countDown}}s</span>
@@ -38,6 +39,7 @@ export default {
     return {
         user:{//用户信息
             userId:"",//用户账号或手机号
+            pwd:"",//支付密码
             verificationCode:"",//验证码
             referrer:"",//推荐人
         },

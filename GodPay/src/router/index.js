@@ -11,6 +11,10 @@ import composer from '@/components/composer'
 import single from '@/components/single'
 import album from '@/components/album'
 import information from '@/components/information'
+import infoCrowd from '@/components/infoCrowd'
+import infoEMT from '@/components/infoEMT'
+import personCenter from '@/components/personCenter'
+import updatePwd from '@/components/updatePwd'
 
 Vue.use(Router)
 
@@ -70,6 +74,26 @@ export default new Router({
         path: '/information',
         name: 'information',
         component: information
+    },
+    {//资讯下的众筹
+        path: '/infoCrowd',
+        name: 'infoCrowd',
+        component: infoCrowd
+    },
+    {//资讯下的emt
+        path: '/infoEMT',
+        name: 'infoEMT',
+        component: infoEMT
+    },
+    {//个人中心
+        path: '/personCenter',
+        name: 'personCenter',
+        component: personCenter
+    },
+    {//更改密码
+        path: '/updatePwd',
+        name: 'updatePwd',
+        component: updatePwd
     },
   ]
 })
