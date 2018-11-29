@@ -154,6 +154,11 @@ export default {
 }
 </script>
 <style scoped>
+/* 默认选中认权 */
+/* .music>>>.rightToRecognize{
+    background: url("../assets/img/认权2.png") 33px 5px no-repeat !important;
+    background-size: 1.25rem !important;
+} */
 /* 整体样式，让整体页面高度满屏 */
 .music{
     height: 97vh;

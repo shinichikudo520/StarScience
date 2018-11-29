@@ -6,6 +6,11 @@ import rightToRecognize from '@/components/rightToRecognize'
 import card from '@/components/card'
 import artist from '@/components/artist'
 import music from '@/components/music'
+import crowdfunding from '@/components/crowdfunding'
+import composer from '@/components/composer'
+import single from '@/components/single'
+import album from '@/components/album'
+import information from '@/components/information'
 
 Vue.use(Router)
 
@@ -40,6 +45,31 @@ export default new Router({
         path: '/music',
         name: 'music',
         component: music
+    },
+    {//众筹
+        path: '/crowdfunding',
+        name: 'crowdfunding',
+        component: crowdfunding
+    },
+    {//创作人
+        path: '/composer',
+        name: 'composer',
+        component: composer
+    },
+    {//单曲
+        path: '/single',
+        name: 'single',
+        component: single
+    },
+    {//专辑
+        path: '/album',
+        name: 'album',
+        component: album
+    },
+    {//资讯
+        path: '/information',
+        name: 'information',
+        component: information
     },
   ]
 })
