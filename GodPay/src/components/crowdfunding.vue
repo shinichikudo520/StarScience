@@ -15,9 +15,15 @@
             <h5>单曲</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -26,9 +32,15 @@
             <h5>专辑</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -37,9 +49,15 @@
             <h5>创作人</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -76,7 +94,7 @@ export default {
 /* 头部样式 */
 .crowdfunding>>>.mint-header{
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: .625rem;
 }
 /* 头部文字样式 */
 .crowdfunding>>>.mint-header-title{
@@ -88,7 +106,9 @@ export default {
 }
 /* 全局轮播图上标题的样式 */
 .crowdfunding>>>h5{
-    margin: 0;
+    margin: 0 0 .375rem 0;
+    font-weight: 400;
+    font-size: .8125rem;
     color: #00A4EA;
 }
 /* 全局轮播中被选中图片的下标定位样式 */
@@ -97,11 +117,27 @@ export default {
 }
 /* single、Album、composer部分整体样式 */
 .crowdfunding>>>.single,.Album,.composer{
-    width: 90%;
+    width: 86%;
     margin: 0 auto;
     background-color: #F2F2F2;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+/* 轮播外层元素样式 */
+.crowdfunding>>>.mint-swipe-items-wrap > div{
+    text-align: center;
+}
+/* 轮播图片的样式 */
+.crowdfunding>>>.swipeImg{
+    width: 17.1875rem;
+    height:7.5rem;
+} 
+/* 全局轮播中被选中图片的下标定位样式 */
+.crowdfunding>>>.mint-swipe-indicator{
+    width: .25rem;
+    height: .25rem;
+    bottom: -0.25rem;
 }
 </style>

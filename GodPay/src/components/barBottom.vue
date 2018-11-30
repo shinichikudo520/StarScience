@@ -1,16 +1,16 @@
 <template>
   <div class="barBottom">
         <mt-tabbar v-model="barBottom">
-            <mt-tab-item class="rightToRecognize" id="rightToRecognize" @click.native="showPopup">
+            <mt-tab-item class="rightToRecognize" id="rightToRecognize" @click.native="toRight">
                 认权
             </mt-tab-item>
-            <mt-tab-item class="crowdfunding" id="crowdfunding" @click.native="showPopup">
+            <mt-tab-item class="crowdfunding" id="crowdfunding" @click.native="toCrowd">
                 众筹
             </mt-tab-item>
-            <mt-tab-item class="information" id="information" @click.native="showPopup">
+            <mt-tab-item class="information" id="information" @click.native="toInfo">
                 资讯
             </mt-tab-item>
-            <mt-tab-item class="personalcenter" id="personalcenter" @click.native="showPopup">
+            <mt-tab-item class="personalcenter" id="personalcenter" @click.native="toPerson">
                 个人中心
             </mt-tab-item>
         </mt-tabbar>
@@ -19,49 +19,56 @@
             <!-- 认权     子菜单浮标 -->
             <template v-if="icon.rightIcon">
                 <div class="right-icon">
-                    <!-- 认权 -->
-                    <div class="right-Crowdfunding">
-                        <img src="../assets/img/众筹1.png" alt="">
-                        <p>众筹</p>
-                    </div>
-                    <div class="right-EMT">
-                        <img src="../assets/img/EMT.png" alt="">
-                        <p>EMT</p>
-                    </div> 
+                    <!-- Tide card -->
+                    <router-link class="right-Crowdfunding" to="/card">
+                        <img src="../assets/img/认权1.png" alt="">
+                        <p>card</p>
+                    </router-link>
+                    <router-link class="right-EMT" to="/artist">
+                        <img src="../assets/img/认权1.png" alt="">
+                        <p>artist</p>
+                    </router-link>
+                    <router-link class="right-EMT" to="/music">
+                        <img src="../assets/img/认权1.png" alt="">
+                        <p>music</p>
+                    </router-link> 
                 </div>
             </template>
             <!-- 众筹     子菜单浮标 -->
             <template v-if="icon.crowdIcon">
                 <div class="crowd-icon">
                     <!-- 众筹 -->
-                    <div class="crowd-Crowdfunding">
+                    <router-link class="crowd-Crowdfunding" to="/single">
                         <img src="../assets/img/众筹1.png" alt="">
-                        <p>众筹</p>
-                    </div>
-                    <div class="crowd-EMT">
-                        <img src="../assets/img/EMT.png" alt="">
-                        <p>EMT</p>
-                    </div> 
+                        <p>单曲</p>
+                    </router-link>
+                    <router-link class="crowd-EMT" to="/album">
+                        <img src="../assets/img/众筹1.png" alt="">
+                        <p>专辑</p>
+                    </router-link> 
+                    <router-link class="crowd-EMT" to="/composer">
+                        <img src="../assets/img/众筹1.png" alt="">
+                        <p>创作人</p>
+                    </router-link> 
                 </div>
             </template>
             <!-- 资讯     子菜单浮标 -->
             <template v-if="icon.infoIcon">
                 <div class="info-icon">
                     <!-- 众筹 -->
-                    <div class="info-Crowdfunding">
+                    <router-link class="info-Crowdfunding" to="/infoCrowd">
                         <img src="../assets/img/众筹1.png" alt="">
                         <p>众筹</p>
-                    </div>
-                    <div class="info-EMT">
+                    </router-link>
+                    <router-link class="info-EMT" to="/infoEMT">
                         <img src="../assets/img/EMT.png" alt="">
                         <p>EMT</p>
-                    </div> 
+                    </router-link> 
                 </div>
             </template>
             <!-- 个人     子菜单浮标 -->
             <template v-else-if="icon.personIcon">
                 <div class="person-icon">
-                    <!-- 众筹 -->
                     <div class="person-Crowdfunding">
                         <img src="../assets/img/众筹1.png" alt="">
                         <p>众筹</p>
@@ -120,10 +127,38 @@ export default {
                 }
             });
         },
+        // 去认权部分
+        toRight(){
+            let _this = this;
+            _this.showPopup();
+            _this.$router.push({path:"/rightToRecognize"});
+        },
+        //去众筹部分
+        toCrowd(){
+            let _this = this;
+            _this.showPopup();
+            _this.$router.push({path:"/crowdfunding"});
+        },
+        //去资讯部分
+        toInfo(){
+            let _this = this;
+            _this.showPopup();
+            _this.$router.push({path:"/information"});
+        },
+        //去个人部分
+        toPerson(){
+            let _this = this;
+            _this.showPopup();
+            _this.$router.push({path:"/personCenter"});
+        },
   }
 }
 </script>
 <style scoped>
+/* 去除a标签下划线 */
+.barBottom>>>a{
+    text-decoration: none;
+}
 /* 底部导航条样式 */
 .barBottom>>>.mint-tabbar,.mint-tabbar > .mint-tab-item.is-selected{
     background-color: #00A4EA;
@@ -146,12 +181,12 @@ export default {
 }
 /* 众筹 */
 .barBottom>>>.crowdfunding{
-    background: url("../assets/img/众筹1.png") 33px 7px no-repeat;
+    background: url("../assets/img/众筹1.png") 35px 7px no-repeat;
     background-size: 1.4375rem;
 }
 /* 选中众筹 */
 .barBottom>>>.crowdfunding.is-selected{
-    background: url("../assets/img/众筹2.png") 33px 7px no-repeat;
+    background: url("../assets/img/众筹2.png") 35px 7px no-repeat;
     background-size: 1.4375rem;
 }
 /* 资讯 */
@@ -178,7 +213,8 @@ export default {
 .barBottom>>>.popup{
     background-color: transparent;
     color: white;
-    font-size: .875rem;
+    font-size: .625rem;
+    text-align: center;
 }
 /* 模态框子菜单小图标图片的大小 */
 .barBottom>>>.popup img{
@@ -188,29 +224,31 @@ export default {
 /* 模态框图标下文字的样式 */
 .barBottom>>>.popup p{
     margin: .5rem 0;
+    color: white;
 }
 /* 模态框认权下图标的定位 */
 .barBottom>>>.right-icon{
     position: absolute;
-    top: 9.1875rem;
+    top: 6.25rem;
     right: 8.125rem;
+    z-index: 1000;
 }
 /* 模态框众筹下图标的定位 */
 .barBottom>>>.crowd-icon{
     position: absolute;
-    top: 9.1875rem;
+    top: 6.25rem;
     right: 2.125rem;
 }
 /* 模态框资讯下图标的定位 */
 .barBottom>>>.info-icon{
     position: absolute;
-    top: 9.1875rem;
+    top: 10rem;
     left: 1.875rem;
 }
 /* 模态框资讯下图标的定位 */
 .barBottom>>>.person-icon{
     position: absolute;
-    top: 9.1875rem;
+    top: 10rem;
     left: 7.6875rem;
 }
 </style>

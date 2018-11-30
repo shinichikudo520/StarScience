@@ -13,9 +13,15 @@
         <!-- card部分 -->
         <div class="cardswipe">
             <mt-swipe :auto="5000">
-                <mt-swipe-item>1</mt-swipe-item>
-                <mt-swipe-item>2</mt-swipe-item>
-                <mt-swipe-item>3</mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/02.png" alt="" class="swipeImg">
+                </mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                </mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                </mt-swipe-item>
             </mt-swipe>
         </div>
         <!-- 标题部分 -->
@@ -151,7 +157,7 @@ export default {
 </script>
 <style scoped>
 /* 默认选中认权 */
-/* .card>>>.rightToRecognize{
+/* .card>>>.card{
     background: url("../assets/img/认权2.png") 33px 5px no-repeat !important;
     background-size: 1.25rem !important;
 } */
@@ -188,6 +194,7 @@ export default {
     background-color: white;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: .3125rem;
 }
 /* 中间标题部分样式 */
 .card>>>.title p{
@@ -309,5 +316,20 @@ export default {
     padding: 0 25PX;
     position: relative;
     top: 15px;
+}
+/* 轮播外层元素样式 */
+.card>>>.mint-swipe-items-wrap > div{
+    text-align: center;
+}
+/* 轮播图片的样式 */
+.card>>>.swipeImg{
+    width: 17.1875rem;
+    height:7.5rem;
+} 
+/* 全局轮播中被选中图片的下标定位样式 */
+.card>>>.mint-swipe-indicator{
+    width: .25rem;
+    height: .25rem;
+    bottom: -0.3125rem;
 }
 </style>

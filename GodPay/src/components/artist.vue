@@ -13,9 +13,15 @@
         <!-- artist部分 -->
         <div class="artistswipe">
             <mt-swipe :auto="5000">
-                <mt-swipe-item>1</mt-swipe-item>
-                <mt-swipe-item>2</mt-swipe-item>
-                <mt-swipe-item>3</mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/02.png" alt="" class="swipeImg">
+                </mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                </mt-swipe-item>
+                <mt-swipe-item>
+                    <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                </mt-swipe-item>
             </mt-swipe>
         </div>
         <!-- 标题部分 -->
@@ -186,6 +192,7 @@ export default {
     background-color: white;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: .3125rem;
 }
 /* 中间title标题部分样式 */
 .artist>>>.title p{
@@ -307,5 +314,21 @@ export default {
     padding: 0 25PX;
     position: relative;
     top: 15px;
+}
+
+/* 轮播外层元素样式 */
+.artist>>>.mint-swipe-items-wrap > div{
+    text-align: center;
+}
+/* 轮播图片的样式 */
+.artist>>>.swipeImg{
+    width: 17.1875rem;
+    height:7.5rem;
+} 
+/* 全局轮播中被选中图片的下标定位样式 */
+.artist>>>.mint-swipe-indicator{
+    width: .25rem;
+    height: .25rem;
+    bottom: -0.25rem;
 }
 </style>

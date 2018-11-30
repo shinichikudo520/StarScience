@@ -15,9 +15,18 @@
             <h5>Tide card</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/04.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/05.png" alt="" class="swipeImg">
+                        <img src="../assets/img/06.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -26,9 +35,18 @@
             <h5>Artist</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/04.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/05.png" alt="" class="swipeImg">
+                        <img src="../assets/img/06.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -37,9 +55,18 @@
             <h5>Music festival</h5> 
             <div>
                 <mt-swipe :auto="5000">
-                    <mt-swipe-item>1</mt-swipe-item>
-                    <mt-swipe-item>2</mt-swipe-item>
-                    <mt-swipe-item>3</mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/05.png" alt="" class="swipeImg">
+                        <img src="../assets/img/02.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/01.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/04.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <img src="../assets/img/03.jpg" alt="" class="swipeImg">
+                        <img src="../assets/img/06.png" alt="" class="swipeImg">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
@@ -84,24 +111,39 @@ export default {
 }
 /* 全局轮播图样式 */
 .rightToRecognize>>>.mint-swipe-items-wrap{
-    height: 130px;
+    height: 7.8125rem;
 }
-/* 全局轮播图上标题的样式 */
-.rightToRecognize>>>h5{
-    margin: 0;
-    color: #00A4EA;
-}
-/* 全局轮播中被选中图片的下标定位样式 */
 .rightToRecognize>>>.mint-swipe-indicator.is-active{
     background-color: #00A4EA;
+}
+
+/* 全局轮播图上标题的样式 */
+.rightToRecognize>>>h5{
+    margin: 0 0 .75rem 0;
+    color: #00A4EA;
 }
 /* card、artist、music部分整体样式 */
 .rightToRecognize>>>.card,.artist,.music{
     width: 90%;
     margin: 0 auto;
     background-color: #F2F2F2;
-    padding: 10px;
+    padding: .5rem .5rem 0;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: .9375rem;
+}
+/* 轮播外层元素样式 */
+.rightToRecognize>>>.mint-swipe-items-wrap > div{
+    text-align: center;
+}
+/* 轮播图片的样式 */
+.rightToRecognize>>>.swipeImg{
+    width: 9.375rem;
+    height: 6.25rem;
+} 
+/* 全局轮播中被选中图片的下标定位样式 */
+.rightToRecognize>>>.mint-swipe-indicator{
+    width: .25rem;
+    height: .25rem;
+    bottom: .375rem;
 }
 </style>
