@@ -290,8 +290,9 @@ export default {
         //退出登录
         quitLogin(){
             let _this = this;
-            window.sessionStorage.removeItem("loginOrNot");
-            console.log(window.sessionStorage.getItem("loginOrNot"));
+            window.sessionStorage.clear();//清除所有缓存
+            // window.sessionStorage.removeItem("loginOrNot");
+            // console.log(window.sessionStorage.getItem("loginOrNot"));
             _this.$router.push({ path: "/" });
         }
     },

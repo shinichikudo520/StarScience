@@ -1,9 +1,15 @@
 <template>
     <div id="exchangePage">
         <div>
-        <el-button  round @click="quitLogin" class="quit">退出</el-button>
+            <el-button  round @click="quitLogin" class="quit">退出</el-button>
         </div>
         <div id="left">
+            <div>
+                <el-button-group class="tradeBtn">
+                    <el-button @click="startTrade">开启交易</el-button>
+                    <el-button @click="stopTrade">停止交易</el-button>
+                </el-button-group>
+            </div>
             <!-- 操作部分 -->
             <el-container id="operate">
                 <el-row>
@@ -198,6 +204,40 @@
                 </el-table>
             </el-container>
         </div>
+        <!-- 获取自动化交易数据的表单 -->
+        <el-dialog title="设定自动化交易数据" :visible.sync="dialogFormVisible">
+            <h3>目前最新价：{{last}}</h3>
+            <el-form :model="form">
+                <el-form-item label="最高限定价" label-width="120px">
+                    <el-input v-model="form.upperPrice" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="最低限定价" label-width="120px">
+                    <el-input v-model="form.lowerPrice" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="最高限定量" label-width="120px">
+                    <el-input v-model="form.upperNum" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="最低限定量" label-width="120px">
+                    <el-input v-model="form.lowerNum" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="交易间隔时间" label-width="120px">
+                    <el-input v-model="form.tradeTime" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <!-- dialogFormVisible = false -->
+                <el-button @click="cancleAutomaticData">取 消</el-button>
+                <el-button type="primary" @click="sureAutomaticData">确 定</el-button>
+            </div>
+        </el-dialog>
+        <!-- 音乐播放器 -->
+        <div :class="audio">
+            <audio :autoplay="true" :controls="true" :loop="true" ref="warningMusic">
+                <source :src="warningMusicSrc">
+                您的浏览器不支持 audio 标签。
+            </audio>
+            <el-button class="el-icon-circle-close" circle @click="closeAudio"></el-button>
+        </div>
     </div>
 </template>
 
@@ -243,8 +283,20 @@ export default {
             orderid:"",//买卖操作成功后产生的orderid
             temp:"",//用来保存操作输入框数字保留四位数的中间值
             last:0,//目前最新价
-            buy1:0,//买一的价格
-            sell1:0,//卖一的价格
+            buyThree:[],//买3的价格
+            sellThree:[],//卖3的价格
+            dialogFormVisible:true,//是否显示获取自动化交易数据的表单
+            form: {
+                upperPrice:"",//最高限定价
+                lowerPrice:"",//最低限定价
+                upperNum:"",//最高限定量
+                lowerNum:"",//最低限定量
+                tradeTime:"",//交易间隔时间
+            },
+            num:0,//自动化交易操作的数量
+            warningMusicSrc:"",//警示音乐的路径
+            audio:"audioHidden",//音乐播放器隐藏
+            autoTradeOrNot:false,//是否自动交易
         };
     },
     computed:{
@@ -262,7 +314,29 @@ export default {
                 return _this.sell.price*_this.sell.quantity+0.0001
             }
             return 0.0000
-        }
+        },
+        //卖出行情前3档是否存在<=最新价+0.0003的价格
+        existSell(){
+            let _this = this;
+            _this.sellThree.forEach(item=>{
+                if( item <= _this.last+0.0003){
+                    return true
+                }else{
+                    return false
+                }
+            });
+        },
+        //买入行情前3档是否存在>=最新价-0.0003的价格
+        existBuy(){
+            let _this = this;
+            _this.buyThree.forEach(item=>{
+                if( item >= _this.last-0.0003){
+                    return true
+                }else{
+                    return false
+                }
+            });
+        },
     },
     methods: {
         //卖出价格列样式
@@ -347,13 +421,18 @@ export default {
             if(_this.getData("bids")){
                 _this.tableData.bids = _this.getData("bids");//接口不稳定时从缓存中取数据
             }
-            if(_this.tableData.asks[19]!=undefined){
-                _this.sell1 = _this.tableData.asks[19].price;//获取卖一的价格
+            if(_this.tableData.asks.length>0){
+                _this.sellThree.push(_this.tableData.asks[19].price);//获取卖1的价格
+                _this.sellThree.push(_this.tableData.asks[18].price);//获取卖2的价格
+                _this.sellThree.push(_this.tableData.asks[17].price);//获取卖3的价格
+                console.log("卖3档价格："+_this.sellThree)
             }
-            if(_this.tableData.bids[0]!=undefined){
-                _this.buy1 = _this.tableData.bids[0].price;//获取买一的价格
+            if(_this.tableData.bids.length>0){
+                _this.buyThree.push(_this.tableData.bids[0].price);//获取买1的价格
+                _this.buyThree.push(_this.tableData.bids[1].price);//获取买2的价格
+                _this.buyThree.push(_this.tableData.bids[2].price);//获取买3的价格
+                console.log("买3档价格："+_this.buyThree)
             }
-            // console.log(_this.sell1,_this.buy1);
             // _this.timerCount[1] = setTimeout(this.ajaxTop, 500);//打开注释
         },
         //请求实时成交记录
@@ -550,7 +629,7 @@ export default {
                 _this.requestNowEntrust();
             }
         },
-        //改变当前委托记录当前页
+        //改变历史委托记录当前页
         handleCurrentChangeHis(val){
             // console.log(val);
             let _this = this;
@@ -735,33 +814,132 @@ export default {
             });
             // _this.timerCount[3] = setTimeout(_this.requestTradingInfo, 500);//打开注释
         },
-        //自动挂单
+        //取消接收自动化交易的数据：将所有数据清空
+        cancleAutomaticData(){
+            let _this = this;
+            Object.keys(_this.form).forEach(item=>{
+                _this.form[item] = "";
+            });
+            _this.dialogFormVisible = false;
+            _this.$message(
+            {
+                message: '设置好各项参数，自动交易才会开启哦！',
+                type: 'warning'
+            });
+            console.log(_this.form)
+        },
+        //确认接收自动化交易的数据：开始自动交易
+        sureAutomaticData(){
+            let _this = this;
+            _this.dialogFormVisible = false;
+            let temped = false;
+            //如果各项参数中有一项为空，则结束自动操作
+            Object.keys(_this.form).forEach(item=>{
+                if(_this.form[item]==""){
+                    _this.$message({
+                        message: '设置好各项参数，自动交易才会开启哦！',
+                        type: 'warning'
+                    });
+                    temped = true;
+                }
+            });
+            if(temped){//如果参数表单有空值，结束方法的调用，不开启自动化交易
+                return
+            }
+            _this.autoTradeOrNot = true;//确认开启自动交易操作
+            _this.automation();
+        },
+        //自动交易
         automation(){
             let _this = this;
-            let random = (Math.random()*1000).toFixed(0);
-            // console.log(randomSell,randomBuy)
-            if(_this.sell1>_this.last+0.0001){
-                console.log("卖出");
-               _this.sell.price = (Number(_this.last)+0.0001).toString();
-               _this.keepFour("sell");
-               _this.sell.quantity = random;
-                _this.operateEMTF("sell")
+            if(!_this.autoTradeOrNot){//如果不自动交易，则直接结束方法调用
+                return
             }
-            if(_this.buy1<_this.last-0.0001){
-                console.log("买入");
-                _this.buy.price = (Number(_this.last)-0.0001).toString();
-               _this.keepFour("buy");
-               _this.buy.quantity = random;
-                console.log(_this.buy.price,_this.buy.quantity)
-                _this.operateEMTF("buy");
+            _this.num = Math.floor(Math.random()*(_this.form.upperNum-_this.form.lowerNum+1)+_this.form.lowerNum);//生成指定范围内的随机数
+            if(_this.last < _this.form.upperPrice && _this.last > _this.form.lowerPrice){
+                if(_this.existBuy && _this.existSell){//买入、卖出都存在别人的单，播放警示音乐
+                    console.log("买入、卖出都存在别人的单，播放警示音乐")
+                    _this.playAudio();
+                }else if(_this.existBuy){//买入存在别人的单，往上走
+                    _this.toUpperPrice();
+                }else if(_this.existSell){//卖出存在别人的单，往下走
+                    _this.toLowerPrice();
+                }else{//买入、卖出都不存在别人的单，随机走
+                    let mid = (_this.form.lowerNum + _this.form.upperNum) / 2;
+                    if(_this.num>=mid){//如果数量大于最大量和最小量的中间值，往上走
+                        _this.toUpperPrice();
+                    }else{//否则，往下走
+                        _this.toLowerPrice();
+                    }
+                }
+            }else{//当前最新价>=设定的最高价或者<=设定的最低价   播放警示音乐
+                console.log("当前最新价>=设定的最高价或者<=设定的最低价")
+                _this.playAudio();
             }
-            // _this.timerCount[4] = setTimeout(_this.automation,60000);//打开注释
+            // _this.timerCount[4] = setTimeout(_this.automation,_this.form.tradeTime);//打开注释
+        },
+        //播放警示音乐
+        playAudio(){
+            let _this = this;
+            console.log("播放警示音乐");
+            _this.warningMusicSrc = "/static/music/讲真的.mp3";
+            _this.$refs.warningMusic.load();//因为source标签不能直接更改路径，所以整个audio标签必须重新加载一次
+            _this.audio = "audioShow";
+        },
+        //关闭音乐播放器
+        closeAudio(){
+            let _this = this;
+            console.log("关闭音乐播放器");
+            _this.$refs.warningMusic.pause();
+            _this.audio = "audioHidden";
+        },
+        //往上走
+        toUpperPrice(){
+            //先挂卖单
+            _this.sell.price = (Number(_this.last)+0.0001).toString();
+            _this.keepFour("sell");
+            _this.sell.quantity = _this.num;
+            _this.operateEMTF("sell")
+            //再挂买单
+            _this.buy.price = (Number(_this.last)+0.0001).toString();
+            _this.keepFour("buy");
+            _this.buy.quantity = _this.num;
+            _this.operateEMTF("buy");
+        },
+        //往下走
+        toLowerPrice(){
+            //先挂买单
+            _this.buy.price = (Number(_this.last)-0.0001).toString();
+            _this.keepFour("buy");
+            _this.buy.quantity = _this.num;
+            _this.operateEMTF("buy");
+            //再挂卖单
+            _this.sell.price = (Number(_this.last)-0.0001).toString();
+            _this.keepFour("sell");
+            _this.sell.quantity = _this.num;
+            _this.operateEMTF("sell")
+        },
+        //开启自动交易
+        startTrade(){
+            let _this = this;
+            Object.keys(_this.form).forEach(item=>{//先清空表单所有数据
+                _this.form[item] = "";
+            });
+            _this.dialogFormVisible = true;//显示自动化交易各参数的模态框
+        },
+        //停止自动交易
+        stopTrade(){
+            let _this = this;
+            _this.autoTradeOrNot = false;//关闭自动交易操作
+            clearTimeout(_this.timerCount[4]);//清空自动化交易的所有计时器
+
         },
         //退出登录
         quitLogin(){
             let _this = this;
-            window.sessionStorage.removeItem("loginOrNot");
-            console.log(window.sessionStorage.getItem("loginOrNot"));
+            window.sessionStorage.clear();//清除所有缓存
+            // window.sessionStorage.removeItem("loginOrNot");
+            // console.log(window.sessionStorage.getItem("loginOrNot"));
             _this.$router.push({ path: "/" });
         },
         //下载历史委托记录
@@ -784,24 +962,24 @@ export default {
         _this.ajaxRealTime(); //请求实时成交记录
         _this.requestNowEntrust(); //请求当前委托
         _this.requestBalance(); //请求余额:获取可用资产 
-        _this.requestTradingInfo();//为了请求最新价
-        // _this.timerCount[5] = setTimeout(_this.automation,60000);//页面打开1min后自动操作//打开注释
+        _this.requestTradingInfo();//请求最新价
+        // _this.timerCount[5] = setTimeout(_this.automation,_this.form.tradeTime);//页面打开1min后自动操作//打开注释
     },
     //在创建组件进入组件页面前判断是否登录
-    beforeRouteEnter(to,from,next){
-        // 判断：是否登录成功，，没有则让用户先登录
-        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        console.log("admin",loginOrNot,typeof(loginOrNot))
-        if(loginOrNot!=='"yes"'){
-            console.log("未登录状态",loginOrNot)
-            next({
-                path:"/"
-            })   
-        }else{
-            console.log("登录状态",loginOrNot)
-            next();  
-        }
-    },
+    // beforeRouteEnter(to,from,next){
+    //     // 判断：是否登录成功，，没有则让用户先登录
+    //     let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+    //     console.log("admin",loginOrNot,typeof(loginOrNot))
+    //     if(loginOrNot!=='"yes"'){
+    //         console.log("未登录状态",loginOrNot)
+    //         next({
+    //             path:"/"
+    //         })   
+    //     }else{
+    //         console.log("登录状态",loginOrNot)
+    //         next();  
+    //     }
+    // },
     //组件被破坏之前，最好也把计时器清除
     beforeDestroy(){
         let _this = this;
@@ -821,6 +999,7 @@ body{
 html,
 body,
 #exchangePage {
+    width: 100vw;
     height: 100%;
     margin: 0;
     padding: 0 2px;
@@ -836,6 +1015,13 @@ body,
 }
 #center,#right{
     width: 28%;
+}
+/* 开始、停止交易的按钮 */
+.tradeBtn{
+    position: absolute;
+    top: .8125rem;
+    left: 29.25rem;
+    z-index: 2;
 }
 /* 操作部分、深度部分 */
 #operate{
@@ -1027,5 +1213,23 @@ body,
 }
 .quit:hover,.downLoad:hover{
     opacity: 1;
+}
+/* 音乐播放器的样式 */
+.audioHidden{
+    display: none;
+}
+.audioShow{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    display: block;
+}
+/* 音乐播放器关闭按钮 */
+.el-icon-circle-close{
+    position: relative;
+    bottom: 1.25rem;
+    left: 0;
+    z-index: 100;
+    font-size: 1.4375rem;
 }
 </style>

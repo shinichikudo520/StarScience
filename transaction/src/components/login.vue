@@ -34,6 +34,7 @@ export default {
                 stuId: "",
                 stuPwd: "",
             },
+            ip:"",//操作用户的ip
             bodyHeight: "" ,//页面高度
             bodyWidth: "", //页面宽度
         };
@@ -43,11 +44,16 @@ export default {
         uploadInfo() {
             let _this = this;
             // console.log(_this.loginOrNot)
+            _this.getIPs(function(ip){//获取用户ip的函数
+                _this.ip = ip;
+                console.log(_this.ip)                    
+            });
             let api = "/api/login";
             // let api = "login";
             let params = {
-                apiid:_this.form.stuId,
-                secret:_this.form.stuPwd,
+                username:_this.form.stuId,
+                passwprd:_this.form.stuPwd,
+                ip:_this.ip,
             };
             let fd = _this.transformFormData(params);
             _this.axios.post(api,fd,{
@@ -96,6 +102,60 @@ export default {
                 return jsonArr
             }
         },
+        //获取用户IP
+        getIPs(callback){
+                var ip_dups = {};
+                var RTCPeerConnection = window.RTCPeerConnection
+                    || window.mozRTCPeerConnection
+                    || window.webkitRTCPeerConnection;
+                var useWebKit = !!window.webkitRTCPeerConnection;
+                if(!RTCPeerConnection){
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.sandbox = 'allow-same-origin';
+                    iframe.addEventListener("DOMNodeInserted", function(e){
+                        e.stopPropagation();
+                    }, false);
+                    iframe.addEventListener("DOMNodeInsertedIntoDocument", function(e){
+                        e.stopPropagation();
+                    }, false);
+                    document.body.appendChild(iframe);
+                    var win = iframe.contentWindow;
+                    RTCPeerConnection = win.RTCPeerConnection
+                        || win.mozRTCPeerConnection
+                        || win.webkitRTCPeerConnection;
+                    useWebKit = !!win.webkitRTCPeerConnection;
+                }
+                var mediaConstraints = {
+                    optional: [{RtpDataChannels: true}]
+                };
+                var servers = undefined;
+                if(useWebKit)
+                    servers = {iceServers: [{urls: "stun:stun.services.mozilla.com"}]};
+                var pc = new RTCPeerConnection(servers, mediaConstraints);
+                function handleCandidate(candidate){
+                    var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/
+                    var ip_addr = ip_regex.exec(candidate)[1];
+                    if(ip_dups[ip_addr] === undefined)
+                        callback(ip_addr);
+                    ip_dups[ip_addr] = true;
+                }
+                pc.onicecandidate = function(ice){
+                    if(ice.candidate)
+                        handleCandidate(ice.candidate.candidate);
+                };
+                pc.createDataChannel("");
+                pc.createOffer(function(result){
+                    pc.setLocalDescription(result, function(){}, function(){});
+                }, function(){});
+                setTimeout(function(){
+                    var lines = pc.localDescription.sdp.split('\n');
+                    lines.forEach(function(line){
+                        if(line.indexOf('a=candidate:') === 0)
+                            handleCandidate(line);
+                    });
+                }, 1000);
+            }
     },
     mounted() {
         var _this = this;
