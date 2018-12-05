@@ -91,6 +91,9 @@ export default {
     background: url("../assets/img/众筹2.png") 33px 7px no-repeat !important;
     background-size: 1.4375rem !important;
 } */
+.crowdfunding{
+    overflow-y: hidden;
+}
 /* 头部样式 */
 .crowdfunding>>>.mint-header{
     height: 50px;

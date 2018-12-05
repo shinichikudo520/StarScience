@@ -80,6 +80,10 @@ export default {
 </script>
 
 <style scoped>
+/* 整体样式 */
+.login{
+    overflow-y: hidden;
+}
 /* 头部样式 */
 .login>>>.mint-header{
     height: 50px;

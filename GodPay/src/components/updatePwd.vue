@@ -44,6 +44,10 @@ export default {
 </script>
 
 <style scoped>
+/* 整体样式 */
+.updatePwd{
+    overflow-y: hidden;
+}
 /* 头部样式 */
 .updatePwd>>>.mint-header{
     height: 50px;

@@ -129,6 +129,7 @@ export default {
 } */
 /* 整体样式，让整体页面高度满屏 */
 .personCenter{
+    overflow-y: hidden;
     height: 97vh;
     background-color: #F2F2F2;
     font-size: .75rem;

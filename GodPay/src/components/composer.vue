@@ -118,6 +118,7 @@ export default {
 .composer{
     height: 97vh;
     background-color: #F2F2F2;
+    overflow-y: hidden;
 }
 /* 头部样式 */
 .composer>>>.mint-header{

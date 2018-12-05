@@ -94,6 +94,7 @@ export default {
     height: 97vh;
     background-color: #F2F2F2;
     font-size: .75rem;
+    overflow-y: hidden;
 }
 /* 整体蓝色字体 */
 .infoCrowd>>>.blue{

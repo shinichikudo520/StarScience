@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style scoped>
+/* 整体样式 */
+.register{
+    overflow-y: hidden;
+}
 /* 头部样式 */
 .register>>>.mint-header{
     height: 50px;

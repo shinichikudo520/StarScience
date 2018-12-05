@@ -100,6 +100,10 @@ export default {
     background: url("../assets/img/认权2.png") 33px 5px no-repeat !important;
     background-size: 1.25rem !important;
 } */
+/* 整体样式 */
+.rightToRecognize{
+    overflow-y: hidden;
+}
 /* 头部样式 */
 .rightToRecognize>>>.mint-header{
     height: 50px;
