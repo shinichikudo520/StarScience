@@ -15,6 +15,9 @@ import infoCrowd from '@/components/infoCrowd'
 import infoEMT from '@/components/infoEMT'
 import personCenter from '@/components/personCenter'
 import updatePwd from '@/components/updatePwd'
+import admin from '@/components/admin'
+import agentAdmin from '@/components/agentAdmin'
+import applyEMT from '@/components/applyEMT'
 
 Vue.use(Router)
 
@@ -94,6 +97,21 @@ export default new Router({
         path: '/updatePwd',
         name: 'updatePwd',
         component: updatePwd
+    },
+    {//后台管理
+        path: '/admin',
+        name: 'admin',
+        component: admin
+    },
+    {//代理商后台管理
+        path: '/agentAdmin',
+        name: 'agentAdmin',
+        component: agentAdmin
+    },
+    {//申请EMT流程
+        path: '/applyEMT',
+        name: 'applyEMT',
+        component: applyEMT
     },
   ]
 })
