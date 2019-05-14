@@ -1,0 +1,1594 @@
+<!DOCTYPE html><html><head>
+      <title>Godpay&#x603B;&#x7ED3;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\20989\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0godpay">&#x9879;&#x76EE;&#x540D;&#x79F0;&#xFF1A;Godpay</h3>
+
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E9%93%BE%E6%8E%A5%E9%A1%B9%E7%9B%AE%E9%93%BE%E6%8E%A5httpsbopinshangchengcom">&#x9879;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;<a href="https://bopinshangcheng.com/#/">&#x9879;&#x76EE;&#x94FE;&#x63A5;</a></h3>
+
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87%E9%87%8A%E6%94%BE2%E4%BA%BFemt%E4%BF%83%E8%BF%9Bemt%E7%9A%84%E5%B8%82%E5%9C%BA%E6%B5%81%E9%80%9A">&#x9879;&#x76EE;&#x76EE;&#x6807;&#xFF1A;<strong><em>&#x91CA;&#x653E;2&#x4EBF;EMT&#xFF0C;&#x4FC3;&#x8FDB;EMT&#x7684;&#x5E02;&#x573A;&#x6D41;&#x901A;</em></strong></h3>
+
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%99">&#x9879;&#x76EE;&#x89C4;&#x5219;&#xFF1A;</h3>
+
+<ol>
+<li>&#x4EA7;&#x54C1;&#x8BBE;&#x8BA1;&#xFF1A;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x3001;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;</li>
+<li>&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;
+<ul>
+<li>
+<p>&#x540C;&#x4E00;&#x6295;&#x5165;&#x671F;&#xFF0C;&#x503C;&#x5141;&#x8BB8;&#x8D2D;&#x4E70;&#x4E00;&#x6B21;</p>
+</li>
+<li>
+<p>&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x7B49;&#x7EA7;&#xFF1A;</p>
+<p>a. v1&#x7B49;&#x7EA7;:&#x8D2D;&#x5165;&#x503C;&#x4E3A;2000EMT</p>
+<p>b. v2&#x7B49;&#x7EA7;&#xFF1A;&#x8D2D;&#x5165;&#x503C;&#x4E3A;4000EMT</p>
+<p>c. v3&#x7B49;&#x7EA7;&#xFF1A;&#x8D2D;&#x5165;&#x503C;&#x4E3A;8000EMT</p>
+</li>
+<li>
+<p>&#x91CA;&#x653E;&#x89C4;&#x5219;&#xFF1A;&#x91CA;&#x653E;&#x603B;&#x91CF;&#x6309;600&#x5929;&#x5E73;&#x5747;&#x91CA;&#x653E;</p>
+</li>
+</ul>
+</li>
+<li>&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF1A;
+<ul>
+<li>
+<p>&#x8D2D;&#x5165;&#x6570;&#x91CF;&#x5FC5;&#x987B;&gt;1000EMT&#xFF0C;&#x4E14;&#x5FC5;&#x987B;&#x5148;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x540E;&#x624D;&#x53EF;&#x8D2D;&#x4E70;</p>
+</li>
+<li>
+<p>&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x7C7B;&#x522B;&#xFF1A;</p>
+<p>a. &#x5B9A;&#x671F;3&#x4E2A;&#x6708;&#xFF1A;&#x5229;&#x606F;&#x4E3A;&#x8D2D;&#x5165;&#x6570;&#x91CF;&#x7684;2%</p>
+<p>b. &#x5B9A;&#x671F;6&#x4E2A;&#x6708;&#xFF1A;&#x5229;&#x606F;&#x4E3A;&#x8D2D;&#x5165;&#x6570;&#x91CF;&#x7684;4.5%</p>
+<p>c. &#x5B9A;&#x671F;12&#x4E2A;&#x6708;&#xFF1A;&#x5229;&#x606F;&#x4E3A;&#x8D2D;&#x5165;&#x6570;&#x91CF;&#x7684;10%</p>
+</li>
+<li>
+<p>&#x91CA;&#x653E;&#x89C4;&#x5219;&#xFF1A;&#x5229;&#x606F;&#x4E3A;&#x6BCF;&#x6708;&#xFF08;30&#x5929;/&#x6708;&#xFF09;&#x521D;&#x8FDB;&#x884C;&#x8FD4;&#x8FD8;&#xFF0C;&#x672C;&#x91D1;&#x5219;&#x4E3A;&#x8FD4;&#x8FD8;&#x6240;&#x6709;&#x5229;&#x606F;&#x540E;&#x7684;&#x6700;&#x540E;&#x4E00;&#x5929;&#x8FD4;&#x8FD8;</p>
+</li>
+<li>
+<p>&#x9650;&#x5B9A;&#x89C4;&#x5219;&#xFF1A;</p>
+<p>a. &#x8D2D;&#x5165;v1&#x7B49;&#x7EA7;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#x53EF;&#x8D2D;&#x4F17;&#x7B79;&#x6B21;&#x6570;&#x4E3A;3&#x6B21;</p>
+<p>b. &#x8D2D;&#x5165;v2&#x7B49;&#x7EA7;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#x53EF;&#x8D2D;&#x4F17;&#x7B79;&#x6B21;&#x6570;&#x4E3A;4&#x6B21;</p>
+<p>c. &#x8D2D;&#x5165;v3&#x7B49;&#x7EA7;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#x53EF;&#x8D2D;&#x4F17;&#x7B79;&#x6B21;&#x6570;&#x4E3A;5&#x6B21;</p>
+</li>
+</ul>
+</li>
+<li>&#x6536;&#x76CA;&#x89C4;&#x5219;&#xFF08;4&#x7C7B;&#xFF09;&#xFF1A;
+<ul>
+<li>
+<p>&#x6536;&#x76CA;1&#xFF1A;&#x9488;&#x5BF9;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF08;&#x500D;&#x5316;EMT&#x4E0D;&#x8BA1;&#x5165;2&#x4EBF;&#x603B;&#x91CF;&#xFF09;</p>
+<p>a.&#x7528;&#x6237;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x5904;&#x4E8E;EMT&#x91CA;&#x653E;&#x7684;0-4000&#x4E07;&#x9636;&#x6BB5;&#xFF0C;&#x5219;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;4&#x500D;&#x540E;&#x4F5C;&#x4E3A;&#x7528;&#x6237;&#x7684;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+<p>b.&#x7528;&#x6237;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x5904;&#x4E8E;EMT&#x91CA;&#x653E;&#x7684;4000-8000&#x4E07;&#x9636;&#x6BB5;&#xFF0C;&#x5219;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;3&#x500D;&#x540E;&#x4F5C;&#x4E3A;&#x7528;&#x6237;&#x7684;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+<p>c.&#x7528;&#x6237;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x5904;&#x4E8E;EMT&#x91CA;&#x653E;&#x7684;8000&#x4E07;-2&#x4EBF;&#x9636;&#x6BB5;&#xFF0C;&#x5219;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;2&#x500D;&#x540E;&#x4F5C;&#x4E3A;&#x7528;&#x6237;&#x7684;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+</li>
+<li>
+<p>&#x6536;&#x76CA;2&#xFF1A;&#x9488;&#x5BF9;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;</p>
+<p>a.&#x8D2D;&#x5165;v1&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x4E2D;&#x6709;4&#x540D;&#x8D2D;&#x5165;v3&#x7B49;&#x7EA7;&#x7684;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF0C;6&#x540D;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;3&#x500D;&#x540E;&#x53E0;&#x52A0;&#x81F3;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+<p>b.&#x8D2D;&#x5165;v2&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x4E2D;&#x6709;6&#x540D;&#x8D2D;&#x5165;v3&#x7B49;&#x7EA7;&#x7684;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF0C;8&#x540D;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;3&#x500D;&#x540E;&#x53E0;&#x52A0;&#x81F3;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+<p>c.&#x8D2D;&#x5165;v3&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x4E2D;&#x6709;8&#x540D;&#x8D2D;&#x5165;v3&#x7B49;&#x7EA7;&#x7684;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF0C;10&#x540D;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x8D2D;&#x5165;&#x503C;&#x4E3A;&#x57FA;&#x7840;&#x500D;&#x5316;3&#x500D;&#x540E;&#x53E0;&#x52A0;&#x81F3;&#x91CA;&#x653E;&#x603B;&#x91CF;</p>
+</li>
+<li>
+<p>&#x6536;&#x76CA;3&#xFF1A;&#x9488;&#x5BF9;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;</p>
+<p>a.&#x8D2D;&#x5165;v1&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x5229;&#x606F;&#x7684;8%&#x5C06;&#x4F5C;&#x4E3A;&#x4E0A;&#x7EA7;&#x7528;&#x6237;&#x7684;&#x989D;&#x5916;&#x6536;&#x76CA;(&#x83B7;&#x5F97;&#x6536;&#x76CA;&#x7684;&#x65F6;&#x95F4;&#x4E3A;&#x5176;&#x4E0B;&#x7EA7;&#x8FD4;&#x8FD8;&#x672C;&#x91D1;&#x7684;&#x65F6;&#x95F4;)</p>
+<p>b.&#x8D2D;&#x5165;v2&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x5229;&#x606F;&#x7684;20%&#x5C06;&#x4F5C;&#x4E3A;&#x4E0A;&#x7EA7;&#x7528;&#x6237;&#x7684;&#x989D;&#x5916;&#x6536;&#x76CA;(&#x83B7;&#x5F97;&#x6536;&#x76CA;&#x7684;&#x65F6;&#x95F4;&#x4E3A;&#x5176;&#x4E0B;&#x7EA7;&#x8FD4;&#x8FD8;&#x672C;&#x91D1;&#x7684;&#x65F6;&#x95F4;)</p>
+<p>c.&#x8D2D;&#x5165;v3&#x4EA7;&#x54C1;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF0C;&#x5176;&#x4E0B;&#x7EA7;&#x5229;&#x606F;&#x7684;50%&#x5C06;&#x4F5C;&#x4E3A;&#x4E0A;&#x7EA7;&#x7528;&#x6237;&#x7684;&#x989D;&#x5916;&#x6536;&#x76CA;(&#x83B7;&#x5F97;&#x6536;&#x76CA;&#x7684;&#x65F6;&#x95F4;&#x4E3A;&#x5176;&#x4E0B;&#x7EA7;&#x8FD4;&#x8FD8;&#x672C;&#x91D1;&#x7684;&#x65F6;&#x95F4;)</p>
+</li>
+<li>
+<p>&#x6536;&#x76CA;4&#xFF1A;&#x9488;&#x5BF9;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF0C;&#x5206;&#x4E3A;&#x76F4;&#x63A8;&#x3001;&#x95F4;&#x63A8;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;EMT&#x91CA;&#x653E;&#x63D0;&#x901F;&#xFF0C;&#x63D0;&#x901F;&#x901F;&#x7387;&#x4EE5;***&#x500D;&#x5316;&#x540E;&#x91CA;&#x653E;&#x603B;&#x91CF;***&#x4E3A;&#x57FA;&#x6570;</p>
+<p>a.&#x76F4;&#x63A8;&#xFF1A;*&#x8868;&#x793A;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x4EFB;&#x4E00;&#x7B49;&#x7EA7;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x672C;&#x7EA7;</th>
+<th style="text-align:center">&#x4E0B;&#x7EA7;</th>
+<th style="text-align:center">&#x63D0;&#x901F;&#x901F;&#x7387;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">10%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">15%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">20%</td>
+</tr>
+</tbody>
+</table>
+<p>b.&#x95F4;&#x63A8;&#xFF1A;*&#x8868;&#x793A;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x4EFB;&#x4E00;&#x7B49;&#x7EA7;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x672C;&#x7EA7;</th>
+<th style="text-align:center">&#x4E0B;&#x7EA7;</th>
+<th style="text-align:center">&#x4E0B;&#x4E0B;&#x7EA7;</th>
+<th style="text-align:center">&#x63D0;&#x901F;&#x901F;&#x7387;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">1%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">2.5%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">5%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">1.5%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">3.75%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">7.5%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">2%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">5%</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">10%</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ol>
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E9%9C%80%E6%B1%82%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">&#x9879;&#x76EE;&#x9700;&#x6C42;&#xFF0C;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;</h3>
+
+<pre class="language-text">#### &#x9879;&#x76EE;&#x6280;&#x672F;&#x8BBE;&#x8BA1;&#xFF1A;
+&#x524D;&#x7AEF;&#xFF1A;
+    UI&#x6846;&#x67B6;&#xFF1A;
+        PC&#x7AEF;&#xFF1A;element&#x6846;&#x67B6;
+        &#x79FB;&#x52A8;&#x7AEF;&#xFF1A;mint-ui&#x6846;&#x67B6;
+    &#x529F;&#x80FD;&#x6846;&#x67B6;&#xFF1A;vue.js + axios + v-router + vuex
+&#x540E;&#x7AEF;&#xFF1A;
+    &#x8BED;&#x8A00;&#xFF1A;python
+    &#x6846;&#x67B6;&#xFF1A;Django
+&#x670D;&#x52A1;&#x5668;&#xFF1A;
+    IP&#xFF1A;120.79.181.233
+    &#x7AEF;&#x53E3;:80
+#### &#x9875;&#x9762;&#x8BBE;&#x8BA1;&#xFF1A;
+ &#x4E00;&#x3001; &#x5BA2;&#x6237;&#x7AEF;
+    1. &#x767B;&#x5F55;&#xFF1A;
+        * &#x8DEF;&#x7531;:&apos;/&apos;
+        * &#x7EC4;&#x4EF6;&#xFF1A;login.vue
+        * ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x767B;&#x5F55;&#x529F;&#x80FD;&#xFF1A;
+                + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/login&apos;
+                + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+                + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                    ```
+                    user:{//&#x7528;&#x6237;&#x4FE1;&#x606F;
+                            uphone:&quot;&quot;,//&#x7528;&#x6237;&#x8D26;&#x53F7;&#x6216;&#x624B;&#x673A;&#x53F7;,&#x7531;&#x7528;&#x6237;&#x8F93;&#x5165;&#x83B7;&#x53D6;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                            password:&quot;&quot;,//&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF0C;&#x7531;&#x7528;&#x6237;&#x8F93;&#x5165;&#x83B7;&#x53D6;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                            ip_in:&quot;&quot;,//&#x5185;&#x7F51;ip&#xFF0C;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;
+                            ip_out:&quot;&quot;,//&#x5916;&#x7F51;ip&#xFF0C;&#x5229;&#x7528;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                            equipment:&quot;&quot;,//&#x8BBE;&#x5907;&#x673A;&#x578B;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                        }
+                    ```    
+                    &#x8BF4;&#x660E;&#xFF1A;
+                    - ip_in:&#x5185;&#x7F51;ip&#xFF0C;getIPs&#x51FD;&#x6570;&#x4E2D;&#x5229;&#x7528;window&#x7684;RTCPeerConnection&#x3001;mozRTCPeerConnection&#x3001;webkitRTCPeerConnection&#x83B7;&#x53D6;&#x5185;&#x7F51;ip&#xFF0C;*&#x6CE8;&#x610F;&#xFF1A;&#x624B;&#x673A;&#x7AEF;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x5185;&#x7F51;ip&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x7AEF;&#x8BBE;&#x7F6E;ip_in&#x5FC5;&#x987B;&#x5141;&#x8BB8;&#x4E3A;null*
+                    - ip_out:&#x5916;&#x7F51;ip&#xFF0C;&#x5229;&#x7528;&#x641C;&#x72D0;&#x63A5;&#x53E3;`&lt;script src=&quot;https://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script&gt;`&#x83B7;&#x53D6;&#x5916;&#x7F51;ip&#xFF0C;
+                    - equipment:&#x8BBE;&#x5907;&#x673A;&#x578B;&#xFF0C;&#x5229;&#x7528;navigator.userAgent&#x83B7;&#x53D6;&#x8BBE;&#x5907;&#x673A;&#x578B;&#x4FE1;&#x606F;&#x3002;
+                + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                  `status_end&#xFF1A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x767B;&#x5F55;&#x6210;&#x529F;`
+                + &#x767B;&#x5F55;&#x6210;&#x529F;&#xFF1A;
+                  - &#x6539;&#x53D8;vuex&#x4E2D;&#x7528;&#x6237;&#x7684;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;isLogin&#x8D4B;&#x503C;&#x4E3A;true
+                  - &#x50A8;&#x5B58;&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x81F3;vuex&#x4E2D;&#xFF0C;&#x4F9B;&#x5176;&#x4ED6;vue&#x7EC4;&#x4EF6;&#x590D;&#x7528;
+    2. &#x6CE8;&#x518C;&#xFF1A;
+        * &#x8DEF;&#x7531;&#xFF1A;&apos;/register&apos;
+        * &#x7EC4;&#x4EF6;&#xFF1A;register.vue
+        * ajax&#x8BF7;&#x6C42;:
+          a. &#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#xFF1A;
+            + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/send_sms&apos;
+            + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+            + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `uphone:&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x83B7;&#x5F97;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;`
+          b. &#x7528;&#x6237;&#x6CE8;&#x518C;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/register&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            user:{//&#x7528;&#x6237;&#x4FE1;&#x606F;
+                username:&quot;&quot;,//&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                uphone:&quot;&quot;,//&#x7528;&#x6237;&#x624B;&#x673A;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                password1:&quot;&quot;,//&#x7528;&#x6237;&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                password2:&quot;&quot;,//&#x7528;&#x6237;&#x91CD;&#x590D;&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                code:&quot;&quot;,//&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                referee:&quot;&quot;,//&#x63A8;&#x8350;&#x4EBA;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                ip_out:&quot;&quot;,//&#x5916;&#x7F51;IP&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                ip_in:&quot;&quot;,//&#x5185;&#x7F51;IP&#xFF0C;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;
+            },
+            ```
+            *&#x6CE8;&#x610F;&#xFF1A;&#x63A8;&#x8350;&#x4EBA;&#x662F;&#x6839;&#x636E;&#x8DEF;&#x5F84;&apos;/register/?uphone13113131212&apos;&#x643A;&#x5E26;&#x63A8;&#x8350;&#x4EBA;&#x4FE1;&#x606F;&#xFF0C;&#x9875;&#x9762;&#x521D;&#x59CB;&#x5316;&#x65F6;href.location&#x83B7;&#x53D6;&#x7F51;&#x9875;&#x8DEF;&#x5F84;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x622A;&#x53D6;substr&#x624B;&#x673A;&#x53F7;&#x7801;&#x540E;&#x81EA;&#x52A8;&#x586B;&#x5199;&#xFF0C;&#x5982;&#x679C;&#x8DEF;&#x5F84;&#x643A;&#x5E26;&#x63A8;&#x8350;&#x4EBA;&#x7684;&#x4FE1;&#x606F;&#x4E3A;null&#xFF0C;&#x5219;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x586B;&#x5199;&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x66F4;&#x6539;*
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            `status_end&#xFF1A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x6CE8;&#x518C;&#x6210;&#x529F;`
+          + &#x6CE8;&#x518C;&#x6210;&#x529F;&#x540E;&#xFF1A;
+            - v-router&#x7684;&#x7F16;&#x7A0B;&#x5F0F;&#x5BFC;&#x822A;&#x8FDB;&#x884C;&#x8DF3;&#x8F6C;&#xFF0C;&#x8DF3;&#x8F6C;&#x81F3;&apos;/&apos;&#x767B;&#x5F55;&#x9875;&#x9762;
+    3. &#x8BBE;&#x7F6E;&#x767B;&#x5F55;/&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/updatepassword&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;updatepassword.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/send_sms&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            `uphone:&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x83B7;&#x5F97;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;`
+        b. &#x8BBE;&#x7F6E;/&#x4FEE;&#x6539;&#x767B;&#x5F55;/&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF1A;
+          ```
+            &#x767B;&#x5F55;&#x5BC6;&#x7801;/&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#x7684;&#x8BBE;&#x7F6E;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x7EC4;&#x4EF6;&#xFF0C;&#x6839;&#x636E;&#x8DEF;&#x7531;&#x53C2;&#x6570;$route.params.pwdKind&#x5224;&#x65AD;&#x8BBE;&#x7F6E;&#x5BC6;&#x7801;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4E3A;&apos;login&apos;&#x5219;&#x4E3A;&#x8BBE;&#x7F6E;&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF0C;&apos;pay&apos;&#x5219;&#x4E3A;&#x8BBE;&#x7F6E;&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+          ```
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/modify_login&apos;(&#x8BBE;&#x7F6E;&#x767B;&#x5F55;&#x5BC6;&#x7801;)&#x3001;&apos;/modify_payment&apos;(&#x8BBE;&#x7F6E;&#x652F;&#x4ED8;&#x5BC6;&#x7801;)
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            //&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF1A;
+            {
+                uphone:&quot;&quot;,//&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                new_password:&quot;&quot;,//&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                confirm_password:&quot;&quot;,//&#x786E;&#x8BA4;&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                code:&quot;&quot;,//&#x9A8C;&#x8BC1;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+            },
+            //&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF1A;
+            {
+                uphone://&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                new_password_payment://&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                confirm_password_payment://&#x786E;&#x8BA4;&#x5BC6;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+                code://&#x9A8C;&#x8BC1;&#x7801;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;
+            }
+            ```
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            `status_end&#xFF1A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x4FEE;&#x6539;&#x6210;&#x529F;`
+          + &#x8BBE;&#x7F6E;&#x6210;&#x529F;&#x540E;&#xFF1A;
+            - &#x6240;&#x6709;&#x5B57;&#x6BB5;&#xFF0C;&#x6E05;&#x7A7A;&#x8D4B;&#x503C;
+    4. &#x9996;&#x9875;&#xFF1A;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/home&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;home.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x4EA7;&#x54C1;&#x4FE1;&#x606F;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/index_views&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            //&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;
+            power_product:&#x8BA4;&#x6743;&#x4EA7;&#x54C1;
+            power_product_name:&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x540D;&#x79F0;
+            power_product_grade:&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7B49;&#x7EA7;
+
+            //&#x4F17;&#x7B79;&#x4EA7;&#x54C1;
+            crowdfunding_product:&#x4F17;&#x7B79;&#x4EA7;&#x54C1;
+            crowdfunding_product_name:&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x540D;&#x79F0;
+            crowdfunding_product_grade:&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x7B49;&#x7EA7;
+            //&#x6839;&#x636E;crowdfunding_product_grade&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#xFF1A;
+            rate:&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x5229;&#x7387;
+            ```
+          *&#x6CE8;&#x610F;&#xFF1A;&#x9996;&#x9875;&#x6240;&#x6709;&#x4EA7;&#x54C1;&#x56FE;&#x7247;&#xFF0C;&#x5305;&#x62EC;&#x7B49;&#x7EA7;&#x5C0F;&#x56FE;&#x6807;&#x90FD;&#x662F;&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;&#x4EA7;&#x54C1;&#x4FE1;&#x606F;&#x505A;&#x51FA;&#x5224;&#x65AD;&#x540E;&#xFF0C;&#x8BBE;&#x5B9A;&#x6240;&#x6709;&#x56FE;&#x7247;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x7528;require&#x5F15;&#x5165;*
+    5. &#x4EA7;&#x54C1;&#x4ECB;&#x7ECD;
+      * &#x8BA4;&#x6743;&#x4EA7;&#x54C1;
+        + &#x8DEF;&#x7531;&#xFF1A;&apos;/right/:sort&apos;&#xFF0C;sort&#x4E3A;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x503C;&#xFF1A;v1&#x3001;v2&#x3001;v3&#xFF1B;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x4E09;&#x79CD;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;
+        + &#x7EC4;&#x4EF6;&#xFF1A;right.vue
+        + ajax&#x8BF7;&#x6C42;:
+          a. &#x83B7;&#x53D6;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+            - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/product_details/&quot;+power_product_grade;&apos;&#x3002;power_product_grade&#x5373;&#x4EA7;&#x54C1;&#x7684;&#x7C7B;&#x578B;
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;power_product
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x540D;&#x79F0;&#xFF1A;power_product_name
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7B49;&#x7EA7;&#xFF1A;power_product_grade
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x5468;&#x671F;&#xFF1A;power_product_zhouqi
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x539F;&#x59CB;&#x503C;&#xFF1A;power_product_quantity
+                &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x8BE6;&#x60C5;&#xFF1A;power_product_details
+                //&#x6839;&#x636E;power_product_grade&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#xFF1A;
+                &#x4EA7;&#x54C1;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#xFF1A;imgUrl
+                &#x4EA7;&#x54C1;&#x7B49;&#x7EA7;&#x8DEF;&#x5F84;&#xFF1A;levelImgUrl
+              ```
+          b. &#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;
+            - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/order&apos;
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+            - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              ```
+              uid:&apos;&apos;,//&#x7528;&#x6237;uid
+              key_password:&apos;&apos;,//&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+              order_product:&apos;&apos;,//&#x4EA7;&#x54C1;&#x79CD;&#x7C7B;
+              ```
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+                operation:&#x8D2D;&#x4E70;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x8D2D;&#x4E70;&#x6210;&#x529F;
+              ```
+            - 400&#x72B6;&#x6001;&#x7801;&#xFF1A;
+              axios&#x7684;catch&#x83B7;&#x53D6;error.response.status&#x7684;400&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4E14;&#x7528;&#x63D0;&#x793A;&#x6846;mt-popup&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x63D0;&#x793A;&#x6846;5s&#x540E;&#x6D88;&#x5931;
+      * &#x4F17;&#x7B79;&#x4EA7;&#x54C1;
+        + &#x8DEF;&#x7531;&#xFF1A;&apos;/crowdfunding/:kind&apos;&#xFF0C;kind&#x4E3A;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x503C;&#xFF1A;3M&#x3001;6M&#x3001;12M&#xFF1B;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x4E09;&#x79CD;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;
+        + &#x7EC4;&#x4EF6;&#xFF1A;crowdfunding.vue
+        + ajax&#x8BF7;&#x6C42;:
+          a. &#x83B7;&#x53D6;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+            - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/crowdfunding_details/&quot;+crowdfunding_product_grade&apos;&#x3002;crowdfunding_product_grade&#x5373;&#x4EA7;&#x54C1;&#x7684;&#x7C7B;&#x578B;
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x540D;&#x79F0;&#xFF1A;crowdfunding_product_name
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x7B49;&#x7EA7;&#xFF1A;crowdfunding_product_grade
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x5468;&#x671F;&#xFF1A;crowdfunding_product_zhouqi
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x6700;&#x5C11;&#x503C;&#xFF1A;crowdfunding_product_quantity
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x4E2D;&#x6587;&#x540D;&#xFF1A;chain_name
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x82F1;&#x6587;&#x540D;&#xFF1A;engish_name
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x522B;&#x540D;&#xFF1A;alias
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x56FD;&#x7C4D;&#xFF1A;nationality
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x51FA;&#x751F;&#x65E5;&#x671F;&#xFF1A;birthday
+                &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x804C;&#x4E1A;&#xFF1A;work
+                //&#x6839;&#x636E;crowdfunding_product_grade&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#xFF1A;
+                &#x4EA7;&#x54C1;&#x5927;&#x56FE;&#x8DEF;&#x5F84;&#xFF1A;bigImg
+                &#x4EA7;&#x54C1;&#x5C0F;&#x56FE;&#x8DEF;&#x5F84;&#xFF1A;smallImg
+                &#x4EA7;&#x54C1;&#x5468;&#x671F;&#xFF1A;period
+              ```
+          b. &#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF1A;
+            - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/orderzhong&apos;
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+            - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              ```
+              uid://&#x7528;&#x6237;uid
+              key_password:_this.affirmPwd,//&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+              order_quantity:Number(_this.crowdfundingNum),//&#x8D2D;&#x4E70;&#x6570;&#x91CF;
+              order_product:_this.kind,//&#x4EA7;&#x54C1;&#x79CD;&#x7C7B;
+              order_product_name://&#x4EA7;&#x54C1;&#x540D;&#x79F0;
+              ```
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+                operation:&#x8D2D;&#x4E70;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x8D2D;&#x4E70;&#x6210;&#x529F;
+              ```
+            - 400&#x72B6;&#x6001;&#x7801;&#xFF1A;
+              axios&#x7684;catch&#x83B7;&#x53D6;error.response.status&#x7684;400&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4E14;&#x7528;&#x63D0;&#x793A;&#x6846;mt-popup&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x63D0;&#x793A;&#x6846;5s&#x540E;&#x6D88;&#x5931;
+    6. &#x5206;&#x4EAB;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/share&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;share.vue
+      * &#x4E8C;&#x7EF4;&#x7801;&#xFF1A;
+        + &#x751F;&#x6210;&#x4E8C;&#x7EF4;&#x7801;&#x7684;&#x63D2;&#x4EF6;&#xFF1A;qrcode&#xFF0C;&#x751F;&#x6210;&#x4E8C;&#x7EF4;&#x7801;&#x7684;&#x51FD;&#x6570;qrCode(),&#x751F;&#x6210;&#x4E8C;&#x7EF4;&#x7801;&#x540E;&#x5229;&#x7528;&#x63D2;&#x4EF6;QRCode.toCanvas&#x65B9;&#x6CD5;&#x5C06;&#x4E8C;&#x7EF4;&#x7801;&#x751F;&#x6210;canvas&#x663E;&#x793A;&#x5728;&#x9875;&#x9762;&#xFF0C;&#x7531;&#x4E8E;&#x751F;&#x6210;&#x7684;&#x4E8C;&#x7EF4;&#x7801;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x5C06;canvas&#x8F6C;&#x5316;&#x4E3A;img&#x683C;&#x5F0F;&#xFF0C;&#x76F4;&#x63A5;&#x5229;&#x7528;canvas.toDataURL(&quot;image/jpg&quot;)&#x65B9;&#x6CD5;&#x8F6C;&#x5316;
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x7528;&#x6237;&#x63A8;&#x5E7F;&#x60C5;&#x51B5;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/spread&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            `uid:&#x7528;&#x6237;uid`
+        + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+          ```
+          &#x6635;&#x79F0;&#xFF1A;username
+          &#x63A8;&#x8350;&#x4EBA;&#x6635;&#x79F0;&#xFF1A;referee_username
+          &#x76F4;&#x63A8;&#x4EBA;&#x6570;&#xFF1A;subordinate_total
+          &#x95F4;&#x63A8;&#x4EBA;&#x6570;&#xFF1A;lowersubordinate_total
+          &#x603B;&#x500D;&#x5316;&#x500D;&#x6570;&#xFF1A;total_multiple
+          &#x603B;&#x52A0;&#x901F;&#x901F;&#x7387;&#xFF1A;PushBetweenAll
+          ```
+    7. &#x52A0;&#x901F;&#x8BE6;&#x60C5;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/accelarate&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;accelarate.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x52A0;&#x901F;&#x8BE6;&#x60C5;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/speed_details&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            `uid:&#x7528;&#x6237;uid`
+        + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+          ```
+          &#x76F4;&#x63A8;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;subordinate_username
+        	&#x76F4;&#x63A8;&#x7528;&#x6237;&#x7B49;&#x7EA7;&#xFF1A;subordinate_grade
+        	&#x76F4;&#x63A8;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x65F6;&#x95F4;&#xFF1A;subordinate_order_time
+        	&#x76F4;&#x63A8;&#x7528;&#x6237;&#x52A0;&#x901F;&#xFF1A;subordinate_rate
+
+        	&#x95F4;&#x63A8;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;lowersubordinate_username
+        	&#x95F4;&#x63A8;&#x7528;&#x6237;&#x7B49;&#x7EA7;&#xFF1A;lowersubordinate_grade
+        	&#x95F4;&#x63A8;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x65F6;&#x95F4;&#xFF1A;lowersubordinate_order_time
+        	&#x95F4;&#x63A8;&#x7528;&#x6237;&#x52A0;&#x901F;&#xFF1A;lowersubordinate_rate
+
+          //&#x6839;&#x636E;&#x63A8;&#x8350;&#x7528;&#x6237;&#x7684;&#x7B49;&#x7EA7;subordinate_grade/lowersubordinate_grade&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;
+          &#x4EA7;&#x54C1;&#x56FE;&#x7247;&#xFF1A;imgType       
+          ```
+    8. &#x500D;&#x5316;&#x8BE6;&#x60C5;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/multiply&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;multiply.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x500D;&#x5316;&#x8BE6;&#x60C5;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/ploidy_details&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            `uid:&#x7528;&#x6237;uid`
+        + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+          ```
+          &#x7528;&#x6237;&#x500D;&#x5316;&#x500D;&#x6570;&#xFF1A;power_multiple
+        	&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x65F6;&#x95F4;&#xFF1A;orders_time
+        	&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x7B2C;&#x51E0;&#x9636;&#x6BB5;&#xFF1A;user_stage
+        	&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x7B49;&#x7EA7;&#xFF1A;user_grade
+
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;subordinate_username
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x65F6;&#x95F4;&#xFF1A;subordinate_order_time
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x7B2C;&#x51E0;&#x9636;&#x6BB5;&#xFF1A;subordinate_stage
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#xFF1A;&#x7B49;&#x7EA7;subordinate_grade
+        	&#x4E0B;&#x7EA7;&#x5177;&#x4F53;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x540D;&#x79F0;&#xFF1A;subordinate_product
+
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;crowdfunding_username
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x65F6;&#x95F4;&#xFF1A;crowdfunding_time
+        	&#x4E0B;&#x7EA7;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x5468;&#x671F;&#xFF1A;crowdfunding_grade
+        	&#x4E0B;&#x7EA7;&#x5177;&#x4F53;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x540D;&#x79F0;&#xFF1A;crowdfunding_product
+
+          //&#x6839;&#x636E;&#x63A8;&#x8350;&#x7528;&#x6237;&#x7684;&#x56FE;&#x7247;&#x7B49;&#x7EA7;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;
+          &#x4EA7;&#x54C1;&#x56FE;&#x7247;&#xFF1A;imgUrl       
+          ```
+    9. &#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/personCenter&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;personCenter.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;&#x4FE1;&#x606F;&#x8BE6;&#x60C5;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/user_details&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            `uid:&#x7528;&#x6237;uid`
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            &#x6635;&#x79F0;&#xFF1A;username
+          	&#x7B49;&#x7EA7;&#xFF1A;grade
+          	&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;wallt_address
+          	&#x5269;&#x4F59;&#x53EF;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x6B21;&#x6570;:surplus_buy
+          	&#x63A8;&#x8350;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EBA;&#x6570;&#x6BD4;&#x4F8B;&#xFF1A;power_number
+          	&#x63A8;&#x8350;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EBA;&#x6570;&#x6BD4;&#x4F8B;&#xFF1A;crowdfunding_number
+          	&#x8D44;&#x4EA7;&#xFF1A;assets
+          	&#x603B;&#x91CF;&#xFF1A;total_quantity
+          	&#x603B;&#x500D;&#x5316;&#xFF1A;total_multiple
+          	&#x5F53;&#x5929;&#x52A0;&#x901F;:PushBetweenAll
+          	&#x5F85;&#x8FD4;&#xFF1A;pending_return_tatal
+          	&#x5DF2;&#x8FD4;&#xFF1A;returned_tatal
+          	&#x53EF;&#x7528;&#xFF1A;can_use_quantity
+          	&#x53EF;&#x63D0;&#xFF1A;can_extract_tatal  
+            //&#x6839;&#x636E;&#x7528;&#x6237;&#x7B49;&#x7EA7;grade&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;
+            &#x7528;&#x6237;&#x7B49;&#x7EA7;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#xFF1A;levelImg     
+            ```
+          + &#x8BF7;&#x6C42;&#x6210;&#x529F;&#xFF1A;
+            &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5C06;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5230;vuex&#x4E2D;&#xFF0C;&#x65B9;&#x4FBF;&#x5176;&#x4ED6;vue&#x7EC4;&#x4EF6;&#x590D;&#x7528;
+        b. &#x63D0;&#x73B0;&#x7533;&#x8BF7;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/cash_withdrawal&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            &#x6570;&#x91CF;&#xFF1A;order_quantity
+            &#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF1A;key_password
+            &#x7528;&#x6237;id&#xFF1A;user_id
+            ```
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            &#x7528;&#x6237;ID&#xFF1A;user_id
+            &#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone        
+            &#x6D41;&#x6C34;&#x53F7;&#xFF1A;serial_number
+            &#x63D0;&#x73B0;&#x65F6;&#x95F4;&#xFF1A;order_time
+            EMT&#x63D0;&#x73B0;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;CashWithdrawal_wallt_address        
+            &#x63D0;&#x73B0;&#x8D2D;&#x4E70;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;order_quantity
+            &#x64CD;&#x4F5C;&#x6807;&#x8BC6;&#x72B6;&#x6001;&#xFF1A;operation  
+            ```
+          + 400&#x72B6;&#x6001;&#x7801;&#xFF1A;
+            axios&#x7684;catch&#x83B7;&#x53D6;error.response.status&#x7684;400&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4E14;&#x7528;&#x63D0;&#x793A;&#x6846;mt-popup&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x63D0;&#x793A;&#x6846;5s&#x540E;&#x6D88;&#x5931;
+
+    10. &#x5145;&#x503C;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/recharge&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;recharge.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x5145;&#x503C;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/company_address/&quot;+uid&apos; &#x3002;uid:&#x7528;&#x6237;uid
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            company_address:  &#x5145;&#x503C;&#x7684;&#x94B1;&#x5305;&#x5730;&#x5740;  
+            ```
+          + &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF1A;
+            &#x5229;&#x7528;qrcode&#x63D2;&#x4EF6;&#xFF0C;&#x5C06;&#x5730;&#x5740;&#x751F;&#x6210;canves&#x4E8C;&#x7EF4;&#x7801;&#xFF0C;&#x518D;&#x5229;&#x7528;canvas.toDataURL(&quot;image/jpg&quot;)&#x5C06;canves&#x683C;&#x5F0F;&#x8F6C;&#x5316;&#x4E3A;img&#x683C;&#x5F0F;
+        *&#x6CE8;&#x610F;&#xFF1A;&#x5145;&#x503C;&#x90E8;&#x5206;&#xFF0C;&#x5305;&#x62EC;&#x7528;&#x6237;&#x5411;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x5145;&#x503C;&#x529F;&#x80FD;&#xFF0C;&#x6682;&#x6CE8;&#x91CA;&#x6B64;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x53D6;&#x6D88;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#xFF0C;&#x5373;&#x53EF;&#x590D;&#x7528;&#x7533;&#x8BF7;&#x529F;&#x80FD;*
+    11. &#x8BA2;&#x5355;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/order&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;order.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x83B7;&#x53D6;&#x8D2D;&#x5165;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x83B7;&#x53D6;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x3001;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;
+            &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;&apos;&quot;/renquan_check/&quot;+uid&apos;&#x3002;uid:&#x7528;&#x6237;uid
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+              &#x8BA2;&#x5355;&#x53F7;&#xFF1A;&apos;serial_number&apos;,   
+              &#x4EA7;&#x54C1;&#x540D;&#x79F0;&#xFF1A;&apos;order_product&apos;,
+              &#x4EA7;&#x54C1;&#x6570;&#x91CF;:&apos;order_quantity&apos;,
+              &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;&apos;order_time&apos;
+              &#x5468;&#x671F;&#xFF1A;&apos;zhouqi&apos;
+              &#x56FE;&#x7247;&#xFF1A;&apos;image_url&apos;
+              &#x72B6;&#x6001;&#xFF1A;&apos;operation&apos;
+              //&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;order_product&#x5B57;&#x6BB5;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;
+              &#x7B49;&#x7EA7;&#x56FE;&#x7247;&#xFF1A;levelImg
+              &#x4EA7;&#x54C1;&#x56FE;&#x7247;&#xFF1A;productImg
+              ```
+            - &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF1A;
+                &#x83B7;&#x5F97;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x540E;&#x5FC5;&#x987B;&#x548C;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+            &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF1A;&apos;&quot;/zhongchou_check/&quot;+uid&apos; &#x3002;uid:&#x7528;&#x6237;uid
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+              &#x8BA2;&#x5355;&#x53F7;&#xFF1A;&apos;serial_number&apos;,
+              &#x4F17;&#x7B79;&#x5468;&#x671F;&#xFF1A;&apos;order_product&apos;,
+              &#x4F17;&#x7B79;&#x6570;&#x91CF;&#xFF1A;&apos;order_quantity&apos;,
+              &#x4F17;&#x7B79;&#x65F6;&#x95F4;&#xFF1A;&apos;order_time&apos;&#xFF0C;
+              &#x5468;&#x671F;&#xFF1A;&apos;zhouqi&apos;
+              &#x56FE;&#x7247;&#xFF1A;&apos;image_url&apos;
+              &#x72B6;&#x6001;&#xFF1A;&apos;operation&apos;
+              //&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;order_product&#x5B57;&#x6BB5;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;
+              &#x4EA7;&#x54C1;&#x56FE;&#x7247;&#xFF1A;productImg
+              ```
+            - &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF1A;
+                &#x83B7;&#x5F97;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x540E;&#x5FC5;&#x987B;&#x548C;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+      *&#x6CE8;&#x610F;&#xFF1A;getPurchaseOrder()&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x4E70;&#x5165;&#x8BA2;&#x5355;&#xFF0C;&#x5206;&#x522B;&#x83B7;&#x53D6;&#x8BA4;&#x6743;&#x3001;&#x4F17;&#x7B79;&#x8BA2;&#x5355;&#xFF0C;&#x518D;&#x505A;&#x5408;&#x5E76;&#x4E24;&#x4E2A;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#xFF0C;&#x6309;&#x65F6;&#x95F4;time&#x6392;&#x5E8F;&#x663E;&#x793A;*
+        b. &#x83B7;&#x53D6;&#x63D0;&#x73B0;&#x8BA2;&#x5355;&#xFF1A;
+        + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/tixian_check/&quot;+uid&apos; &#x3002;uid:&#x7528;&#x6237;uid
+        + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+        + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+          ```
+          &#x8BA2;&#x5355;&#x53F7;&#xFF1A;&apos;serial_number&apos;,
+          &#x63D0;&#x73B0;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;&apos;CashWithdrawal_wallt_address&apos;,
+          &#x63D0;&#x73B0;&#x6570;&#x91CF;&#xFF1A;&apos;order_quantity&apos;,
+          &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;&apos;order_time&apos;,
+          &#x72B6;&#x6001;&#xFF1A;&apos;operation&apos;  
+          ```
+        c. &#x83B7;&#x53D6;&#x5145;&#x503C;&#x7684;&#x8BA2;&#x5355;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x4E8C;&#x7EF4;&#x7801;&#x5145;&#x503C;&#x7684;&#x8BA2;&#x5355;&#x3001;&#x4EE3;&#x7406;&#x5546;&#x8F6C;&#x8D26;&#x7684;&#x8BA2;&#x5355;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;
+            &#x4E8C;&#x7EF4;&#x7801;&#x5145;&#x503C;&#xFF1A;&apos;&quot;/chongzhi_check/&quot;+uid&apos;&#x3002;uid:&#x7528;&#x6237;uid
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+              &#x8BA2;&#x5355;&#x53F7;&#xFF1A;&apos;serial_number&apos;,
+              &#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;&apos;CashWithdrawal_wallt_address&apos;,
+              &#x5145;&#x503C;&#x6570;&#x91CF;&#xFF1A;&apos;order_quantity&apos;,
+              &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;&apos;order_time&apos;,
+              &#x72B6;&#x6001;&#xFF1A;&apos;operation&apos;
+              ```
+            - &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF1A;
+                &#x83B7;&#x5F97;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x540E;&#x5FC5;&#x987B;&#x548C;&#x4EE3;&#x7406;&#x5546;&#x8F6C;&#x8D26;&#x7684;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+            &#x4EE3;&#x7406;&#x5546;&#x8F6C;&#x8D26;&#x5145;&#x503C;&#xFF1A;&apos;&quot;/user_agent_chongzhi_check/&quot;+uid&apos; &#x3002;uid:&#x7528;&#x6237;uid
+            - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+            - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              ```
+              &#x8BA2;&#x5355;&#x53F7;&#xFF1A;&apos;serial_number&apos;,
+              &#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;&apos;CashWithdrawal_wallt_address&apos;,
+              &#x5145;&#x503C;&#x6570;&#x91CF;&#xFF1A;&apos;order_quantity&apos;,
+              &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;&apos;order_time&apos;,
+              &#x72B6;&#x6001;&#xFF1A;&apos;operation&apos;
+              ```
+            - &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x540E;&#xFF1A;
+                &#x83B7;&#x5F97;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x540E;&#x5FC5;&#x987B;&#x548C;&#x7528;&#x6237;&#x4E8C;&#x7EF4;&#x7801;&#x5145;&#x503C;&#x7684;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+      *&#x6CE8;&#x610F;&#xFF1A;getRechargeOrder()&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x5145;&#x503C;&#x8BA2;&#x5355;&#xFF0C;&#x5206;&#x522B;&#x83B7;&#x53D6;&#x4E8C;&#x7EF4;&#x7801;&#x5145;&#x503C;&#x3001;&#x4EE3;&#x7406;&#x5546;&#x8F6C;&#x8D26;&#x5145;&#x503C;&#x7684;&#x8BA2;&#x5355;&#xFF0C;&#x518D;&#x505A;&#x5408;&#x5E76;&#x4E24;&#x4E2A;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#xFF0C;&#x6309;&#x65F6;&#x95F4;time&#x6392;&#x5E8F;&#x663E;&#x793A;*
+    12. EMT&#x94B1;&#x5305;&#x5730;&#x5740;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/walletAddress&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;walletAddress.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x8BBE;&#x7F6E;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/binding_wallt&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            wallt_address:&quot;&quot;,//&#x94B1;&#x5305;&#x5730;&#x5740;
+            confirm_wallt_address:&quot;&quot;,//&#x786E;&#x8BA4;&#x94B1;&#x5305;&#x5730;&#x5740;
+            payment_password:&quot;&quot;,//&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+            ```
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            status_end:&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x8BBE;&#x7F6E;&#x6210;&#x529F;
+            ```
+    13. &#x9000;&#x51FA;&#x767B;&#x5F55;
+        *&#x9000;&#x51FA;&#x767B;&#x5F55;&#x529F;&#x80FD;&#x5728;&#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;&#x9875;&#x9762;(personCenter.vue),&#x6B64;&#x529F;&#x80FD;&#x65E0;&#x9700;&#x53D1;&#x9001;ajax&#x8BF7;&#x6C42;&#xFF0C;&#x53EA;&#x9700;&#x5C06;vuex&#x4E2D;&#x7684;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x6539;&#x4E3A;false&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x6E05;&#x7A7A;&#x5373;&#x53EF;*
+ &#x4E8C;&#x3001; &#x4EE3;&#x7406;&#x5546;&#x7BA1;&#x7406;
+    1. &#x767B;&#x5F55;&#x9875;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/agentLogin&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;agentLogin.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x4EE3;&#x7406;&#x5546;&#x767B;&#x5F55;&#x8BF7;&#x6C42;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_login&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            agent_uphone: &quot;&quot;,//&#x624B;&#x673A;&#x53F7;
+            agent_password: &quot;&quot;,//&#x767B;&#x5F55;&#x5BC6;&#x7801;
+            agent_login_equipment:&quot;&quot;,//&#x767B;&#x5F55;&#x8BBE;&#x5907;
+            agent_intranet_ip:&quot;&quot;,//&#x5185;&#x7F51;ip
+            agent_extranet_ip:&quot;&quot;,//&#x5916;&#x7F51;ip
+            ```
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            status_end:&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#xFF0C;ok&#x5219;&#x8868;&#x793A;&#x767B;&#x5F55;&#x6210;&#x529F;
+            ```
+          + &#x767B;&#x5F55;&#x6210;&#x529F;&#x540E;&#xFF1A;
+            &#x5C06;vuex&#x4E2D;&#x7684;&#x4EE3;&#x7406;&#x5546;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x6539;&#x4E3A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x5C06;&#x4EE3;&#x7406;&#x5546;&#x4FE1;&#x606F;agentInfo&#xFF1A;&#x4EE3;&#x7406;&#x5546;&#x540D;&#x79F0;agentInfo.agent_name&#xFF0C;&#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;agentInfo.agent_quantity&#xFF0C;&#x4EE3;&#x7406;&#x5546;EMT&#x6570;&#x91CF;agentInfo.agent_uphone&#x5B58;&#x50A8;&#x53EA;vuex&#xFF0C;&#x518D;&#x8DF3;&#x8F6C;&#x81F3;&apos;/agentHome&apos;&#xFF0C;&#x4EE3;&#x7406;&#x5546;&#x9996;&#x9875;
+    2. &#x4EE3;&#x7406;&#x5546;&#x9996;&#x9875;&#xFF1A;
+        * &#x8DEF;&#x7531;&#xFF1A;&apos;/agentHome&apos;
+        * &#x7EC4;&#x4EF6;&#xFF1A;agentHome.vue
+        * ajax&#x8BF7;&#x6C42;&#xFF1A;
+          a. &#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#xFF1A;
+            + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/send_sms&apos;
+            + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+            + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `uphone:&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x83B7;&#x5F97;&#xFF0C;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;`
+          b. &#x83B7;&#x53D6;&#x4EE3;&#x7406;&#x5546;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#xFF1A;
+            *&#x76F4;&#x63A5;&#x4ECE;vuex&#x4E2D;&#x83B7;&#x53D6;&#x4EE3;&#x7406;&#x5546;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#xFF0C;$store.state.agentInfo&#x5219;&#x5305;&#x62EC;&#x4EE3;&#x7406;&#x5546;&#x540D;&#x79F0;&#xFF0C;&#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x4EE3;&#x7406;&#x5546;EMT&#x8D44;&#x4EA7;*
+          c. &#x8BBE;&#x7F6E;&#x767B;&#x5F55;&#x5BC6;&#x7801;/&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF0C;setting(type)&#xFF0C;type&#xFF1A;&#x8BBE;&#x7F6E;&#x7684;&#x5BC6;&#x7801;&#x7C7B;&#x578B;&#xFF0C;0&#xFF1A;&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF0C;1&#xFF1A;&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;
+                &#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF1A;&apos;/agen_login_secret&apos;
+                &#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF1A;&apos;/agen_payment_secret&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                ```
+                login:{//&#x767B;&#x5F55;&#x5BC6;&#x7801;&#x5B57;&#x6BB5;
+                    agent_uphone:&quot;&quot;,//&#x624B;&#x673A;&#x53F7;
+                    code:&quot;&quot;,//&#x9A8C;&#x8BC1;&#x7801;
+                    // old_agent_password:&quot;&quot;,//&#x539F;&#x5BC6;&#x7801;
+                    new_agent_password:&quot;&quot;,//&#x65B0;&#x5BC6;&#x7801;
+                    confirm_new_agent_password:&quot;&quot;,//&#x91CD;&#x590D;&#x65B0;&#x5BC6;&#x7801;
+                },
+                pay:{//&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#x5B57;&#x6BB5;
+                    agent_uphone:&quot;&quot;,//&#x624B;&#x673A;&#x53F7;
+                    code:&quot;&quot;,//&#x9A8C;&#x8BC1;&#x7801;
+                    payment_agent_password:&quot;&quot;,//&#x5BC6;&#x7801;
+                    confirm_payment_agent_password:&quot;&quot;,//&#x91CD;&#x590D;&#x65B0;&#x5BC6;&#x7801;
+                },
+                ```
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                *&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ok&#xFF0C;&#x5219;&#x8868;&#x793A;&#x8BBE;&#x7F6E;&#x6210;&#x529F;*
+          d. &#x4FEE;&#x6539;&#x624B;&#x673A;&#x53F7;&#xFF1A;
+            + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/change_uphone&apos;
+            + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+            + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              ```
+                uphone://&#x65B0;&#x624B;&#x673A;&#x53F7;
+                account_number://&#x4EE3;&#x7406;&#x5546;&#x65E7;&#x624B;&#x673A;&#x53F7;
+              ```
+            + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+              *&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ok&#xFF0C;&#x5219;&#x8868;&#x793A;&#x8BBE;&#x7F6E;&#x6210;&#x529F;*
+            + &#x629B;&#x51FA;&#x9519;&#x8BEF;&#xFF1A;
+              *&#x63A5;&#x6536;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x5F39;&#x51FA;&#x6846;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x63D0;&#x793A;*
+    3. EMT&#x7533;&#x8BF7;&#x7BA1;&#x7406;&#xFF1A;
+        * &#x7533;&#x8BF7;EMT
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/applyEMT&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;applyEMT.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x7533;&#x8BF7;EMT&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_recharge&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                ```
+                allocate_quantity:&quot;&quot;,//&#x7533;&#x8BF7;EMT&#x6570;&#x91CF;
+                key_password:&quot;&quot;,//&#x5BC6;&#x7801;
+                ```
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                allocate_quantity&#xFF1A;&#x7533;&#x8BF7;&#x6570;&#x91CF;&#xFF0C;&gt;0&#x5219;&#x7533;&#x8BF7;&#x6210;&#x529F;
+                ```
+              - 400&#x72B6;&#x6001;&#x7801;&#xFF1A;
+                axios&#x7684;catch&#x83B7;&#x53D6;error.response.status&#x7684;400&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4E14;&#x7528;&#x63D0;&#x793A;&#x6846;mt-popup&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x63D0;&#x793A;&#x6846;5s&#x540E;&#x6D88;&#x5931;
+        * &#x6307;&#x5B9A;&#x8F6C;&#x8D26;
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/transferAccount&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;transferAccount.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x6307;&#x5B9A;&#x8F6C;&#x8D26;&#x7ED9;&#x7528;&#x6237;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_transfer&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                ```
+                user_uphone://&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;
+                agent_uphone://&#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;
+                apply_quantity://&#x7533;&#x8BF7;&#x6570;&#x91CF;
+                key_password://&#x652F;&#x4ED8;&#x5BC6;&#x7801;
+                ```
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                agent_code&#xFF1A;&#x503C;&#x4E3A;&apos;&#x8F6C;&#x8D26;&#x6210;&#x529F;&apos;&#x5219;&#x8868;&#x793A;&#x6210;&#x529F;&#x72B6;&#x6001;
+                ```
+        * EMT&#x7533;&#x8BF7;&#x5BA1;&#x6838;
+          *&#x6CE8;&#x610F;&#xFF1A;&#x7531;&#x4E8E;&#x7528;&#x6237;&#x76F4;&#x63A5;&#x5411;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x7684;&#x529F;&#x80FD;&#x6682;&#x65F6;&#x53D6;&#x6D88;&#xFF0C;&#x6240;&#x4EE5;&#x663E;&#x793A;&#x7528;&#x6237;&#x5411;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x7684;&#x4FE1;&#x606F;&#x6682;&#x65F6;&#x53D6;&#x6D88;*
+    4. &#x7533;&#x8BF7;&#x72B6;&#x6001;
+      *&#x6CE8;&#x610F;&#xFF1A;&#x7531;&#x4E8E;&#x7528;&#x6237;&#x76F4;&#x63A5;&#x5411;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x7684;&#x529F;&#x80FD;&#x6682;&#x65F6;&#x53D6;&#x6D88;&#xFF0C;&#x6240;&#x4EE5;&#x663E;&#x793A;&#x5386;&#x53F2;&#x7528;&#x6237;&#x5411;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x7684;&#x4FE1;&#x606F;&#x6682;&#x65F6;&#x53D6;&#x6D88;*
+    5. &#x4EE3;&#x7406;&#x5546;&#x8D26;&#x672C;
+      + &#x8DEF;&#x7531;&#xFF1A;&apos;/accountBook&apos;
+      + &#x7EC4;&#x4EF6;&#xFF1A;accountBook.vue
+      + ajax&#x8BF7;&#x6C42;&#xFF1A;
+        a. &#x6307;&#x5B9A;&#x8F6C;&#x8D26;&#x7ED9;&#x7528;&#x6237;&#xFF1A;
+          - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/agent_Account_book/&quot;+agent_uphone&apos;&#x3002;agent_uphone&#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;
+          - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+          - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            &#x4EE3;&#x7406;&#x5546;&#x53EF;&#x8F6C;EMT&#x6570;&#x91CF;&#xFF1A;&quot;agent_quantity&quot;
+            &#x4EE3;&#x7406;&#x5546;&#x5DF2;&#x8F6C;EMT&#x6570;&#x91CF;&#xFF1A;&apos;agent_turned_quantity&apos;
+            ```
+ &#x4E09;&#x3001; &#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;
+    1. &#x7BA1;&#x7406;&#x5458;&#x767B;&#x5F55;&#xFF1A;
+      * &#x8DEF;&#x7531;&#xFF1A;&apos;/adminLogin&apos;
+      * &#x7EC4;&#x4EF6;&#xFF1A;adminLogin.vue
+      * ajax&#x8BF7;&#x6C42;:
+        a. &#x7BA1;&#x7406;&#x5458;&#x767B;&#x5F55;&#x8BF7;&#x6C42;&#xFF1A;
+          + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/Super_Manager_login&apos;
+          + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+          + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+            ```
+            &#x624B;&#x673A;&#x53F7;:account_number
+          	&#x5BC6;&#x7801;&#xFF1A;password
+          	&#x5916;&#x7F51;ip&#xFF1A;ip_out
+          	&#x5185;&#x7F51;ip:ip_in
+          	&#x767B;&#x5F55;&#x8BBE;&#x5907;&#xFF1A;equipment
+            ```
+          + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+            ```
+            &#x8FD4;&#x56DE;&apos;&#x767B;&#x9646;&#x6210;&#x529F;&apos;&#x5219;&#x8868;&#x793A;&#x767B;&#x5F55;&#x72B6;&#x6001;
+            ```
+          + &#x767B;&#x5F55;&#x6210;&#x529F;&#x540E;&#xFF1A;
+            &#x5C06;vuex&#x4E2D;&#x7684;&#x7BA1;&#x7406;&#x5458;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x6539;&#x4E3A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x5C06;&#x7BA1;&#x7406;&#x5458;&#x4FE1;&#x606F;account_number&#xFF1A;&#x7BA1;&#x7406;&#x5458;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x5B58;&#x50A8;&#x81F3;vuex&#xFF0C;&#x518D;&#x8DF3;&#x8F6C;&#x81F3;&apos;/admin&apos;&#xFF0C;&#x7BA1;&#x7406;&#x5458;&#x9996;&#x9875;
+    2. &#x4EE3;&#x7406;&#x5546;&#x7BA1;&#x7406;&#xFF1A;
+        * &#x5F00;&#x901A;&#x4EE3;&#x7406;
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/openUp&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;openUp.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x5F00;&#x901A;&#x4EE3;&#x7406;&#x5546;&#x8D26;&#x6237;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_establish&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                ```
+                agent_name:&quot;&quot;,//&#x4EE3;&#x7406;&#x5546;&#x7528;&#x6237;&#x540D;
+                agent_uphone:&quot;&quot;,//
+                key_password:&quot;&quot;,//&#x4EE3;&#x7406;&#x5546;&#x767B;&#x5F55;&#x5BC6;&#x7801;
+                login_password:&quot;&quot;,//&#x786E;&#x8BA4;&#x4EE3;&#x7406;&#x5546;&#x5BC6;&#x7801;
+                ```
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                `operation&#xFF1A;&#x8FDB;&#x884C;&#x4E2D;&#xFF0C;&#x8868;&#x793A;&#x5F00;&#x901A;&#x6210;&#x529F;`
+              - 400&#x72B6;&#x6001;&#x7801;&#xFF1A;
+                axios&#x7684;catch&#x83B7;&#x53D6;error.response.status&#x7684;400&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4E14;&#x7528;&#x63D0;&#x793A;&#x6846;mt-popup&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x63D0;&#x793A;&#x6846;5s&#x540E;&#x6D88;&#x5931;
+        * &#x7BA1;&#x7406;&#x4EE3;&#x7406;
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/manageAgent&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;manageAgent.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x4EE3;&#x7406;&#x5546;&#x8D26;&#x6237;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_operation_show&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;agent_uphone
+                &#x4EE3;&#x7406;&#x5546;&#x540D;&#x79F0;&#xFF1A;agent_name
+                &#x4EE3;&#x7406;&#x5546;&#x751F;&#x6210;&#x65F6;&#x95F4;&#xFF1A;agent_time
+                &#x4EE3;&#x7406;&#x5546;&#x72B6;&#x6001;&#xFF1A;operation
+                ```
+            b. &#x6682;&#x505C;&#x4EE3;&#x7406;&#x5546;&#x4E1A;&#x52A1;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_suspend&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                ```
+                agent_uphone&#xFF1A;&#x9009;&#x62E9;&#x7684;&#x4EE3;&#x7406;&#x5546;&#xFF0C;&#x591A;&#x9009;&#xFF0C;&#x4EE5;&#x5217;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5982;[&apos;13412121313&apos;,&apos;13412121314&apos;]
+                ```
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                `&apos;&#x5DF2;&#x6682;&#x505C;&apos;,&#x8868;&#x793A;&#x6682;&#x505C;&#x6210;&#x529F;`
+              *&#x6CE8;&#x610F;&#xFF1A;&#x6682;&#x505C;&#x540E;&#xFF0C;&#x5237;&#x65B0;&#x4EE3;&#x7406;&#x5546;&#x8D26;&#x6237;&#x4FE1;&#x606F;*
+        * EMT&#x7533;&#x8BF7;&#x5BA1;&#x6838;&#xFF1A;
+            + &#x5F85;&#x5BA1;&#x6279;
+              - &#x8DEF;&#x7531;&#xFF1A;&apos;/agentApplyEMT&apos;
+              - &#x7EC4;&#x4EF6;&#xFF1A;agentApplyEMT.vue
+              - ajax&#x8BF7;&#x6C42;&#xFF1A;
+                a. &#x83B7;&#x53D6;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x5BA1;&#x6838;&#x5217;&#x8868;&#xFF1A;
+                  + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_apply_show&apos;
+                  + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+                  + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                    ```
+                    &#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;&#xFF1A;agent_uphone
+                    &#x4EE3;&#x7406;&#x5546;&#x8D26;&#x53F7;&#xFF1A;account_number
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x65F6;&#x95F4;&#xFF1A;allocate_time
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x6570;&#x91CF;&#xFF1A;allocate_quantity
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x72B6;&#x6001;&#xFF1A;operation
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x7684;&#x6D41;&#x6C34;&#x5355;&#x53F7;&#xFF1A;serial_number
+                    ```
+                b. &#x540C;&#x610F;&#x4EE3;&#x7406;&#x5546;EMT&#x7684;&#x7533;&#x8BF7;
+                  + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_apply_agree&apos;
+                  + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+                  + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                    ```
+                    serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;
+                    allocate_quantity,//&#x7533;&#x8BF7;&#x6570;&#x91CF;
+                    agent_uphone,//&#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;
+                    ```
+                  + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                    ```
+                    &apos;&#x5DF2;&#x540C;&#x610F;&apos;&#x8868;&#x793A;&#x540C;&#x610F;&#x6210;&#x529F;
+                    ```
+                c. &#x62D2;&#x7EDD;&#x4EE3;&#x7406;&#x5546;EMT&#x7684;&#x7533;&#x8BF7;
+                  + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_apply_refuse&apos;
+                  + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+                  + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+                    ```
+                    serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;
+                    ```
+                  + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                    ```
+                    &apos;&#x5DF2;&#x62D2;&#x7EDD;&apos;&#x8868;&#x793A;&#x62D2;&#x7EDD;&#x6210;&#x529F;
+                    ```
+            + &#x5386;&#x53F2;&#x5BA1;&#x6279;
+              - &#x8DEF;&#x7531;&#xFF1A;&apos;/historyApply&apos;
+              - &#x7EC4;&#x4EF6;&#xFF1A;historyApply.vue
+              - ajax&#x8BF7;&#x6C42;&#xFF1A;
+                a. &#x83B7;&#x53D6;&#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;EMT&#x5386;&#x53F2;&#x5BA1;&#x6838;&#x5217;&#x8868;&#xFF1A;
+                  + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/agent_history_show&apos;
+                  + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+                  + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                    ```
+                    &#x4EE3;&#x7406;&#x5546;&#x624B;&#x673A;&#x53F7;&#xFF1A;agent_uphone
+                    &#x4EE3;&#x7406;&#x5546;&#x8D26;&#x53F7;&#xFF1A;account_number
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x65F6;&#x95F4;&#xFF1A;allocate_time
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x6570;&#x91CF;&#xFF1A;allocate_quantity
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x72B6;&#x6001;&#xFF1A;operation
+                    &#x4EE3;&#x7406;&#x5546;&#x7533;&#x8BF7;&#x7684;&#x6D41;&#x6C34;&#x5355;&#x53F7;&#xFF1A;serial_number
+                    ```
+    3. &#x5BA2;&#x6237;&#x7BA1;&#x7406;&#xFF1A;
+        * &#x5BA2;&#x6237;&#x4FE1;&#x606F;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/userInfo&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;userInfo.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x5217;&#x8868;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_admin_user&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;username
+                &#x7528;&#x6237;&#x94B1;&#x5305;&#x5730;&#x5740;:wallt_address
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;:power_grade
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x6B21;&#x6570;&#xFF1A;crowdfunding_count
+                ```
+        * &#x8BA4;&#x6743;&#x660E;&#x7EC6;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/rightDetails&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;rightDetails.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x8BA4;&#x6743;&#x660E;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_admin_power&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;username
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;power_grade
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;power_tiome
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;power_quantity
+                ```
+        * &#x4F17;&#x7B79;&#x660E;&#x7EC6;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/crowdfundingDetails&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;crowdfundingDetails.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x4F17;&#x7B79;&#x660E;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_admin_crowdfunding&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;username
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#xFF1A;crowdfunding_product
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;crowdfunding_quantity
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;crowdfunding_time
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x5DF2;&#x8FD4;&#x6570;&#x91CF;&#xFF1A;crowdfunding_returned_quantity
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x5F85;&#x8FD4;&#x6570;&#x91CF;&#xFF1A;crowdfunding_pending_return_quantity
+                ```        
+        * &#x53D1;&#x5C55;&#x660E;&#x7EC6;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/developDetails&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;developDetails.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x53D1;&#x5C55;&#x660E;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_admin_spread&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;username
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#xFF1A;power_grade
+                &#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;power_quantity
+                &#x7528;&#x6237;&#x76F4;&#x63A8;&#x4EBA;&#x6570;&#xFF1A;Subordinate
+                &#x7528;&#x6237;&#x95F4;&#x63A8;&#x4EBA;&#x6570;&#xFF1A;LowerSubordinate
+                ```      
+        * &#x63A8;&#x8350;&#x660E;&#x7EC6;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;&quot;/recommendDetails/:userPhone&quot;&apos;&#xFF0C;userPhone&#xFF0C;&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;
+          - &#x7EC4;&#x4EF6;&#xFF1A;recommendDetails.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x63A8;&#x8350;&#x660E;&#x7EC6;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_spread_details&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `uphone:&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;`
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;subordinate_uphone
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;subordinate_username
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x7B49;&#x7EA7;&#xFF1A;subordinate_grade
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x88AB;&#x63A8;&#x8350;&#x6CE8;&#x518C;&#x65F6;&#x95F4;&#xFF1A;subordinate_time
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x91CF;&#xFF1A;subordinate_quantity
+                &#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x4E0E;&#x8BE5;&#x7528;&#x6237;&#x7684;&#x5173;&#x7CFB;&#xFF1A;&#x76F4;&#x63A8;
+
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;lowersubordinate_uphone
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;lowersubordinate_username
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x7B49;&#x7EA7;&#xFF1A;lowersubordinate_grade
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x88AB;&#x63A8;&#x8350;&#x6CE8;&#x518C;&#x65F6;&#x95F4;&#xFF1A;lowersubordinate_time
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x8D2D;&#x4E70;&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7684;&#x91CF;&#xFF1A;lowersubordinate_quantity
+                &#x4E0B;&#x4E0B;&#x7EA7;&#x7528;&#x6237;&#x4E0E;&#x8BE5;&#x7528;&#x6237;&#x7684;&#x5173;&#x7CFB;&#xFF1A;&#x95F4;&#x63A8;
+                ```      
+        * &#x5BA2;&#x6237;&#x98CE;&#x63A7;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/risk&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;risk.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_user_control&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;user_uphone
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;user_username
+                &#x7528;&#x6237;&#x6CE8;&#x518C;&#x65F6;&#x95F4;&#xFF1A;user_time
+                &#x7528;&#x6237;&#x72B6;&#x6001;&#xFF1B;user_operation
+                ```
+            b. &#x98CE;&#x63A7;&#x7528;&#x6237;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_user_change_operation&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              + &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              ```
+              &apos;operation&apos;:&#x98CE;&#x63A7;&#x7C7B;&#x578B;&#xFF0C;&#x503C;&#xFF1A;&apos;&#x6682;&#x505C;&apos;&#x3001;&apos;&#x51BB;&#x7ED3;&apos;&#x3001;&apos;&#x6062;&#x590D;&apos;,
+              &apos;uphone&apos;:&#x9009;&#x53D6;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x591A;&#x9009;&#xFF0C;&#x4EE5;&#x5217;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5982;[&apos;13412121313&apos;,&apos;13412121314&apos;]
+              ```
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;user_uphone
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;user_username
+                &#x7528;&#x6237;&#x6CE8;&#x518C;&#x65F6;&#x95F4;&#xFF1A;user_time
+                &#x7528;&#x6237;&#x72B6;&#x6001;&#xFF1B;user_operation
+                //&#x8FD4;&#x56DE;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;&#x7528;&#x6237;&#x4E2A;&#x6570;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x98CE;&#x63A7;&#x6210;&#x529F;
+                ```        
+    4. &#x5E73;&#x53F0;&#x6570;&#x636E;&#x7BA1;&#x7406;&#xFF1A;
+        * EMT&#x8BA4;&#x6743;&#x6570;&#x636E;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/emtRight&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;emtRight.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;EMT&#x8BA4;&#x6743;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_power&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;user_uphone
+                &#x7528;&#x6237;&#x6635;&#x79F0;&#xFF1A;user_username
+                &#x7528;&#x6237;&#x6CE8;&#x518C;&#x65F6;&#x95F4;&#xFF1A;user_time
+                &#x7528;&#x6237;&#x72B6;&#x6001;&#xFF1B;user_operation
+                ```
+        * EMT&#x4F17;&#x7B79;&#x6570;&#x636E;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/emtCrowdfunding&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;emtCrowdfunding.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;EMT&#x4F17;&#x7B79;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x4FE1;&#x606F;&#xFF1A;
+              + &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_crowdfunding&apos;
+              + &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              + &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                orders_qiantity_total:&#x4EA7;&#x54C1;&#x6570;&#x91CF;,
+       	        product_name:&#x4EA7;&#x54C1;&#x540D;&#x79F0;
+                ```
+        * &#x5BA2;&#x6237;&#x5206;&#x5E03;&#x7BA1;&#x7406;
+          - &#x8DEF;&#x7531;&#xFF1A;&apos;/userDistribution&apos;
+          - &#x7EC4;&#x4EF6;&#xFF1A;userDistribution.vue
+          - ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x5BA2;&#x6237;&#x5206;&#x5E03;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#x4FE1;&#x606F;&#xFF1A;**&#x6682;&#x672A;&#x5B8C;&#x6210;**
+    5. &#x4EA7;&#x54C1;&#x7BA1;&#x7406;&#xFF1A;**&#x672A;&#x5B8C;&#x6210;**
+        * &#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x7BA1;&#x7406;
+        * &#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x7BA1;&#x7406;
+    6. &#x8D22;&#x52A1;&#x7BA1;&#x7406;&#xFF1A;
+        * &#x63D0;&#x53D6;EMT&#x7533;&#x8BF7;&#x5BA1;&#x6279;
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/auditWithdraw&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;auditWithdraw.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;&#x7533;&#x8BF7;EMT&#x63D0;&#x73B0;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone&#xFF0C;
+                &#x8BA2;&#x5355;&#x6D41;&#x6C34;&#x53F7;&#xFF1A;serial_number&#xFF0C;
+                &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;order_time&#xFF0C;
+                &#x63D0;&#x73B0;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;CashWithdrawal_wallt_address&#xFF0C;
+                &#x63D0;&#x73B0;&#x6570;&#x91CF;&#xFF1A;order_quantity&#xFF0C;
+                &#x64CD;&#x4F5C;&#x6807;&#x8BC6;&#xFF1A;operation
+                ```
+            b. &#x540C;&#x610F;&#x63D0;&#x73B0;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal_Agree&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;`
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &apos;&#x5DF2;&#x540C;&#x610F;&apos;&#x8868;&#x793A;&#x540C;&#x610F;&#x6210;&#x529F;
+                ```
+            c. &#x62D2;&#x7EDD;&#x63D0;&#x73B0;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal_refuze&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;`
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &apos;&#x5DF2;&#x62D2;&#x7EDD;&apos;&#x8868;&#x793A;&#x62D2;&#x7EDD;&#x6210;&#x529F;
+                ```
+            d. &#x4E00;&#x952E;&#x540C;&#x610F;&#x63D0;&#x73B0;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal_Agrees&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;&#xFF0C;&#x591A;&#x9009;&#xFF0C;&#x4EE5;&#x5217;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5982;[&apos;2019021407472220190125120223458320TT440300&apos;,&apos;2019021415335420190126150300480236TT440300&apos;]`
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &apos;&#x5DF2;&#x540C;&#x610F;&apos;&#x8868;&#x793A;&#x540C;&#x610F;&#x6210;&#x529F;
+                ```
+            e. &#x4E00;&#x952E;&#x62D2;&#x7EDD;&#x63D0;&#x73B0;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal_refuzes&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;post
+              - &#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;
+              `serial_number,//&#x6D41;&#x6C34;&#x5355;&#x53F7;&#xFF0C;&#x591A;&#x9009;&#xFF0C;&#x4EE5;&#x5217;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5982;[&apos;2019021407472220190125120223458320TT440300&apos;,&apos;2019021415335420190126150300480236TT440300&apos;]`
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &apos;&#x5DF2;&#x62D2;&#x7EDD;&apos;&#x8868;&#x793A;&#x62D2;&#x7EDD;&#x6210;&#x529F;
+                ```
+        * &#x5386;&#x53F2;&#x5BA1;&#x6279;&#x67E5;&#x8BE2;
+          + &#x8DEF;&#x7531;&#xFF1A;&apos;/historyAudit&apos;
+          + &#x7EC4;&#x4EF6;&#xFF1A;historyAudit.vue
+          + ajax&#x8BF7;&#x6C42;&#xFF1A;
+            a. &#x83B7;&#x53D6;EMT&#x63D0;&#x73B0;&#x8BB0;&#x5F55;&#x7684;&#x5386;&#x53F2;&#x4FE1;&#x606F;&#xFF1A;
+              - &#x63A5;&#x53E3;&#x8DEF;&#x7531;&#xFF1A;&apos;/super_Cash_withdrawal_history&apos;
+              - &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A;get
+              - &#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#xFF1A;
+                ```
+                &#x624B;&#x673A;&#x53F7;&#x7801;&#xFF1A;uphone&#xFF0C;
+                &#x8BA2;&#x5355;&#x6D41;&#x6C34;&#x53F7;&#xFF1A;serial_number&#xFF0C;
+                &#x4E0B;&#x5355;&#x65F6;&#x95F4;&#xFF1A;order_time&#xFF0C;
+                &#x63D0;&#x73B0;&#x94B1;&#x5305;&#x5730;&#x5740;&#xFF1A;CashWithdrawal_wallt_address&#xFF0C;
+                &#x63D0;&#x73B0;&#x6570;&#x91CF;&#xFF1A;order_quantity&#xFF0C;
+                &#x64CD;&#x4F5C;&#x6807;&#x8BC6;&#xFF1A;operation
+                ```
+</pre>
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AEbug%E6%B1%87%E6%80%BB%E5%8F%8A%E9%83%A8%E5%88%86%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%80%BB%E7%BB%93">&#x9879;&#x76EE;BUG&#x6C47;&#x603B;&#x53CA;&#x90E8;&#x5206;&#x5E38;&#x89C1;&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x603B;&#x7ED3;</h3>
+
+<p>&#x4E00;&#x3001;&#x524D;&#x7AEF;&#xFF1A;<br>
+1. &#x8DE8;&#x57DF;&#x95EE;&#x9898;&#xFF1A;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x5668;</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>XMLHttpRequest cannot load http://localhost:8080/. No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://localhost:8080/&apos; is therefore not allowed access.
+</code></pre><p>&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF1A;<br>
+&#x524D;&#x7AEF;&#x90E8;&#x5206;&#x505A;&#x4EE5;&#x4E0B;&#x5904;&#x7406;&#x5373;&#x53EF;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//&#x5728;/config/index.js&#x4E2D;&#xFF1A;
+module.exports = {
+  dev: {
+        proxyTable: {
+             &apos;/api&apos;:{
+                 target:&apos;http://bopinshangcheng.com&apos;,//&#x670D;&#x52A1;&#x5668;&#x57DF;&#x540D;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5E26;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x670D;&#x52A1;&#x5668;ip&#x5730;&#x5740;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5E26;&#x7AEF;&#x53E3;&#x53F7;
+                 changeOrigin:true,//&#x5904;&#x7406;&#x8DE8;&#x57DF;&#x63A5;&#x53E3;
+                 pathRewrite:{
+                     &apos;^/api&apos;:&apos;&apos;//&#x5904;&#x7406;&#x5F53;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;&#x4E2D;&#x51FA;&#x73B0;&#x4E86;&apos;api&apos;&#x662F;&#x91CD;&#x5199;&#x4E3A;&#x7A7A;
+                 }
+            }
+        },
+    }
+}
+</code></pre><pre data-role="codeBlock" data-info="" class="language-"><code>//&#x5728;vue&#x7EC4;&#x4EF6;&#x4E2D;&#xFF1A;
+//&#x767B;&#x5F55;
+        login(){
+            let _this = this;      
+            let api = &apos;/api/login&apos;;//&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;&#x524D;&#x9762;&#x90FD;&#x52A0;&#x4E0A;&apos;/api&apos;&#xFF0C;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x4F1A;&#x8BBF;&#x95EE;&#x5230;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x800C;&#x6B64;&apos;/api&apos;&#x4F1A;&#x88AB;&#x91CD;&#x5199;&#x4E3A;&apos;&apos;
+            _this.axios.post(api,_this.user).then(res=&gt;{
+                console.log(&apos;res&apos;,res);
+            }).catch(error=&gt;{
+                console.log(error);
+            });
+        },
+</code></pre><p><strong><em>&#x6CE8;&#x610F;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E86;&#x4EE3;&#x7406;&#x540E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E;baseURL&#xFF01;&#xFF01;&#xFF01;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E;baseURL&#xFF01;&#xFF01;&#xFF01;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E;baseURL&#xFF01;&#xFF01;&#xFF01;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C06;&#x6240;&#x6709;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x2018;/api&#x2019;&#x53BB;&#x6389;&#x5373;&#x53EF;</em></strong><br>
+2. &#x540C;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x533A;&#x5757;&#xFF0C;&#x83B7;&#x53D6;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x4FE1;&#x606F;&#xFF1A;<br>
+<strong><em>&#x540C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x591A;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x591A;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x6570;&#x636E;&#x90FD;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x4E3A;&#x65E0;&#x6CD5;&#x5F97;&#x77E5;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x8C01;&#x5148;&#x8C01;&#x540E;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x5BF9;&#x591A;&#x4E2A;&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x90FD;&#x8FDB;&#x884C;&#x5904;&#x7406;</em></strong></p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>  eg:
+  //&#x83B7;&#x53D6;&#x6240;&#x6709;&#x8D2D;&#x5165;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x8D2D;&#x5165;&#x8BA4;&#x6743;&#x548C;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x7684;&#x4E24;&#x79CD;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;
+  getPurchaseOrder(){
+    //console.log(&apos;&#x4E70;&#x5165;&#x8BA2;&#x5355;&apos;);
+      let _this = this;
+      _this.purchase = [];//&#x6E05;&#x7A7A;&#x6570;&#x7EC4;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x590D;&#x6DFB;&#x52A0;&#x8BA2;&#x5355;&#x4FE1;&#x606F;
+      //&#x8BA4;&#x6743;&#x548C;&#x8D2D;&#x4E70;&#x8BA2;&#x5355;&#x7EDF;&#x4E00;&#x653E;&#x5165;&#x6570;&#x7EC4;
+      _this.getRightOrder();//&#x83B7;&#x53D6;&#x8BA4;&#x6743;&#x8BA2;&#x5355;
+      _this.getCrowdOrder();//&#x83B7;&#x53D6;&#x4F17;&#x7B79;&#x8BA2;&#x5355;
+  },
+  //&#x83B7;&#x53D6;&#x8BA4;&#x6743;&#x8BA2;&#x5355;&#x4FE1;&#x606F;
+    getRightOrder(){
+      let  _this = this;
+      let api = &apos;/renquan_check/&apos;+_this.$store.state.uid;//&#x8BA4;&#x6743;&#x4EA7;&#x54C1;&#x8BA2;&#x5355;&#x7684;api
+      //&#x8BF7;&#x6C42;&#x8BA4;&#x6743;&#x8BA2;&#x5355;
+      _this.axios.get(api).then(res=&gt;{
+      //    console.log(&apos;&#x8BA4;&#x6743;&apos;,res);
+          let rightOrder = res.data;
+          if(rightOrder == []){//&#x8BA4;&#x6743;&#x8BA2;&#x5355;&#x4E3A;[]&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+              return
+          }
+          _this.purchase = _this.purchase.concat(rightOrder);//&#x5C06;&#x8BA4;&#x6743;&#x8BA2;&#x5355;&#x5408;&#x5E76;&#x5230;&#x8D2D;&#x5165;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;&#x7684;&#x603B;&#x6570;&#x7EC4;&#x4E2D;
+      });  
+    },
+    //&#x83B7;&#x53D6;&#x4F17;&#x7B79;&#x8BA2;&#x5355;&#x4FE1;&#x606F;
+    getCrowdOrder(){
+        let  _this = this;
+        let api = &apos;/zhongchou_check/&apos;+_this.$store.state.uid;//&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x8BA2;&#x5355;&#x7684;api
+        //&#x8BF7;&#x6C42;&#x4F17;&#x7B79;&#x8BA2;&#x5355;
+         _this.axios.get(api).then(res=&gt;{
+          //    console.log(&apos;&#x4F17;&#x7B79;&apos;,res);
+              let crowdOrder = res.data;
+              if(crowdOrder == []){//&#x4F17;&#x7B79;&#x8BA2;&#x5355;&#x4E3A;[]&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+                  return
+              }
+          _this.purchase = _this.purchase.concat(crowdOrder);//&#x5C06;&#x4F17;&#x7B79;&#x8BA2;&#x5355;&#x5408;&#x5E76;&#x5230;&#x8D2D;&#x5165;&#x4EA7;&#x54C1;&#x7684;&#x8BA2;&#x5355;&#x7684;&#x603B;&#x6570;&#x7EC4;&#x4E2D;
+         });  
+    },
+</code></pre><ol start="3">
+<li>&#x9996;&#x9875;&#x52A0;&#x8F7D;&#x8FC7;&#x6162;&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x6700;&#x521D;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x672A;&#x8003;&#x8651;&#x5230;&#x9879;&#x76EE;&#x9700;&#x8981;pc&#x7AEF;&#x548C;&#x79FB;&#x52A8;&#x7AEF;&#x4E24;&#x79CD;&#x9002;&#x914D;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6700;&#x521D;&#x5F15;&#x5165;&#x9879;&#x76EE;UI&#x6846;&#x67B6;&#x65F6;&#xFF0C;&#x5F15;&#x5165;&#x7684;&#x662F;mint-ui&#xFF0C;&#x79FB;&#x52A8;&#x7AEF;&#x7684;ui&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x54CD;&#x5E94;&#x5F0F;&#x6846;&#x67B6;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x9002;&#x914D;pc&#x7AEF;&#xFF0C;&#x53C8;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;element-ui&#x6846;&#x67B6;&#xFF0C;&#x4E14;&#x5E76;&#x4E0D;&#x662F;&#x6309;&#x9700;&#x5F15;&#x5165;&#xFF0C;&#x800C;&#x662F;&#x5168;&#x5C40;&#x5F15;&#x5165;&#xFF0C;&#x6240;&#x4EE5;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x5F15;&#x5165;&#x7684;&#x6A21;&#x5757;&#x8F83;&#x591A;&#xFF0C;&#x52A0;&#x8F7D;&#x65F6;vendor.js&#x8FC7;&#x5927;&#xFF0C;&#x5BFC;&#x81F4;&#x52A0;&#x8F7D;&#x8FC7;&#x6162;&#x3002;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;<br>
+&#x2460;&#x5728;&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x505A;&#x597D;&#x89C4;&#x5212;<br>
+&#x2461;&#x8865;&#x6551;&#x65B9;&#x6848;&#xFF1A;&#x7528;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x73B0;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x8FDB;&#x884C;&#x5206;&#x6D41;&#x52A0;&#x901F;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#x7684;&#x63D0;&#x9AD8;&#xFF0C;&#x5982;CDN&#x52A0;&#x901F;&#x670D;&#x52A1;<br>
+&#x2462;&#x5229;&#x7528;gzip&#x538B;&#x7F29;&#x6587;&#x4EF6;</li>
+<li>tingyun.js&#x62A5;&#x9519;&#xFF1A;</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-"><code>  cannot read property &apos;sdp&apos; of null
+</code></pre><p>sdp&#xFF1A;&#x6587;&#x672C;&#x534F;&#x8BAE;&#xFF0C;&#x5B9A;&#x4E49;&#x70B9;&#x5BF9;&#x70B9;&#x4E4B;&#x95F4;&#x5A92;&#x4F53;&#x4F1A;&#x8BDD;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x63CF;&#x8FF0;&#x81EA;&#x5DF1;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5A92;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x534F;&#x5B9A;&#x3002;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x7531;&#x4E8E;&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#xFF0C;&#x52A0;&#x8F7D;&#x5EF6;&#x8FDF;&#xFF0C;tingyun.js&#x8FD8;&#x672A;&#x52A0;&#x8F7D;&#xFF0C;&#x5C31;&#x8BFB;&#x53D6;&#x4E86;sdp&#x5C5E;&#x6027;&#x6240;&#x4EE5;&#x62A5;&#x9519;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x6839;&#x636E;sdp&#x534F;&#x8BAE;&#x7684;&#x6587;&#x672C;&#x683C;&#x5F0F;&#xFF0C;&#x5B9A;&#x4E49;js&#x7684;&#x52A0;&#x8F7D;&#x987A;&#x5E8F;<br>
+5. &#x767B;&#x5F55;&#x9A8C;&#x8BC1;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x6BCF;&#x4E2A;vue&#x7EC4;&#x4EF6;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x662F;&#x5229;&#x7528;&#x8DEF;&#x7531;&#x7684;meta&#x5C5E;&#x6027;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x9A8C;&#x8BC1;&#xFF0C;&#x5F53;&#x524D;&#x7EC4;&#x4EF6;&#x662F;&#x5426;&#x9700;&#x8981;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x624D;&#x53EF;&#x8BBF;&#x95EE;</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//&#x8DEF;&#x7531;
+{
+     path: &apos;/admin&apos;,
+     name: &apos;admin&apos;,
+     meta: {
+       Auth: true, // &#x9700;&#x8981;&#x767B;&#x5F55;
+     },
+     component: Admin
+}
+</code></pre><ul>
+<li>&#x5728;vuex&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x5B57;&#x6BB5;</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//store
+import Vue from &apos;vue&apos;
+import Vuex from &apos;vuex&apos;
+Vue.use(Vuex);
+
+const state = {
+  islogin:false
+}
+</code></pre><ul>
+<li>&#x5728;&#x521D;&#x59CB;&#x5316;vue&#x7EC4;&#x4EF6;&#x65F6;&#x5BF9;&#x662F;&#x5426;&#x9700;&#x8981;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x662F;&#x5426;&#x4E3A;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x5229;&#x7528;&#x5168;&#x5C40;&#x7684;&#x8DEF;&#x7531;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x5168;&#x5C40;&#x9A8C;&#x8BC1;</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//main.js
+router.beforeEach((to, from, next) =&gt; {
+  if (to.meta.Auth) {//&#x9700;&#x8981;&#x767B;&#x5F55;
+    if (store.state.islogin) {
+      next();
+    } else {
+      router.push({ name: &apos;login&apos; })
+    }
+  } else {//&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5F55;
+    next();
+  }
+})
+</code></pre><ol start="6">
+<li>&apos;application/x-www-form-urlencoded&apos;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;<br>
+form&#x8868;&#x5355;&#x63D0;&#x4EA4;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x6709;&#x4E24;&#x79CD;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&apos;multipart/form-data&apos;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&quot;application/x-www-form-urlencoded&quot;&#xFF0C;<br>
+&#x2460;&quot;content-type&quot;:&quot;application/x-www-form-urlencoded&quot;<br>
+&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#x4E3A;&#x666E;&#x901A;&#x7684;key:value&#x6570;&#x636E;&#xFF0C;&#x8868;&#x5355;&#x8F93;&#x5165;&#x6846;&#x63D0;&#x4EA4;&#x7684;&#x6570;&#x636E;&#x9ED8;&#x8BA4;&#x4E3A;&#x6B64;&#x79CD;&#xFF1A;</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//main.js
+//&#x5F15;&#x5165;node.js&#x4E2D;&#x7684;qs&#x6A21;&#x5757;
+Vue.prototype.qs = require(&apos;qs&apos;)
+//&#x5728;vue&#x7EC4;&#x4EF6;&#x7684;js&#x4E2D;
+login(){
+    let _this = this;
+    let api = &apos;/api/login&apos;;
+    _this.user = {//&#x7528;&#x6237;&#x4FE1;&#x606F;
+            uphone:&quot;&quot;,//&#x7528;&#x6237;&#x8D26;&#x53F7;&#x6216;&#x624B;&#x673A;&#x53F7;
+            password:&quot;&quot;,//&#x767B;&#x5F55;&#x5BC6;&#x7801;
+        };
+    _this.axios.post(api,_this.qs.stringify(_this.user)&#xFF09;.then(res=&gt;{
+        console.log(res);
+        });
+    //&#x6CE8;&#x610F;&#xFF0C;&#x5176;&#x4E2D;&#x7684;_this.user&#x5C31;&#x4E3A;&#x666E;&#x901A;&#x7684;json&#x6570;&#x636E;
+    //qs.stringify()&#x5C06;json&#x6570;&#x636E;&#x5904;&#x7406;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x5F0F;&#x8868;&#x5355;&#x6570;&#x636E;
+}
+</code></pre><p>&#x2461;&quot;content-type&quot;:&quot;multipart/form-data&quot;<br>
+&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#x4E00;&#x822C;&#x4E3A;&#x6587;&#x4EF6;&#x3001;&#x56FE;&#x7247;&#x7B49;&#x6570;&#x636E;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x5904;&#x7406;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>//&#x5728;vue&#x7684;js&#x4E2D;
+data(){
+    return{
+        params:{
+            file:&quot;&quot;,//&#x4E0A;&#x4F20;&#x6587;&#x4EF6;
+        }
+    }
+}
+methods:{
+    update(){
+        let _this = this;
+        let fd = _this.transformData(_this.params);
+       let api = &apos;/api/updateFile&apos;;
+        _this.axios.post(api,fd,{
+            headers:{
+                &quot;content-type&quot;:&quot;multipart/form-data&quot;
+            }
+            }&#xFF09;.then(res=&gt;{
+            console.log(res);
+            });
+    },
+    // &#x8F6C;&#x5316;&#x4E3A;formdata&#x683C;&#x5F0F;
+    transformData(obj){
+        let _this = this;
+        let fd = new FormData();
+        Object.keys(obj).forEach(key=&gt;{
+            fd.append(key,obj[key]);
+        });
+        return fd;
+    }
+}
+</code></pre><ol start="7">
+<li>&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0D;&#x7EDF;&#x4E00;&#xFF1A;<br>
+&#x524D;&#x671F;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x5BF9;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x7684;&#x7ED3;&#x6784;&#x534F;&#x5546;&#x786E;&#x5B9A;&#xFF0C;&#x5BFC;&#x81F4;&#x540E;&#x671F;&#x7A0B;&#x5E8F;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#xFF0C;&#x4E00;&#x65E6;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x9875;&#x9762;&#x663E;&#x793A;&#x5373;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x8C03;&#x6574;&#x6B64;&#x7C7B;&#x9519;&#x8BEF;&#xFF0C;&#x82B1;&#x8D39;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x3002;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x524D;&#x671F;&#x7A0B;&#x5E8F;&#x7684;&#x8BBE;&#x8BA1;&#x89C4;&#x5212;&#x5B8C;&#x5584;&#x3002;</li>
+<li>&#x79FB;&#x52A8;&#x7AEF;&#x767B;&#x5F55;&#x65E0;&#x54CD;&#x5E94;&#xFF1A;<br>
+&#x7A0B;&#x5E8F;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#xFF0C;&#x53D1;&#x73B0;pc&#x7AEF;&#x767B;&#x5F55;&#x8DF3;&#x8F6C;&#x80FD;&#x6B63;&#x5E38;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x79FB;&#x52A8;&#x7AEF;&#x767B;&#x5F55;&#x65E0;&#x4EFB;&#x4F55;&#x54CD;&#x5E94;&#x3002;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x6700;&#x521D;&#x767B;&#x5F55;&#x529F;&#x80FD;&#x7684;&#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#xFF1A;&#x7528;&#x6237;&#x624B;&#x673A;&#x53F7;&#xFF0C;&#x5BC6;&#x7801;&#xFF0C;&#x5185;&#x7F51;ip&#xFF0C;&#x5916;&#x7F51;ip&#xFF0C;&#x8BBE;&#x5907;&#x673A;&#x578B;&#xFF0C;&#x4E14;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x90FD;&#x4E3A;&#x5FC5;&#x987B;&#x5B57;&#x6BB5;&#xFF0C;&#x4F46;&#x662F;&#x79FB;&#x52A8;&#x7AEF;&#xFF0C;&#x6CA1;&#x6709;&#x5185;&#x7F51;ip&#xFF0C;&#x5BFC;&#x81F4;&#x975E;&#x7A7A;&#x5B57;&#x6BB5;&#x4F20;&#x503C;&#x4E3A;null&#xFF0C;ajax&#x8BF7;&#x6C42;&#x62A5;500&#x9519;&#x8BEF;&#xFF0C;&#x767B;&#x5F55;&#x64CD;&#x4F5C;&#x65E0;&#x54CD;&#x5E94;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x5229;&#x7528;&#x6293;&#x5305;&#x5DE5;&#x5177;&#xFF0C;&#x627E;&#x51FA;&#x767B;&#x5F55;&#x64CD;&#x4F5C;&#x65E0;&#x54CD;&#x5E94;&#x7684;&#x6839;&#x672C;&#x539F;&#x56E0;&#xFF08;&#x5185;&#x7F51;ip&#x5B57;&#x6BB5;&#x4E3A;null&#xFF09;&#xFF0C;&#x540E;&#x7AEF;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x8BBE;&#x5B9A;&#x6B64;&#x5B57;&#x6BB5;&#x5141;&#x8BB8;&#x4E3A;null&#xFF0C;&#x4EE5;&#x53CA;&#x9700;&#x8981;&#x52A0;&#x5F3A;pc&#x7AEF;&#xFF0C;&#x79FB;&#x52A8;&#x7AEF;&#x5404;&#x9879;&#x5E94;&#x7528;&#x7EC8;&#x7AEF;&#x7684;&#x5DEE;&#x5F02;</li>
+<li>&#x91CD;&#x590D;&#x6CE8;&#x518C;&#x7684;&#x95EE;&#x9898;&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x7528;&#x6237;&#x8F93;&#x5165;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x540E;&#xFF0C;&#x8FDE;&#x7EED;&#x70B9;&#x51FB;&#x6CE8;&#x518C;&#x6309;&#x94AE;&#xFF0C;&#x540C;&#x65F6;&#x53D1;&#x9001;&#x591A;&#x6B21;ajax&#x8BF7;&#x6C42;&#xFF0C;&#x5BFC;&#x81F4;&#x540E;&#x7AEF;&#x63A5;&#x6536;&#x591A;&#x6B21;&#x6CE8;&#x518C;&#x8BF7;&#x6C42;&#x3002;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x8BBE;&#x5B9A;30s&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x63D0;&#x4EA4;&#x6CE8;&#x518C;&#x7533;&#x8BF7;&#xFF0C;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;30s&#xFF0C;&#x6BCF;&#x6B21;&#x70B9;&#x51FB;&#x6CE8;&#x518C;&#x6309;&#x94AE;&#x540E;&#xFF0C;&#x6BCF;1&#x79D2;&#x51CF;1&#xFF0C;&#x4E0B;&#x4E00;&#x6B21;&#x70B9;&#x51FB;&#x6CE8;&#x518C;&#x6309;&#x94AE;&#x65F6;&#xFF0C;&#x770B;&#x6807;&#x8BC6;&#x7B26;&#x662F;&#x5426;&#x5C0F;&#x4E8E;30&#xFF0C;&#x4E00;&#x65E6;&#x5C0F;&#x4E8E;30&#x5219;&#x4E0D;&#x5141;&#x8BB8;&#x53D1;&#x9001;ajax&#x8BF7;&#x6C42;&#x3002;&#x7528;watch&#x76D1;&#x63A7;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x4E00;&#x65E6;&#x6807;&#x8BC6;&#x7B26;&#x4E3A;0&#x65F6;&#xFF0C;&#x518D;&#x521D;&#x59CB;&#x5316;&#x4E3A;30&#x3002;<br>
+&#x4E8C;&#x3001;&#x540E;&#x7AEF;
+<ol>
+<li>&#x65E0;&#x9700;&#x767B;&#x5F55;&#xFF0C;&#x5373;&#x53EF;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;&#xFF0C;&#x83B7;&#x5F97;&#x6570;&#x636E;&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x7A0B;&#x5E8F;&#x521D;&#x671F;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x672A;&#x505A;&#x597D;&#x89C4;&#x5212;&#xFF0C;&#x5BFC;&#x81F4;&#x540E;&#x7AEF;&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x672A;&#x505A;&#x597D;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x7684;&#x9A8C;&#x8BC1;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;<br>
+&#x6839;&#x636E;&#x7528;&#x6237;&#x767B;&#x5F55;&#x4FE1;&#x606F;&#xFF1A;&#x624B;&#x673A;&#x53F7;&#x3001;&#x5BC6;&#x7801;&#x3001;&#x5185;&#x7F51;ip&#x3001;&#x5916;&#x7F51;ip&#x3001;&#x8BBE;&#x5907;&#x673A;&#x578B;&#xFF0C;&#x65F6;&#x95F4;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x901A;&#x8FC7;&#x7B97;&#x6CD5;&#xFF0C;&#x52A0;&#x5BC6;&#x6210;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x9A8C;&#x8BC1;&#x7801;&#xFF0C;&#x6240;&#x6709;&#x63A5;&#x53E3;&#x90FD;&#x5FC5;&#x987B;&#x4F20;&#x5165;&#x52A0;&#x5BC6;&#x9A8C;&#x8BC1;&#x7801;&#x8FDB;&#x884C;&#x72B6;&#x6001;&#x9A8C;&#x8BC1;&#xFF0C;&#x9A8C;&#x8BC1;&#x7801;&#x5728;15&#x5206;&#x949F;&#x5185;&#x672A;&#x64CD;&#x4F5C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x52A0;&#x5BC6;&#x9A8C;&#x8BC1;&#x7801;&#x5931;&#x6548;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x767B;&#x5F55;</li>
+<li>&#x6570;&#x636E;&#x5E93;&#x7ED3;&#x6784;&#x7D0A;&#x4E71;&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x521D;&#x671F;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x89C4;&#x5212;&#x65F6;&#xFF0C;&#x8003;&#x8651;&#x4E0D;&#x5B8C;&#x5584;&#xFF0C;&#x4EC5;&#x8003;&#x8651;&#x5230;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x8FDB;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x672A;&#x8003;&#x8651;&#x5230;&#x524D;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x65F6;&#xFF0C;&#x63D0;&#x53D6;&#x6570;&#x636E;&#x65F6;&#x7684;&#x4FBF;&#x5229;&#x6027;&#xFF0C;&#x8BBE;&#x8BA1;&#x7684;&#x6570;&#x636E;&#x5E93;&#x7ED3;&#x6784;&#x4E0D;&#x591F;&#x5B8C;&#x5584;&#xFF0C;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x6570;&#x636E;&#x7684;&#x663E;&#x793A;&#x90FD;&#x9700;&#x8981;&#x904D;&#x5386;&#x591A;&#x5F20;&#x6570;&#x636E;&#x8868;&#xFF0C;&#x624D;&#x80FD;&#x83B7;&#x5F97;&#x6240;&#x6709;&#x6240;&#x9700;&#x6570;&#x636E;<br>
+&#x540E;&#x679C;&#xFF1A;&#x540E;&#x671F;pv&#x8F83;&#x5927;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x6570;&#x636E;&#x5954;&#x6E83;&#x3002;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;<br>
+&#x2460;&#x521D;&#x671F;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x5C31;&#x5E94;&#x8003;&#x8651;&#x5B8C;&#x5584;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x65B9;&#x4FBF;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;<br>
+&#x2461;&#x5229;&#x7528;rds&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x4F18;&#x5316;</li>
+<li>&#x56FE;&#x7247;&#x5904;&#x7406;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x663E;&#x793A;&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x524D;&#x540E;&#x7AEF;&#x4EA4;&#x4E92;&#x4F20;&#x56DE;&#x7684;&#x56FE;&#x7247;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x65E0;&#x6548;&#x3002;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;<br>
+&#x2460;&#x4E34;&#x65F6;&#x65B9;&#x6848;&#xFF1A;&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x505A;&#x51FA;&#x5224;&#x65AD;&#xFF0C;&#x7ED1;&#x5B9A;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x663E;&#x793A;&#x56FE;&#x7247;&#x3002;<br>
+&#x2461;&#x6839;&#x672C;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x4E86;&#x89E3;&#x56FE;&#x7247;&#x7684;&#x5404;&#x79CD;&#x5904;&#x7406;&#xFF0C;&#x4EE5;&#x53CA;&#x524D;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x65F6;&#x56FE;&#x7247;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x7684;&#x5904;&#x7406;</li>
+<li>&#x7ED1;&#x5B9A;&#x94B1;&#x5305;&#x5730;&#x5740;&#x4E0D;&#x6210;&#x529F;&#xFF1A;<br>
+&#x524D;&#x7AEF;&#x9875;&#x9762;&#x64CD;&#x4F5C;&#x94B1;&#x5305;&#x5730;&#x5740;&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x7ED1;&#x5B9A;&#x5E76;&#x672A;&#x5728;&#x6570;&#x636E;&#x5E93;&#x751F;&#x6548;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x524D;&#x7AEF;&#x4F20;&#x9001;&#x94B1;&#x5305;&#x5730;&#x5740;&#x81F3;&#x540E;&#x7AEF;&#xFF0C;&#x540E;&#x7AEF;&#x5C06;&#x94B1;&#x5305;&#x5730;&#x5740;&#x5B58;&#x50A8;&#x81F3;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6570;&#x636E;&#x8868;&#x4E2D;&#x5FC5;&#x586B;&#x5B57;&#x6BB5;&#x672A;&#x5904;&#x7406;&#xFF0C;&#x5BFC;&#x81F4;&#x94B1;&#x5305;&#x5730;&#x5740;&#x672A;&#x5B58;&#x50A8;&#x6210;&#x529F;<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x91CD;&#x65B0;&#x68C0;&#x67E5;&#x7ED1;&#x5B9A;&#x94B1;&#x5305;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#xFF0C;&#x6309;&#x5B57;&#x6BB5;&#x8BBE;&#x8BA1;&#x89C4;&#x5219;&#x4F20;&#x9001;&#x5B57;&#x6BB5;</li>
+<li>&#x6CE8;&#x518C;&#x65E0;&#x6CD5;&#x751F;&#x6210;uid&#xFF1A;<br>
+&#x539F;&#x56E0;&#xFF1A;&#x5730;&#x5740;&#x5E93;&#x4E2D;&#x90E8;&#x5206;&#x5730;&#x533A;&#x672A;&#x5206;&#x914D;&#x5730;&#x5740;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x6240;&#x4EE5;&#x5916;&#x7F51;ip&#x4F20;&#x9001;&#x81F3;&#x540E;&#x53F0;&#x540E;&#xFF0C;&#x65E0;&#x6CD5;&#x5339;&#x914D;&#x6B63;&#x786E;&#x7684;&#x5730;&#x5740;&#x6807;&#x8BC6;&#xFF0C;&#x5728;uid&#x8BBE;&#x5B9A;&#x7684;&#x89C4;&#x5219;&#x4E2D;&#xFF0C;&#x5730;&#x5740;&#x6807;&#x8BC6;&#x53C8;&#x4E3A;&#x5FC5;&#x987B;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x6CD5;&#x6210;&#x529F;&#x751F;&#x6210;&#x7528;&#x6237;uid<br>
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x67E5;&#x6F0F;&#x8865;&#x7F3A;&#xFF0C;&#x5C06;&#x4E2D;&#x56FD;&#x6240;&#x6709;&#x7684;&#x7701;&#x5E02;&#x81EA;&#x6CBB;&#x533A;&#x90FD;&#x5339;&#x914D;&#x552F;&#x4E00;&#x7684;&#x5730;&#x5740;&#x6807;&#x8BC6;&#x7B26;</li>
+</ol>
+</li>
+</ol>
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A620181211-20190220">&#x9879;&#x76EE;&#x8FDB;&#x5EA6;&#xFF08;2018/12/11-2019/02/20)</h3>
+
+<p>&#x4E00;&#x3001; 2018/12/11 - 2018/12/20 &#xA0;&#xA0;&#xA0; Godpay&#x9879;&#x76EE;&#x9700;&#x6C42;&#x5BF9;&#x63A5;&#xFF0C;&#x786E;&#x8BA4;&#x9700;&#x6C42;&#x521D;&#x7248;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#xFF1A;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x4E86;&#x89E3;&#x9879;&#x76EE;&#x89C4;&#x5219;&#xFF0C;&#x4EA7;&#x54C1;&#x3001;&#x6536;&#x76CA;&#x7C7B;&#x578B;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. &#x5B8C;&#x6210;&#x4E86;&#x63D0;&#x53D6;Godpay&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x6574;&#x7406;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x5982;&#xFF1A;V1&#x3001;V2&#x3001;V3&#x3001;3&#x4E2A;&#x6708;&#xFF08;2%&#xFF09;&#x3001;6&#x4E2A;&#x6708;&#xFF08;4.5%&#xFF09;&#x3001;12&#x4E2A;&#x6708;&#xFF08;10%&#xFF09;&#x3001;ID&#x3001;&#x624B;&#x673A;&#x53F7;&#x3001;&#x6635;&#x79F0;&#x3001;&#x6D41;&#x6C34;&#x53F7;&#x3001;&#x539F;&#x59CB;&#x503C;&#xFF08;&#x7B49;&#x7EA7;&#xFF09;&#x3001;&#x500D;&#x5316;&#x3001;&#x53C2;&#x8003;&#x503C;&#x3001;&#x7D2F;&#x8BA1;&#xFF08;&#x91CA;&#x653E;&#x603B;&#x91CF;&#xFF09;&#x7B49;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;3. &#x5B8C;&#x6210;&#x4E86;Godpay&#x9879;&#x76EE;&#x4E2D;&#x5BA2;&#x6237;&#x7AEF;&#x9875;&#x9762;&#x9700;&#x6C42;&#x786E;&#x8BA4;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x767B;&#x5F55;&#x9875;&#x3001;&#x6CE8;&#x518C;&#x9875;&#x3001;&#x9996;&#x9875;&#xFF08;&#x4EA7;&#x54C1;&#x94FE;&#x63A5;&#x6309;&#x94AE;&#x3001;&#x89C4;&#x5219;&#x3001;&#x4EA7;&#x54C1;&#x8D2D;&#x4E70;&#x7684;&#x5B9E;&#x65F6;&#x901A;&#x77E5;&#xFF09;&#x3001;&#x4EA7;&#x54C1;&#x4FE1;&#x606F;&#x9875;&#xFF08;&#x8BA4;&#x6743;&#x3001;&#x4F17;&#x7B79;&#x4E24;&#x79CD;&#x4EA7;&#x54C1;&#x7684;&#x8BE6;&#x60C5;&#xFF09;&#x3001;&#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;&#x9875;&#xFF08;&#x7528;&#x6237;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x6237;&#x64CD;&#x4F5C;&#x7684;&#x8BA2;&#x5355;&#x7BA1;&#x7406;&#x3001;&#x7528;&#x6237;&#x7684;&#x8D44;&#x4EA7;&#x60C5;&#x51B5;&#x3001;&#x5206;&#x4EAB;&#x3001;&#x7528;&#x6237;&#x7684;&#x63A8;&#x5E7F;&#x60C5;&#x51B5;&#x7B49;&#x90E8;&#x5206;&#x7684;&#x9700;&#x6C42;&#x5206;&#x6790;&#xFF09;<br>
+&#x4E8C;&#x3001; 2018/12/21 &#xA0;&#xA0;&#xA0;Godpay&#x9700;&#x6C42;&#x8C03;&#x6574;&#xFF0C;&#x53D8;&#x52A8;&#x90E8;&#x5206;&#xFF1A;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x767B;&#x5F55;&#x90E8;&#x5206;&#xFF1A;&#x589E;&#x52A0;&#x5916;&#x7F51;IP&#x3001;&#x5185;&#x7F51;IP&#x3001;&#x8BBE;&#x5907;&#x673A;&#x578B;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. &#x6CE8;&#x518C;&#x90E8;&#x5206;&#xFF1A;&#x589E;&#x52A0;&#x5916;&#x7F51;IP&#x3001;&#x5185;&#x7F51;IP&#x3001;&#x8BBE;&#x5907;&#x673A;&#x578B;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;3. &#x8BA2;&#x5355;&#x7BA1;&#x7406;&#x64CD;&#x4F5C;&#x90E8;&#x5206;&#xFF0C;&#x8F6C;&#x51FA;&#x7ED9;&#x4E0B;&#x964D;/&#x4E0B;&#x4E0B;&#x7EA7;&#x90E8;&#x5206;&#x6682;&#x65F6;&#x5220;&#x9664;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;4. EMT&#x83B7;&#x53D6;&#x6E20;&#x9053;&#x4E2D;&#x5411;&#x4E0A;&#x7EA7;&#x7533;&#x8BF7;&#x6539;&#x4E3A;ETH&#x94B1;&#x5305;&#x5145;&#x503C;&#xFF0C;75&#x5206;&#x949F;&#x5145;&#x503C;&#x5BA1;&#x6838;&#x65F6;&#x95F4;&#xFF0C;75&#x5206;&#x949F;&#x5185;&#x4E0D;&#x5230;&#x8D26;&#x4E0D;&#x5165;&#x8D26;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;5. &#x5C06;&#x63A8;&#x5E7F;&#x60C5;&#x51B5;&#x5408;&#x5E76;&#x5230;&#x5206;&#x4EAB;&#x90E8;&#x5206;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;6. &#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;&#x589E;&#x52A0;&#x8BBE;&#x7F6E;&#x90E8;&#x5206;&#xFF0C;&#x8BBE;&#x7F6E;&#x90E8;&#x5206;&#x5305;&#x62EC;&#x5BC6;&#x7801;&#x7BA1;&#x7406;&#xFF08;&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF0C;&#x652F;&#x4ED8;&#x5BC6;&#x7801;&#xFF09;&#xFF0C;ETH&#x94B1;&#x5305;&#x5730;&#x5740;&#x7ED1;&#x5B9A;<br>
+&#x4E09;&#x3001; 2018/12/21 - 2018/12/30&#xA0;&#xA0;&#xA0; Godpay&#x9879;&#x76EE;UI&#x5B8C;&#x6210;&#x9875;&#x9762;&#x8BBE;&#x8BA1;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x5B8C;&#x6210;Godpay&#x9879;&#x76EE;&#x7684;&#x5DE5;&#x4F5C;&#x8BA1;&#x5212;&#x8FDB;&#x5EA6;&#x5B89;&#x6392;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. UI&#x5DE5;&#x7A0B;&#x5E08;&#x4E86;&#x89E3;&#x9879;&#x76EE;&#x9700;&#x6C42;&#xFF0C;&#x5B8C;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;&#x8BBE;&#x8BA1;<br>
+&#x56DB;&#x3001;2018/12/31 - 2019/2/11&#xA0; &#xA0; &#xA0;Godpay&#x9879;&#x76EE;&#x521D;&#x7248;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6210;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x524D;&#x7AEF;&#x5B8C;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;&#x7F16;&#x7A0B;&#xFF0C;&#x5305;&#x62EC;&#x5BA2;&#x6237;&#x7AEF;&#x3001;&#x4EE3;&#x7406;&#x5546;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x3001;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x4E09;&#x5927;&#x6A21;&#x5757;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. Godpay&#x9879;&#x76EE;&#x9875;&#x9762;&#x8BBE;&#x8BA1;&#x8C03;&#x6574;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;3. &#x540E;&#x7AEF;&#x5B8C;&#x6210;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x8868;&#x8BBE;&#x8BA1;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x5EFA;&#x8868;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;4. &#x540E;&#x7AEF;&#x5B8C;&#x6210;&#x57FA;&#x672C;&#x7684;&#x9879;&#x76EE;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#x7F16;&#x7A0B;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;5. &#x5B8C;&#x6210;&#x524D;&#x540E;&#x7AEF;&#x4EA4;&#x4E92;&#x7684;API&#x7F16;&#x5199;&#xFF0C;&#x5E76;&#x5F62;&#x6210;&#x6587;&#x6863;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;6. &#x6839;&#x636E;API&#x6587;&#x6863;&#x5B8C;&#x6210;&#xFF0C;&#x5B8C;&#x6210;&#x524D;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#xFF0C;&#x5904;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x6570;&#x636E;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;7. &#x7528;&#x6237;&#x7AEF;&#x3001;&#x4EE3;&#x7406;&#x5546;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x4E24;&#x5927;&#x6A21;&#x5757;&#xFF0C;&#x521D;&#x7248;&#x4EE3;&#x7801;&#x5DF2;&#x5B8C;&#x6210;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;8. &#x6D4B;&#x8BD5;&#x9879;&#x76EE;&#xFF0C;&#x9488;&#x5BF9;&#x9879;&#x76EE;&#x4E2D;BUG&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x4FEE;&#x6539;<br>
+&#x4E94;&#x3001;2019/2/11 - 2019/2/20&#xA0; &#xA0; &#xA0;Godpay&#x9879;&#x76EE;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x524D;&#x540E;&#x7AEF;&#x9488;&#x5BF9;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x5BF9;&#x63A5;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. &#x540E;&#x7AEF;&#x9488;&#x5BF9;&#x9700;&#x6C42;&#xFF0C;&#x8FDB;&#x884C;API&#x7684;&#x53D1;&#x5E03;&#xFF0C;&#x5E76;&#x5F62;&#x6210;API&#x6587;&#x6863;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;3. &#x524D;&#x7AEF;&#x6839;&#x636E;API&#x6587;&#x6863;&#xFF0C;&#x8FDB;&#x884C;&#x524D;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#xFF0C;&#x5904;&#x7406;&#x5E76;&#x663E;&#x793A;&#x6570;&#x636E;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;4. &#x6D4B;&#x8BD5;&#x9879;&#x76EE;&#xFF0C;&#x9488;&#x5BF9;&#x9879;&#x76EE;&#x4E2D;&#x7684;BUG&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x4FEE;&#x6539;<br>
+&#x516D;&#x3001;&#x76EE;&#x524D;&#x8FDB;&#x5EA6;&#xFF1A;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;1. &#x5BA2;&#x6237;&#x7AEF;&#xFF1A;&#x9996;&#x9875;&#x7F3A;&#x5C11;&#x5B9E;&#x65F6;&#x5E7F;&#x544A;&#xFF08;&#x5E7F;&#x544A;&#x6EDA;&#x52A8;&#x6761;&#xFF09;&#x63A5;&#x53E3;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;2. &#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;&#xFF1A;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;a. &#x4EE3;&#x7406;&#x5546;&#x7BA1;&#x7406;&#x98CE;&#x63A7;&#x90E8;&#x5206;&#xFF0C;&#x6682;&#x505C;&#x3001;&#x505C;&#x6B62;&#x3001;&#x6062;&#x590D;&#x7B49;&#x529F;&#x80FD;API&#x672A;&#x5B8C;&#x6210;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;b. &#x5BA2;&#x6237;&#x5206;&#x5E03;&#x7BA1;&#x7406;&#xFF08;&#x5BA2;&#x6237;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#x8868;&#xFF09;API&#x672A;&#x5B8C;&#x6210;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;c. &#x4EA7;&#x54C1;&#x7BA1;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x4EA7;&#x54C1;&#x7684;&#x7F16;&#x8F91;&#x3001;&#x6DFB;&#x52A0;&#x3001;&#x5220;&#x9664;&#x7B49;&#x529F;&#x80FD;&#x7684;API&#x672A;&#x5B8C;&#x6210;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;d. &#x7528;&#x6237;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x4E8C;&#x6B21;&#x6295;&#x5165;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;e. &#x9488;&#x5BF9;&#x4E0B;&#x7EA7;&#x8D2D;&#x5165;&#x4F17;&#x7B79;&#x4EA7;&#x54C1;&#x540E;&#x4E0A;&#x7EA7;&#x4EA7;&#x751F;&#x7684;&#x6536;&#x76CA;&#x8FD4;&#x8FD8;&#xFF0C;&#x6682;&#x672A;&#x5B9E;&#x73B0;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;3. &#x4F18;&#x5316;&#x7A7A;&#x95F4;&#xFF1A;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;a. &#x540E;&#x7AEF;&#x767B;&#x5F55;&#x9A8C;&#x8BC1;&#xFF08;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x4FDD;&#x6301;&#xFF09;<br>
+&#xA0; &#xA0; &#xA0; &#xA0;&#xA0; &#xA0; &#xA0; &#xA0;b. &#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x8868;&#x7ED3;&#x6784;&#x7684;&#x4F18;&#x5316;</p>
+<h3 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">&#x9879;&#x76EE;&#x76F8;&#x5173;&#x6570;&#x636E;&#x5206;&#x6790;</h3>
+
+<ol>
+<li>&#x524D;&#x7AEF;&#x9875;&#x9762;&#xFF1A;<br>
+a. <img src="./summaryImg/homeLoad.png" alt="&#x9996;&#x9875;&#x52A0;&#x8F7D;&#x6570;&#x636E;"><br>
+b. vendor.js&#x4F53;&#x79EF; <strong>1.69MB</strong><br>
+<img src="./summaryImg/vendorjsLoad.png" alt="vendorjs&#x52A0;&#x8F7D;&#x6570;&#x636E;"><br>
+c. &#x524D;&#x7AEF;&#x9875;&#x9762;&#x4F18;&#x5316;&#x7A7A;&#x95F4;&#xFF1A;<br>
+<img src="./summaryImg/optimize.png" alt="&#x4F18;&#x5316;&#x7A7A;&#x95F4;"><br>
+d. &#x524D;&#x7AEF;&#x5404;&#x9879;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x65F6;&#x957F;&#x6570;&#x636E;&#xFF1A;<br>
+<img src="./summaryImg/singleFileLoad.png" alt="&#x5404;&#x4E2A;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x65F6;&#x95F4;"><br>
+&#x5206;&#x6790;&#xFF1A;&#x9996;&#x9875;&#x52A0;&#x8F7D;&#x65F6;&#x957F;&#x6BD4;&#x884C;&#x4E1A;&#x5E73;&#x5747;&#x65F6;&#x957F;&#x591A;0.8s,&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x662F;&#x521D;&#x671F;&#x7A0B;&#x5E8F;&#x89C4;&#x5212;&#x4E0D;&#x591F;&#x5B8C;&#x5584;&#xFF0C;&#x52A0;&#x8F7D;&#x8FC7;&#x591A;&#x91CD;&#x590D;&#x65E0;&#x7528;&#x7684;&#x63D2;&#x4EF6;&#x6216;&#x8005;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x5BFC;&#x81F4;vendor.js&#x4F53;&#x79EF;&#x8FC7;&#x5927;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x9996;&#x6B21;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x7684;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#x3002;&#x4F18;&#x5316;&#x7A7A;&#x95F4;&#xFF1A;&#x5408;&#x5E76;&#x5916;&#x8054;js&#x3001;&#x4F7F;&#x7528;gzip&#x538B;&#x7F29;&#x7B49;&#x3002;</li>
+<li>Godpay&#x9879;&#x76EE;&#x5F71;&#x54CD;&#xFF1A;<br>
+a. Godpay&#x9879;&#x76EE;<strong>&#x6CE8;&#x518C;&#x7528;&#x6237;</strong>&#x6570;&#x636E;&#xFF1A;&#x603B;&#x91CF;<strong>154</strong>&#x4EBA;<br>
+<img src="./summaryImg/user_nums.png" alt="godpay&#x7528;&#x6237;&#x6CE8;&#x518C;&#x91CF;"><br>
+b.Godpay&#x9879;&#x76EE;&#x4EE3;&#x7406;&#x5546;EMT&#x91CA;&#x653E;&#x60C5;&#x51B5;&#xFF1A;EMT&#x62E8;&#x51FA;&#x603B;&#x91CF;<strong>474000</strong>EMT<br>
+<img src="./summaryImg/agents.png" alt="godpay&#x7528;&#x6237;&#x6CE8;&#x518C;&#x91CF;"><br>
+c.Godpay&#x9879;&#x76EE;EMT<strong>&#x63D0;&#x73B0;</strong>&#x6570;&#x636E;&#xFF1A;&#x603B;&#x91CF;<strong>496738</strong>EMT<br>
+<img src="./summaryImg/withdrawData.png" alt="godpay2019&#x5E74;&#x63D0;&#x73B0;&#x6570;&#x636E;"></li>
+</ol>
+<h3 class="mume-header" id="%E6%80%BB%E7%BB%93">&#x603B;&#x7ED3;&#xFF1A;</h3>
+
+<ol>
+<li>&#x9879;&#x76EE;&#x4E2D;&#x6700;&#x5927;&#x7684;&#x95EE;&#x9898;&#x662F;&#x9879;&#x76EE;&#x521D;&#x671F;&#x6CA1;&#x6709;&#x505A;&#x597D;&#x9879;&#x76EE;&#x89C4;&#x5212;&#xFF0C;&#x8BB8;&#x591A;&#x903B;&#x8F91;&#x6CA1;&#x6709;&#x634B;&#x987A;&#xFF0C;&#x540E;&#x671F;&#x9879;&#x76EE;&#x6D4B;&#x8BD5;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x8C03;&#x6574;&#x4FEE;&#x6539;&#x82B1;&#x8D39;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x56E2;&#x961F;&#x6210;&#x5458;&#x4EA4;&#x6D41;&#x5C11;&#xFF0C;&#x5404;&#x81EA;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5BFC;&#x81F4;&#x4EE3;&#x7801;&#x878D;&#x5408;&#x65F6;&#xFF0C;&#x6709;&#x8BB8;&#x591A;&#x4E0D;&#x540C;&#xFF0C;&#x8C03;&#x6574;&#x65F6;&#x95F4;&#x957F;&#x3002;</li>
+<li>&#x9879;&#x76EE;&#x521D;&#x671F;&#xFF0C;&#x6CA1;&#x6709;&#x5BF9;&#x4EA4;&#x4E92;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x8FDB;&#x884C;&#x89C4;&#x5212;&#xFF0C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5BFC;&#x81F4;&#x5404;&#x79CD;&#x6570;&#x636E;&#x663E;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x6570;&#x636E;&#x591A;&#x6B21;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x3002;</li>
+<li>&#x9879;&#x76EE;&#x5B8C;&#x6210;&#x4E0A;&#x7EBF;&#x7684;&#x65F6;&#x95F4;&#x5B9A;&#x4E3A;2019&#x5E74;3&#x6708;3&#x65E5;&#xFF0C;&#x9879;&#x76EE;&#x8FD8;&#x6709;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x6A21;&#x5757;&#x4E2D;&#x7528;&#x6237;&#x548C;&#x4EE3;&#x7406;&#x5546;&#x98CE;&#x63A7;&#x3001;&#x7528;&#x6237;&#x5C42;&#x7EA7;&#x7EDF;&#x8BA1;&#x3001;&#x4EA7;&#x54C1;&#x7BA1;&#x7406;&#x90E8;&#x5206;&#x672A;&#x5B8C;&#x6210;&#xFF0C;&#x903B;&#x8F91;&#x90E8;&#x5206;&#xFF1A;&#x7528;&#x6237;&#x6682;&#x4E0D;&#x80FD;&#x4E8C;&#x6B21;&#x6295;&#x5165;&#xFF0C;&#x6570;&#x636E;&#x63A5;&#x53E3;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x90FD;&#x672A;&#x5B8C;&#x6210;&#xFF0C;&#x540E;&#x671F;&#x53EF;&#x80FD;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x662F;&#x7528;&#x6237;&#x91CF;&#x7684;&#x589E;&#x5927;&#xFF0C;&#x8D85;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x627F;&#x8F7D;&#x80FD;&#x529B;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x9879;&#x76EE;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x5927;&#x5E45;&#x5EA6;&#x964D;&#x4F4E;&#xFF0C;&#x9700;&#x8981;&#x5B66;&#x4E60;rds&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x505A;&#x597D;&#x540E;&#x671F;&#x6570;&#x636E;&#x5E93;&#x8FC1;&#x79FB;&#x7684;&#x51C6;&#x5907;&#x3002;</li>
+<li>Godpay&#x9879;&#x76EE;&#x4E0A;&#x7EBF;&#x81F3;&#x4ECA;&#xFF0C;EMT&#x91CA;&#x653E;&#x91CF;&#x4E3A;<strong>496738</strong>EMT&#xFF0C;&#x5BF9;Godpay&#x7684;&#x5E02;&#x573A;&#x6D41;&#x901A;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x5F71;&#x54CD;&#x3002;</li>
+</ol>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

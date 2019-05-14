@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/api':{
+            target:'http://95.181.189.228:80',//服务器域名，不需要带端口号，如果是服务器ip地址，则需要带端口号
+            changeOrigin:true,//处理跨域接口
+            pathRewrite:{
+                '^/api':''//处理当接口路径出现了'api'是重写为空
+            }
+       }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -68,7 +76,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/api': 'http://67.230.191.185:80/'
+    //   '/api': 'http://95.181.189.228:80/',
     }
   }
 

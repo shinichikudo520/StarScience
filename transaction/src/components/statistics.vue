@@ -305,20 +305,20 @@ export default {
         _this.loadDepthMap(); //加载深度图
     },
     //在创建组件进入组件页面前判断是否登录
-    beforeRouteEnter(to,from,next){
-        // 判断：是否登录成功，，没有则让用户先登录
-        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        console.log("admin",loginOrNot,typeof(loginOrNot))
-        if(loginOrNot!=='"yes"'){
-            console.log("未登录状态",loginOrNot)
-            next({
-                path:"/"
-            })   
-        }else{
-            console.log("登录状态",loginOrNot)
-            next();  
-        }
-    }
+    // beforeRouteEnter(to,from,next){
+    //     // 判断：是否登录成功，，没有则让用户先登录
+    //     let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+    //     console.log("admin",loginOrNot,typeof(loginOrNot))
+    //     if(loginOrNot!=='"yes"'){
+    //         console.log("未登录状态",loginOrNot)
+    //         next({
+    //             path:"/"
+    //         })   
+    //     }else{
+    //         console.log("登录状态",loginOrNot)
+    //         next();  
+    //     }
+    // }
 };
 </script>
 

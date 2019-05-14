@@ -965,21 +965,21 @@ export default {
         _this.requestTradingInfo();//请求最新价
         // _this.timerCount[5] = setTimeout(_this.automation,_this.form.tradeTime);//页面打开1min后自动操作//打开注释
     },
-    //在创建组件进入组件页面前判断是否登录
-    beforeRouteEnter(to,from,next){
-        // 判断：是否登录成功，，没有则让用户先登录
-        let loginOrNot = window.sessionStorage.getItem("loginOrNot");
-        console.log("admin",loginOrNot,typeof(loginOrNot))
-        if(loginOrNot!=='"yes"'){
-            console.log("未登录状态",loginOrNot)
-            next({
-                path:"/"
-            })   
-        }else{
-            console.log("登录状态",loginOrNot)
-            next();  
-        }
-    },
+    // //在创建组件进入组件页面前判断是否登录
+    // beforeRouteEnter(to,from,next){
+    //     // 判断：是否登录成功，，没有则让用户先登录
+    //     let loginOrNot = window.sessionStorage.getItem("loginOrNot");
+    //     console.log("admin",loginOrNot,typeof(loginOrNot))
+    //     if(loginOrNot!=='"yes"'){
+    //         console.log("未登录状态",loginOrNot)
+    //         next({
+    //             path:"/"
+    //         })   
+    //     }else{
+    //         console.log("登录状态",loginOrNot)
+    //         next();  
+    //     }
+    // },
     //组件被破坏之前，最好也把计时器清除
     beforeDestroy(){
         let _this = this;

@@ -18,7 +18,7 @@ Vue.config.productionTip = false
 //全局配置axios
 //axios.defaults.baseURL = ''; //调试环境
 // axios.defaults.baseURL = '/api/'; //生产环境
-axios.defaults.baseURL = 'http://67.230.191.185:8000/'; //开发环境
+// axios.defaults.baseURL = 'http://95.181.189.228:80/'; //开发环境
 axios.defaults.withCredentials = true;
 
 

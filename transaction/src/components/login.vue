@@ -44,16 +44,16 @@ export default {
         uploadInfo() {
             let _this = this;
             // console.log(_this.loginOrNot)
-            _this.getIPs(function(ip){//获取用户ip的函数
-                _this.ip = ip;
-                console.log(_this.ip)                    
-            });
+            // _this.getIPs(function(ip){//获取用户ip的函数
+            //     _this.ip = ip;
+            //     console.log(_this.ip)                    
+            // });
             let api = "/api/login";
             // let api = "login";
             let params = {
                 username:_this.form.stuId,
                 passwprd:_this.form.stuPwd,
-                ip:_this.ip,
+                // ip:_this.ip,
             };
             let fd = _this.transformFormData(params);
             _this.axios.post(api,fd,{
