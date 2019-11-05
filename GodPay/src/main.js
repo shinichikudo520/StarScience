@@ -15,6 +15,7 @@ import store from './store/index'
 
 
 Vue.prototype.axios= axios
+//Vue.use(axios);//在组件中使用this.axios调用
 Vue.prototype.qs = require('qs')
 Vue.use(Vuex);
 // Vue.use(VueJsonp)
